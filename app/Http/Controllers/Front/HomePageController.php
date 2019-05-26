@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Flower;
+use App\FlowerCategory;
 
 use Mail;
 use App\Mail\ContactEnquiry;
@@ -21,7 +22,8 @@ class HomePageController extends Controller
     }
     public function flowers(){
         $flowers=Flower::all();
-        return view('frontend.flowers',compact('flowers'));
+        $flowerCategories=FlowerCategory::all();
+        return view('frontend.flowers',compact('flowers','flowerCategories'));
     }
     public function chocolates(){
         return view('frontend.chocolates');

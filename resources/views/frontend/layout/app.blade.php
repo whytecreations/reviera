@@ -92,15 +92,12 @@
 
 </div>
 
-@section('scripts')
-
 <script type="text/javascript" src="js/webslidemenu.js"></script>
 <script src="js/jquery.easeScroll.js" type="text/javascript"></script>
 <script src="js/aos.js" type="text/javascript"></script>
-<script src="js/instafeed.min.js" type="text/javascript"></script>
-<script src="js/main.js" ></script>
 
-@show
+@yield('scripts')
+<script src="js/main.js" ></script>
 
 </body>
 </html>

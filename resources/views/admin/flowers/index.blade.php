@@ -35,6 +35,7 @@
 
                         <th>@lang('quickadmin.flowers.fields.category')</th>
                         <th>@lang('quickadmin.flowers.fields.title')</th>
+                        <th>@lang('quickadmin.flowers.fields.price')</th>
                         <th>@lang('quickadmin.flowers.fields.description')</th>
                         <th>@lang('quickadmin.flowers.fields.images')</th>
                         @if( request('show_deleted') == 1 )
@@ -53,8 +54,9 @@
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
                                 
-                                <td field-key='category'>{{ $flower->category }}</td>
+                                <td field-key='category'>{{ $flower->category->name }}</td>
                                 <td field-key='title'>{{ $flower->title }}</td>
+                                <td field-key='title'>{{ $flower->price }}</td>
                                 <td field-key='description'>{!! $flower->description !!}</td>
                                 <td field-key='images'> @foreach($flower->getMedia('images') as $media)
                                 <p class="form-group">

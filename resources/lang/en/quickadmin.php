@@ -47,6 +47,7 @@ return [
 		'fields' => [
 			'category' => 'Category',
 			'title' => 'Title',
+			'price' => 'Price',
 			'description' => 'Description',
 			'images' => 'Images',
 		],

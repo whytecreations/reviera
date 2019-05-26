@@ -19,8 +19,7 @@ class Flower extends Model implements HasMedia
 {
     use SoftDeletes, HasMediaTrait;
 
-    protected $fillable = ['category_id', 'title', 'description'];
-    protected $hidden = [];
+    protected $fillable = ['category_id', 'title', 'price','description'];
 
     public function category(){
         return $this->belongsTo(FlowerCategory::class);

@@ -20,9 +20,8 @@
 		
 		<div class="col-md-12" data-aos="fade-up">
 			<div class="pdct">
-			  <div class="row">
+			  {{-- <div class="row">
 			  	<div class="col-md-12" >
-			  		
 			  		<div class="srt">
 						<div class="sel sel--black-panther">
 							<select name="select-profession" id="select-profession">
@@ -35,7 +34,7 @@
 						</div>
 			  		</div>
 			  	</div>
-			  </div>
+			  </div> --}}
 			  
 			  
 			  
@@ -46,21 +45,40 @@
 						<div id="sidebar" class="sidebar">
 						 <h3 data-aos="fade-up">Flowers</h3>
 						   <ul data-aos="fade-up">
-						   	 <li><a href="#">The Timeless</a></li>
-						   	 <li><a href="#">The Pep</a></li>
+							 @foreach ($flowerCategories  as $flowerCategory)
+						   	 <li><a href="#">{{$flowerCategory->name}}</a></li>
+							 @endforeach
+						   	 {{-- <li><a href="#">The Pep</a></li>
 						   	 <li><a href="#">The Elegant</a></li>
 						   	 <li><a href="#">The bouquet</a></li>
 						   	 <li><a href="#">The Long</a></li>
 						   	 <li><a href="#">Chocolates</a></li>
 						   	 <li><a href="#">The Classy</a></li>
 						   	 <li><a href="#">Below 300 QAR</a></li>
-						   	 <li><a href="#">Red</a></li>
+						   	 <li><a href="#">Red</a></li> --}}
 						   </ul>
 						</div>
 					</div>
 					<div class="col-md-9">
 						<div class="contents">
-					    <ul class="clearfix">
+						@foreach ($flowers->chunk(2) as $flowerPair)
+							<ul class="clearfix">
+
+						@foreach ($flowerPair as $flower)
+					    	<li data-aos="fade-up">
+								<figure><a href="#"  data-toggle="modal" data-target="#modal{{$flower->id}}">
+									<div class="pdct-img">
+									<img src="{{$flower->getMedia('images')->first()->getUrl()}}">
+									
+									<div class="quick">Quick View</div></div>
+									<figcaption><h5>{{$flower->title}}</h5><h4>QAR {{$flower->price}}</h4><p>{{$flower->description}}</p></figcaption>
+								</a></figure>
+
+					    	</li>
+						@endforeach
+					    </ul>
+						@endforeach
+					    {{-- <ul class="clearfix">
 					    	<li data-aos="fade-up">
 								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
 									<div class="pdct-img"><img src="images/flower1.jpg"><div class="quick">Quick View</div></div>
@@ -129,7 +147,7 @@
 									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
 								</a></figure>
 					    	</li>
-					    </ul>	
+					    </ul>	 --}}
 				  </div>
 					</div>
 				</div>
@@ -147,24 +165,25 @@
 
 
 
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+@foreach ($flowers as $flower)
+<div class="modal fade" id="modal{{$flower->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
     <div class="modal-content">
       <div class="row">
       	<div class="col-md-6 no-padding">
       	   <div class="pdct-slider">
-      		<div id="owl-demo" class="owl-carousel owl-theme">
-              <div class="item"><img src="images/flower1.jpg"></div>
-              <div class="item"><img src="images/flower2.jpg"></div>
-              <div class="item"><img src="images/flower3.jpg"></div>
+      		<div class="owl-demo owl-carousel owl-theme">
+						@foreach($flower->getMedia('images') as $media)
+              <div class="item"><img src="{{ $media->getUrl() }}"></div>
+				 		@endforeach
 	        </div>
 	       </div> 
       	</div>
       	<div class="col-md-6 no-padding">
       	  <div class="pd_rgt">
       	  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      	  	<h4>Laketown Chocolates</h4>
-      	  	<p>A traditional Chocolate to keep you energized whole day.</p>
+      	  	<h4>{{$flower->title}}</h4>
+      	  	<p>{{$flower->description}}</p>
       	  	<h5>Select Size</h5>
       	  	<div class="slct-size">
       	  		<ul>
@@ -176,7 +195,6 @@
 						<div class="radio"><input id="radio-2" name="radio" type="radio"><label for="radio-2" class="radio-label">Small Size</label></div>
                         <span>800.00 QAR</span>
                     </li>
-                    
       	  		</ul>
       	  	</div>
       	  	
@@ -194,12 +212,12 @@
       	  </div>
       	</div>
       </div>
-      
-      
-      
+            
     </div>
   </div>
 </div>
+@endforeach
+
 
 <div class="cd-panel from-right">
 		<div class="cd-panel-header">
@@ -269,4 +287,8 @@
 	</div>
 
 
+@endsection
+
+@section('scripts')
+<script src="js/owl.carousel.js" type="text/javascript"></script>
 @endsection

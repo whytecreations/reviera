@@ -168,3 +168,8 @@
 
 
 @endsection
+
+
+@section('scripts')
+<script src="js/instafeed.min.js" type="text/javascript"></script>
+@endsection
