@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.flowers.title')</h3>
+    <h3 class="page-title">@lang('quickadmin.chocolates.title')</h3>
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -13,7 +13,7 @@
                 <div class="col-md-6">
                     <table class="table table-bordered table-striped">
                         <tr>
-                            <th>@lang('quickadmin.flowers.fields.title')</th>
+                            <th>@lang('quickadmin.chocolates.fields.title')</th>
                             <td field-key='title'>{{ $friends_of_db->title }}</td>
                         </tr>
                     </table>

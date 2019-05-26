@@ -42,96 +42,32 @@
 			  </div>
 								
 				<div class="col-md-12">
-				
+	
 				<div class="row">
 					<div class="col-md-3">
 						<div id="sidebar" class="sidebar">
 						 <h3 data-aos="fade-up">Chocolate</h3>
 						   <ul data-aos="fade-up">
-						   	 <li><a href="#">The Timeless</a></li>
-						   	 <li><a href="#">The Pep</a></li>
-						   	 <li><a href="#">The Elegant</a></li>
-						   	 <li><a href="#">The bouquet</a></li>
-						   	 <li><a href="#">The Long</a></li>
-						   	 <li><a href="#">Chocolates</a></li>
-						   	 <li><a href="#">The Classy</a></li>
-						   	 <li><a href="#">Below 300 QAR</a></li>
-						   	 <li><a href="#">Red</a></li>
+						   		 @foreach ($chocolateCategories  as $chocolateCategory)
+						   	 <li><a href="#">{{$chocolateCategory->name}}</a></li>
+							 @endforeach
 						   </ul>
 						</div>
 					</div>
 					<div class="col-md-9">
 						<div class="contents">
+							@foreach ($chocolates->chunk(2) as $chocolatePair)
 					    <ul class="clearfix">
+							@foreach ($chocolatePair as $chocolate)
 					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate1.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
+								<figure><a href="#"  data-toggle="modal" data-target="#modal{{$chocolate->id}}">
+									<div class="pdct-img"><img src="{{$chocolate->getMedia('images')->first()->getUrl()}}"><div class="quick">Quick View</div></div>
+									<figcaption><h5>{{$chocolate->title}}</h5><h4>QAR {{$chocolate->price}}</h4><p>{{$chocolate->description}}</p></figcaption>
 								</a></figure>
 					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate2.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
+								@endforeach
 					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate3.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate4.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate1.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate2.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate1.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate3.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate4.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate2.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>	
+							@endforeach
 				  </div>
 					</div>
 				</div>
@@ -146,25 +82,25 @@
 </section>
 
 
-
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+@foreach ($chocolates as $chocolate)
+<div class="modal fade" id="modal{{$chocolate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
     <div class="modal-content">
       <div class="row">
       	<div class="col-md-6 no-padding">
       	   <div class="pdct-slider">
       		<div id="owl-demo" class="owl-carousel owl-theme">
-              <div class="item"><img src="images/chocolate1.jpg"></div>
-              <div class="item"><img src="images/chocolate2.jpg"></div>
-              <div class="item"><img src="images/chocolate3.jpg"></div>
+              	@foreach($chocolate->getMedia('images') as $media)
+              <div class="item"><img src="{{ $media->getUrl() }}"></div>
+				 		@endforeach
 	        </div>
 	       </div> 
       	</div>
       	<div class="col-md-6 no-padding">
       	  <div class="pd_rgt">
       	  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      	  	<h4>Laketown Chocolates</h4>
-      	  	<p>A traditional Chocolate to keep you energized whole day.</p>
+      	  	      	  	<h4>{{$chocolate->title}}</h4>
+      	  	<p>{{$chocolate->description}}</p>
       	  	<h5>Select Size</h5>
       	  	<div class="slct-size">
       	  		<ul>
@@ -194,7 +130,7 @@
       	  </div>
       	</div>
       </div>
-      
+      @endforeach
       
       
     </div>

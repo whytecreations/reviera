@@ -78,6 +78,38 @@
 
 
 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>@lang('quickadmin.chocolates.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+
+            @can('chocolate_category_access')
+            <li>
+                <a href="{{ route('admin.chocolatecategories.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span>@lang('quickadmin.chocolatecategories.title')</span>
+                </a>
+            </li>
+            @endcan
+                    
+            @can('chocolate_access')
+            <li>
+                <a href="{{ route('admin.chocolates.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span>@lang('quickadmin.chocolates.title')</span>
+                </a>
+            </li>
+            @endcan
+                    
+                </ul>
+            </li>
+
+
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">

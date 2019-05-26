@@ -69,7 +69,6 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
-        // Auth gates for: Events
         Gate::define('flower_category_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
@@ -86,7 +85,6 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
-        // Auth gates for: Events
         Gate::define('flower_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
@@ -103,6 +101,38 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+
+        Gate::define('chocolate_category_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_category_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_category_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_category_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_category_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
+        Gate::define('chocolate_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('chocolate_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
 
 
     }

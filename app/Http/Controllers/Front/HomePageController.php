@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Flower;
 use App\FlowerCategory;
+use App\Chocolate;
+use App\ChocolateCategory;
 
 use Mail;
 use App\Mail\ContactEnquiry;
@@ -26,7 +28,9 @@ class HomePageController extends Controller
         return view('frontend.flowers',compact('flowers','flowerCategories'));
     }
     public function chocolates(){
-        return view('frontend.chocolates');
+        $chocolates=Chocolate::all();
+        $chocolateCategories=ChocolateCategory::all();
+        return view('frontend.chocolates',compact('chocolates','chocolateCategories'));
     }
     public function giftWrapping(){
         return view('frontend.giftWrapping');

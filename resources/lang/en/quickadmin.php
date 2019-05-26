@@ -52,6 +52,23 @@ return [
 			'images' => 'Images',
 		],
 	],
+
+	'chocolatecategories' => [
+		'title' => 'Chocolate Categories',
+		'fields' => [
+			'name' => 'Name',
+		],
+	],	
+	'chocolates' => [
+		'title' => 'Chocolates',
+		'fields' => [
+			'category' => 'Category',
+			'title' => 'Title',
+			'price' => 'Price',
+			'description' => 'Description',
+			'images' => 'Images',
+		],
+	],
 	
 	'qa_create' => 'Create',
 	'qa_save' => 'Save',

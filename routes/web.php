@@ -58,16 +58,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     
-    Route::resource('flowers', 'Admin\FlowerController');
-    Route::post('flowers_mass_destroy', ['uses' => 'Admin\FlowerController@massDestroy', 'as' => 'flowers.mass_destroy']);
-    Route::post('flowers_restore/{id}', ['uses' => 'Admin\FlowerController@restore', 'as' => 'flowers.restore']);
-    Route::delete('flowers_perma_del/{id}', ['uses' => 'Admin\FlowerController@perma_del', 'as' => 'flowers.perma_del']);
-
     Route::resource('flowercategories', 'Admin\FlowerCategoryController');
     Route::post('flowercategories_mass_destroy', ['uses' => 'Admin\FlowerCategoryController@massDestroy', 'as' => 'flowercategories.mass_destroy']);
     Route::post('flowercategories_restore/{id}', ['uses' => 'Admin\FlowerCategoryController@restore', 'as' => 'flowercategories.restore']);
     Route::delete('flowercategories_perma_del/{id}', ['uses' => 'Admin\FlowerCategoryController@perma_del', 'as' => 'flowercategories.perma_del']);
     
+    Route::resource('flowers', 'Admin\FlowerController');
+    Route::post('flowers_mass_destroy', ['uses' => 'Admin\FlowerController@massDestroy', 'as' => 'flowers.mass_destroy']);
+    Route::post('flowers_restore/{id}', ['uses' => 'Admin\FlowerController@restore', 'as' => 'flowers.restore']);
+    Route::delete('flowers_perma_del/{id}', ['uses' => 'Admin\FlowerController@perma_del', 'as' => 'flowers.perma_del']);
+
+    Route::resource('chocolatecategories', 'Admin\ChocolateCategoryController');
+    Route::post('chocolatecategories_mass_destroy', ['uses' => 'Admin\ChocolateCategoryController@massDestroy', 'as' => 'chocolatecategories.mass_destroy']);
+    Route::post('chocolatecategories_restore/{id}', ['uses' => 'Admin\ChocolateCategoryController@restore', 'as' => 'chocolatecategories.restore']);
+    Route::delete('chocolatecategories_perma_del/{id}', ['uses' => 'Admin\ChocolateCategoryController@perma_del', 'as' => 'chocolatecategories.perma_del']);
+    
+    Route::resource('chocolates', 'Admin\ChocolateController');
+    Route::post('chocolates_mass_destroy', ['uses' => 'Admin\ChocolateController@massDestroy', 'as' => 'chocolates.mass_destroy']);
+    Route::post('chocolates_restore/{id}', ['uses' => 'Admin\ChocolateController@restore', 'as' => 'chocolates.restore']);
+    Route::delete('chocolates_perma_del/{id}', ['uses' => 'Admin\ChocolateController@perma_del', 'as' => 'chocolates.perma_del']);
+
+
     Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');
     Route::post('/spatie/media/remove', 'Admin\SpatieMediaController@destroy')->name('media.remove');
  
