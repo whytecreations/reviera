@@ -15,7 +15,7 @@
         <div class="row">
                 <div class="col-xs-12 form-group">
                     <label>Department</label>
-                    <select name="department" class="select2 form-control" id="department">
+                    <select name="category_id" class="select2 form-control" id="category_id"  required = "">
                         @foreach ($chocolateCategories as $category)
                         @if($category->id == $chocolate->categoryId)
                         <option value="{{$category->id}}" selected="">{{$category->name}}</option>

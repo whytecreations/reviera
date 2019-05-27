@@ -60,6 +60,7 @@ class FlowerCategoryController extends Controller
         if (! Gate::allows('flower_category_create')) {
             return abort(401);
         }
+        $request['slug'] = str_slug($request->name);
         $flowerCategory = FlowerCategory::create($request->all());
 
 
@@ -97,6 +98,7 @@ class FlowerCategoryController extends Controller
         }
         
         $flowerCategory = FlowerCategory::findOrFail($id);
+        $request['slug'] = str_slug($request->name);
         $flowerCategory->update($request->all());
 
         return redirect()->route('admin.flowercategories.index');

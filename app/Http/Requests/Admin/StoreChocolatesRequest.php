@@ -23,7 +23,8 @@ class StoreChocolatesRequest extends FormRequest
     public function rules()
     {
         return [
-            'banner' => 'mimes:png,jpg,jpeg,gif,svg',
+            'category_id' => 'required',
+            'images_id' => 'required',
             'title' => 'required',
             'description' => '',
         ];

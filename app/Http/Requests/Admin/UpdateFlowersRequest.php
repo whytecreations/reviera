@@ -24,7 +24,7 @@ class UpdateFlowersRequest extends FormRequest
     {
         return [
             
-            'banner' => 'nullable|mimes:png,jpg,jpeg,gif,svg',
+            'category_id' => 'required',
             'title' => 'required',
             'description' => '',
         ];

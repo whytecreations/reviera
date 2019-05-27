@@ -13,7 +13,7 @@
           <div class="row">
                 <div class="col-xs-12 form-group">
                     <label> {{trans('quickadmin.chocolates.fields.category')}} *</label>
-                    <select name="category_id" class="select2 form-control">
+                    <select name="category_id" class="select2 form-control"  required = "">
                     @foreach ($chocolateCategories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach

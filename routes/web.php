@@ -2,6 +2,7 @@
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about','Front\HomePageController@about');
 Route::get('flowers','Front\HomePageController@flowers');
+Route::get('flowers/{slug}','Front\HomePageController@flowersByCategory');
 Route::get('chocolates','Front\HomePageController@chocolates');
 Route::get('gift-wrapping','Front\HomePageController@giftWrapping');
 Route::get('account','Front\HomePageController@account');

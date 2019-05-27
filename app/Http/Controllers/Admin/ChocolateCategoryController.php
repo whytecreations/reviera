@@ -60,6 +60,7 @@ class ChocolateCategoryController extends Controller
         if (! Gate::allows('chocolate_category_create')) {
             return abort(401);
         }
+        $request['slug'] = str_slug($request->name);
         $chocolateCategory = ChocolateCategory::create($request->all());
 
 
@@ -97,6 +98,7 @@ class ChocolateCategoryController extends Controller
         }
         
         $chocolateCategory = ChocolateCategory::findOrFail($id);
+        $request['slug'] = str_slug($request->name);
         $chocolateCategory->update($request->all());
 
         return redirect()->route('admin.chocolatecategories.index');

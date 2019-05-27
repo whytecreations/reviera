@@ -16,6 +16,7 @@ class CreateFlowerCategoriesTable extends Migration
         Schema::create('flower_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->softDeletes();
             $table->index(['deleted_at']);
             $table->timestamps();

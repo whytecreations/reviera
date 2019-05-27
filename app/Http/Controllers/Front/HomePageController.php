@@ -27,6 +27,13 @@ class HomePageController extends Controller
         $flowerCategories=FlowerCategory::all();
         return view('frontend.flowers',compact('flowers','flowerCategories'));
     }
+    
+    public function flowersByCategory($slug){
+        $flowers=FlowerCategory::where('slug',$slug)->first()->flowers;
+        $flowerCategories=FlowerCategory::all();
+        return view('frontend.flowers',compact('flowers','flowerCategories'));
+    }
+
     public function chocolates(){
         $chocolates=Chocolate::all();
         $chocolateCategories=ChocolateCategory::all();

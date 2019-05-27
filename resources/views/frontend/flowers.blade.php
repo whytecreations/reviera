@@ -46,7 +46,7 @@
 						 <h3 data-aos="fade-up">Flowers</h3>
 						   <ul data-aos="fade-up">
 							 @foreach ($flowerCategories  as $flowerCategory)
-						   	 <li><a href="#">{{$flowerCategory->name}}</a></li>
+								<li><a href="{{url('flowers/'.$flowerCategory->slug)}}">{{$flowerCategory->name}}</a></li>
 							 @endforeach
 						   	 {{-- <li><a href="#">The Pep</a></li>
 						   	 <li><a href="#">The Elegant</a></li>
@@ -61,23 +61,23 @@
 					</div>
 					<div class="col-md-9">
 						<div class="contents">
+						@if($flowers->isNotEmpty())
 						@foreach ($flowers->chunk(2) as $flowerPair)
 							<ul class="clearfix">
 
-						@foreach ($flowerPair as $flower)
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal{{$flower->id}}">
-									<div class="pdct-img">
-									<img src="{{$flower->getMedia('images')->first()->getUrl()}}">
-									
-									<div class="quick">Quick View</div></div>
-									<figcaption><h5>{{$flower->title}}</h5><h4>QAR {{$flower->price}}</h4><p>{{$flower->description}}</p></figcaption>
-								</a></figure>
-
-					    	</li>
-						@endforeach
+							@foreach ($flowerPair as $flower)
+									<li data-aos="fade-up">
+									<figure><a href="#"  data-toggle="modal" data-target="#modal{{$flower->id}}">
+										<div class="pdct-img">
+										<img src="{{$flower->getMedia('images')->first()!=null?$flower->getMedia('images')->first()->getUrl():'images/logo.png'}}">
+										<div class="quick">Quick View</div></div>
+										<figcaption><h5>{{$flower->title}}</h5><h4>QAR {{$flower->price}}</h4><p>{{$flower->description}}</p></figcaption>
+									</a></figure>
+									</li>
+							@endforeach
 					    </ul>
 						@endforeach
+						@endif
 					    {{-- <ul class="clearfix">
 					    	<li data-aos="fade-up">
 								<figure><a href="#"  data-toggle="modal" data-target="#modal1">

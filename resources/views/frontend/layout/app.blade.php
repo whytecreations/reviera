@@ -7,14 +7,14 @@
 <title>Riveria Master Flourist and Chocolatier</title>
 
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" media="all" href="css/webslidemenu.css" />
-<link rel="stylesheet" href="css/aos.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" media="all" href="{{asset('css/webslidemenu.css')}}" />
+<link rel="stylesheet" href="{{asset('css/aos.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet.css')}}">
 
-<script src="js/jquery-2.1.0.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="{{asset('js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
 
 
 </head>
@@ -24,14 +24,14 @@
 <header>
 	<div class="wsmenucontainer clearfix">
     <div id="overlapblackbg"></div>
-    <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a href="{{url('/')}}" class="smallogo"><img src="images/logo.png" /></a>  </div>
+    <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a href="{{url('/')}}" class="smallogo"><img src="{{asset('images/logo.png')}}" /></a>  </div>
     <div class="header">
       <div class="wsmain">
-        <div class="smllogo"><a href="{{url('/')}}"><img src="images/logo.png" alt=""/></a></div>
+        <div class="smllogo"><a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt=""/></a></div>
         <div class="head-rgt">
         	<ul>
-        		<li><a href="#0" class="cd-btn"><img src="images/cart.svg"><span>0</span></a></li>
-        		<li><a href="{{url('account')}}"><img src="images/user.svg"></a></li>
+        		<li><a href="#0" class="cd-btn"><img src="{{asset('images/cart.svg')}}"><span>0</span></a></li>
+        		<li><a href="{{url('account')}}"><img src="{{asset('images/user.svg')}}"></a></li>
         	</ul>
         </div>
         <nav class="wsmenu clearfix">
@@ -57,10 +57,10 @@
 	<div class="container">
 		<div class="col-md-12">
 				<ul>
-					<li data-aos="fade-up"><img src="images/phn.svg"> <span>Give us a call</span> <br><a href="tel:+974 44366365">+974 44366365</a></li>
-					<li data-aos="fade-up" data-aos-delay="200"><img src="images/email.svg"> <span>E-Mail</span> <br><a href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></li>
-					<li data-aos="fade-up" data-aos-delay="400"><img src="images/shp.svg"> <span>Opening Hours</span> <br>9AM - 9.30PM </li>
-					<li class="flw" data-aos="fade-up" data-aos-delay="600"><img src="images/share.svg"> <span>Follow On</span> <br><a href="https://www.instagram.com/rivieraqatar/" target="_blank"><i class="fa fa-instagram"></i></a><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+					<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>Give us a call</span> <br><a href="tel:+974 44366365">+974 44366365</a></li>
+					<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}"> <span>E-Mail</span> <br><a href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></li>
+					<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}"> <span>Opening Hours</span> <br>9AM - 9.30PM </li>
+					<li class="flw" data-aos="fade-up" data-aos-delay="600"><img src="{{asset('images/share.svg')}}"> <span>Follow On</span> <br><a href="https://www.instagram.com/rivieraqatar/" target="_blank"><i class="fa fa-instagram"></i></a><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
 				</ul>
 	        </div>
 		</div>
@@ -92,12 +92,12 @@
 
 </div>
 
-<script type="text/javascript" src="js/webslidemenu.js"></script>
-<script src="js/jquery.easeScroll.js" type="text/javascript"></script>
-<script src="js/aos.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{asset('js/webslidemenu.js')}}"></script>
+<script src="{{asset('js/jquery.easeScroll.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/aos.js')}}" type="text/javascript"></script>
 
 @yield('scripts')
-<script src="js/main.js" ></script>
+<script src="{{asset('js/main.js')}}" ></script>
 
 </body>
 </html>

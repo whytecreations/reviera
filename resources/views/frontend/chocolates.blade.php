@@ -49,25 +49,29 @@
 						 <h3 data-aos="fade-up">Chocolate</h3>
 						   <ul data-aos="fade-up">
 						   		 @foreach ($chocolateCategories  as $chocolateCategory)
-						   	 <li><a href="#">{{$chocolateCategory->name}}</a></li>
+									<li><a href="{{url('chocolates/'.$chocolateCategory->slug)}}">{{$chocolateCategory->name}}</a></li>
 							 @endforeach
 						   </ul>
 						</div>
 					</div>
 					<div class="col-md-9">
 						<div class="contents">
+						@if($chocolates->isNotEmpty())
 							@foreach ($chocolates->chunk(2) as $chocolatePair)
 					    <ul class="clearfix">
 							@foreach ($chocolatePair as $chocolate)
 					    	<li data-aos="fade-up">
 								<figure><a href="#"  data-toggle="modal" data-target="#modal{{$chocolate->id}}">
-									<div class="pdct-img"><img src="{{$chocolate->getMedia('images')->first()->getUrl()}}"><div class="quick">Quick View</div></div>
+									<div class="pdct-img">
+									<img src="{{$flower->getMedia('images')->first()!=null?$flower->getMedia('images')->first()->getUrl():'images/logo.png'}}">
+									<div class="quick">Quick View</div></div>
 									<figcaption><h5>{{$chocolate->title}}</h5><h4>QAR {{$chocolate->price}}</h4><p>{{$chocolate->description}}</p></figcaption>
 								</a></figure>
 					    	</li>
 								@endforeach
 					    </ul>
 							@endforeach
+							@endif
 				  </div>
 					</div>
 				</div>
