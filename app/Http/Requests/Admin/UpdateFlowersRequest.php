@@ -26,6 +26,8 @@ class UpdateFlowersRequest extends FormRequest
             
             'category_id' => 'required',
             'title' => 'required',
+            'big_price' => 'numeric',
+            'small_price' => 'numeric',
             'description' => '',
         ];
     }

@@ -26,6 +26,9 @@ class StoreChocolatesRequest extends FormRequest
             'category_id' => 'required',
             'images_id' => 'required',
             'title' => 'required',
+            'full_price' => 'numeric',
+            'half_price' => 'numeric',
+            'quarter_price' => 'numeric',
             'description' => '',
         ];
     }

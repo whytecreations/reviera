@@ -11,7 +11,7 @@ class Chocolate extends Model implements HasMedia
 {
     use SoftDeletes, HasMediaTrait;
 
-    protected $fillable = ['category_id', 'title', 'price','description'];
+    protected $fillable = ['category_id', 'title', 'full_price','half_price','quarter_price','description','note'];
 
     public function category(){
         return $this->belongsTo(ChocolateCategory::class);

@@ -5,10 +5,10 @@
 
 
 <section class="flwr p-150">
-  <div class="leaf1"><img src="images/leaf_big.png" class="img-fluid"></div>
-    <div class="flower2"  data-aos="fade-right"><img src="images/flower2.png" class="img-fluid"></div>
-     <div class="flwrimg2"  data-aos="fade-left"><img src="images/flower3.png" class="img-fluid"></div>
-  <div class="leaf4"><img src="images/leaf_small.png" class="img-fluid"></div>
+  <div class="leaf1"><img src="{{asset('images/leaf_big.png')}}" class="img-fluid"></div>
+    <div class="flower2"  data-aos="fade-right"><img src="{{asset('images/flower2.png')}}" class="img-fluid"></div>
+     <div class="flwrimg2"  data-aos="fade-left"><img src="{{asset('images/flower3.png')}}" class="img-fluid"></div>
+  <div class="leaf4"><img src="{{asset('images/leaf_small.png')}}" class="img-fluid"></div>
   
   
 	<div class="container">
@@ -20,21 +20,6 @@
 		
 		<div class="col-md-12" data-aos="fade-up">
 			<div class="pdct">
-			  {{-- <div class="row">
-			  	<div class="col-md-12" >
-			  		<div class="srt">
-						<div class="sel sel--black-panther">
-							<select name="select-profession" id="select-profession">
-								<option value="" disabled>Sort By</option>
-								<option value="">Price Low to High</option>
-								<option value="">Price High to Low</option>
-								<option value="">Popularity</option>
-								<option value="">Newest First</option>
-							</select>
-						</div>
-			  		</div>
-			  	</div>
-			  </div> --}}
 			  
 			  
 			  
@@ -48,14 +33,6 @@
 							 @foreach ($flowerCategories  as $flowerCategory)
 								<li><a href="{{url('flowers/'.$flowerCategory->slug)}}">{{$flowerCategory->name}}</a></li>
 							 @endforeach
-						   	 {{-- <li><a href="#">The Pep</a></li>
-						   	 <li><a href="#">The Elegant</a></li>
-						   	 <li><a href="#">The bouquet</a></li>
-						   	 <li><a href="#">The Long</a></li>
-						   	 <li><a href="#">Chocolates</a></li>
-						   	 <li><a href="#">The Classy</a></li>
-						   	 <li><a href="#">Below 300 QAR</a></li>
-						   	 <li><a href="#">Red</a></li> --}}
 						   </ul>
 						</div>
 					</div>
@@ -69,85 +46,15 @@
 									<li data-aos="fade-up">
 									<figure><a href="#"  data-toggle="modal" data-target="#modal{{$flower->id}}">
 										<div class="pdct-img">
-										<img src="{{$flower->getMedia('images')->first()!=null?$flower->getMedia('images')->first()->getUrl():'images/logo.png'}}">
+										<img src="{{asset($flower->getMedia('images')->first()!=null?$flower->getMedia('images')->first()->getUrl():'images/logo.png')}}">
 										<div class="quick">Quick View</div></div>
-										<figcaption><h5>{{$flower->title}}</h5><h4>QAR {{$flower->price}}</h4><p>{{$flower->description}}</p></figcaption>
+										<figcaption><h5>{{$flower->title}}</h5><h4>QAR {{$flower->small_price}}</h4><p>{{$flower->description}}</p></figcaption>
 									</a></figure>
 									</li>
 							@endforeach
 					    </ul>
 						@endforeach
 						@endif
-					    {{-- <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower1.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower2.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower3.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/chocolate4.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower4.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower5.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower6.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower7.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower8.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/flower9.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Laketown Chocolates</h5><h4>QAR 23</h4><p>Small 8" Treat Tray Sampler</p></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>	 --}}
 				  </div>
 					</div>
 				</div>
@@ -174,7 +81,7 @@
       	   <div class="pdct-slider">
       		<div class="owl-demo owl-carousel owl-theme">
 						@foreach($flower->getMedia('images') as $media)
-              <div class="item"><img src="{{ $media->getUrl() }}"></div>
+              <div class="item"><img src="{{ asset($media->getUrl()) }}"></div>
 				 		@endforeach
 	        </div>
 	       </div> 
@@ -187,25 +94,30 @@
       	  	<h5>Select Size</h5>
       	  	<div class="slct-size">
       	  		<ul>
+								@if($flower->big_price >0)
       	  			<li class="clearfix">
 						<div class="radio"><input id="radio-1" name="radio" type="radio" checked><label for="radio-1" class="radio-label">Big Size</label></div>
-						<span>1000.00 QAR</span>
+						<span>{{$flower->big_price}} QAR</span>
                     </li>
+						@endif
+						@if($flower->small_price >0)
                     <li class="clearfix">
 						<div class="radio"><input id="radio-2" name="radio" type="radio"><label for="radio-2" class="radio-label">Small Size</label></div>
-                        <span>800.00 QAR</span>
+                        <span>{{$flower->small_price}}  QAR</span>
                     </li>
+										@endif
       	  		</ul>
       	  	</div>
       	  	
-      	  	<div class="price">
+      <div class="price">
 				<div class="input-group quantity">
 					<span class="input-group-btn"><button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"><span class="fa fa-minus"></span></button></span>
 					<input type="text" name="quant[1]" class="input-number" value="1" min="1" max="30">
 					<span class="input-group-btn"><button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]"><span class="fa fa-plus"></span></button></span>
 				</div>
-     	  	  <h5>1000.00 <span>QAR</span></h5>
-      	  	</div>
+     	  	  {{-- <h5>{{$flower->big_price}}  <span>QAR</span></h5>
+     	  	  <h5>{{$flower->small_price}}  <span>QAR</span></h5> --}}
+      </div>
       	  	<h5>Add Special Instructions</h5>
       	  	<textarea class="form-control" placeholder="Add a Note"></textarea>
       	  	<button class="btn-ac">Add to Cart</button>
@@ -221,7 +133,7 @@
 
 <div class="cd-panel from-right">
 		<div class="cd-panel-header">
-			<div class="crt-sec"><img src="images/cart.svg"><div class="cnt">01</div></div><h1>My Bags</h1>
+			<div class="crt-sec"><img src="{{asset('images/cart.svg')}}"><div class="cnt">01</div></div><h1>My Bags</h1>
 			<a href="#0" class="cd-panel-close">Close</a>
 		</div>
 		<div class="cd-panel-container">
@@ -229,7 +141,7 @@
 				<div class="crt-chck clearfix">
             <ul class="filt">
               <li class="clearfix">
-                <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
+                <div class="crt-chck-img"><img src="{{asset('images/chocolate4.jpg')}}"></div>
                 <div class="crt-chck-center">
                   <h4>Laketown Chocolates</h4>
                   <h5>23 <span>QAR</span></h5>
@@ -254,7 +166,7 @@
               </li>
               
               <li class="clearfix">
-                <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
+                <div class="crt-chck-img"><img src="{{asset('images/chocolate4.jpg')}}"></div>
                 <div class="crt-chck-center">
                   <h4>Laketown Chocolates</h4>
                   <h5>23 <span>QAR</span></h5>
@@ -290,5 +202,6 @@
 @endsection
 
 @section('scripts')
-<script src="js/owl.carousel.js" type="text/javascript"></script>
+<script src="{{asset('js/owl.carousel.js')}}" type="text/javascript"></script>
+
 @endsection

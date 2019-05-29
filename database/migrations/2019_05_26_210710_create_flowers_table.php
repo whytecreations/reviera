@@ -18,8 +18,10 @@ class CreateFlowersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('category_id')->nullable();
             $table->string('title')->nullable();
-            $table->string('price')->nullable();
+            $table->string('big_price')->nullable();
+            $table->string('small_price')->nullable();
             $table->text('description')->nullable();
+            $table->text('note')->nullable();
             
             $table->softDeletes();
             $table->index(['deleted_at']);

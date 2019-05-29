@@ -27,7 +27,7 @@
                     {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('title'))
-                        <p class="help-block">
+                        <p class="help-block"> 
                             {{ $errors->first('title') }}
                         </p>
                     @endif
@@ -36,17 +36,32 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('price', trans('quickadmin.flowers.fields.price').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::label('big_price', trans('quickadmin.flowers.fields.big_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.flowers.fields.price_note')}}</div>
+                    {!! Form::number('big_price', old('big_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('price'))
+                    @if($errors->has('big_price'))
                         <p class="help-block">
-                            {{ $errors->first('price') }}
+                            {{ $errors->first('big_price') }}
                         </p>
                     @endif
                 </div>
             </div>
             
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('small_price', trans('quickadmin.flowers.fields.small_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.flowers.fields.price_note')}}</div>
+                    {!! Form::number('small_price', old('small_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('small_price'))
+                        <p class="help-block">
+                            {{ $errors->first('small_price') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -60,6 +75,7 @@
                     @endif
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('images', trans('quickadmin.flowers.fields.images').'', ['class' => 'control-label']) !!}

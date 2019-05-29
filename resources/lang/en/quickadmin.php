@@ -47,9 +47,12 @@ return [
 		'fields' => [
 			'category' => 'Category',
 			'title' => 'Title',
-			'price' => 'Price',
+			'big_price' => 'Big Size Price',
+			'small_price' => 'Small Size Price',
 			'description' => 'Description',
+			'note' => 'Add Special Note',
 			'images' => 'Images',
+			'price_note' => 'Set price to zero if you don\'t want to show the option in frontend',
 		],
 	],
 
@@ -64,9 +67,13 @@ return [
 		'fields' => [
 			'category' => 'Category',
 			'title' => 'Title',
-			'price' => 'Price',
+			'full_price' => '1KG Price',
+			'half_price' => '1/2 KG Price',
+			'quarter_price' => '1/4 KG Price',
 			'description' => 'Description',
+			'note' => 'Add Special Note',
 			'images' => 'Images',
+			'price_note' => 'Set price to zero if you don\'t want to show the option in frontend',
 		],
 	],
 	

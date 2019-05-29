@@ -35,7 +35,8 @@
 
                         <th>@lang('quickadmin.flowers.fields.category')</th>
                         <th>@lang('quickadmin.flowers.fields.title')</th>
-                        <th>@lang('quickadmin.flowers.fields.price')</th>
+                        <th>@lang('quickadmin.flowers.fields.big_price')</th>
+                        <th>@lang('quickadmin.flowers.fields.small_price')</th>
                         <th>@lang('quickadmin.flowers.fields.description')</th>
                         <th>@lang('quickadmin.flowers.fields.images')</th>
                         @if( request('show_deleted') == 1 )
@@ -56,12 +57,11 @@
                                 
                                 <td field-key='category'>{{ $flower->category->name }}</td>
                                 <td field-key='title'>{{ $flower->title }}</td>
-                                <td field-key='title'>{{ $flower->price }}</td>
+                                <td field-key='big_price'>{{ $flower->big_price }} QAR</td>
+                                <td field-key='small_price'>{{ $flower->small_price }} QAR</td>
                                 <td field-key='description'>{!! $flower->description !!}</td>
-                                <td field-key='images'> @foreach($flower->getMedia('images') as $media)
-                                <p class="form-group">
-                                    <a href="{{ $media->getUrl() }}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
-                                </p>
+                                <td width="300" field-key='images'> @foreach($flower->getMedia('images') as $media)
+                                <img width="30" src="{{ asset($media->getUrl()) }}"> 
                             @endforeach</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>

@@ -29,7 +29,7 @@ class HomePageController extends Controller
     }
     
     public function flowersByCategory($slug){
-        $flowers=FlowerCategory::where('slug',$slug)->first()->flowers;
+        $flowers=FlowerCategory::where('slug',$slug)->firstOrFail()->flowers;
         $flowerCategories=FlowerCategory::all();
         return view('frontend.flowers',compact('flowers','flowerCategories'));
     }
@@ -39,6 +39,13 @@ class HomePageController extends Controller
         $chocolateCategories=ChocolateCategory::all();
         return view('frontend.chocolates',compact('chocolates','chocolateCategories'));
     }
+
+    public function chocolatesByCategory($slug){
+        $chocolates=ChocolateCategory::where('slug',$slug)->firstOrFail()->chocolates;
+        $chocolateCategories=ChocolateCategory::all();
+        return view('frontend.chocolates',compact('chocolates','chocolateCategories'));
+    }
+
     public function giftWrapping(){
         return view('frontend.giftWrapping');
     }

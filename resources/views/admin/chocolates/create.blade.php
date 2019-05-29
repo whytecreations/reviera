@@ -36,12 +36,39 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('price', trans('quickadmin.chocolates.fields.price').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::label('full_price', trans('quickadmin.chocolates.fields.full_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.chocolates.fields.price_note')}}</div>
+                    {!! Form::number('full_price', old('full_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('price'))
+                    @if($errors->has('full_price'))
                         <p class="help-block">
-                            {{ $errors->first('price') }}
+                            {{ $errors->first('full_price') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('half_price', trans('quickadmin.chocolates.fields.half_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.chocolates.fields.price_note')}}</div>
+                    {!! Form::number('half_price', old('half_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('half_price'))
+                        <p class="help-block">
+                            {{ $errors->first('half_price') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('quarter_price', trans('quickadmin.chocolates.fields.quarter_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.chocolates.fields.price_note')}}</div>
+                    {!! Form::number('quarter_price', old('quarter_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('quarter_price'))
+                        <p class="help-block">
+                            {{ $errors->first('quarter_price') }}
                         </p>
                     @endif
                 </div>
@@ -60,6 +87,8 @@
                     @endif
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('images', trans('quickadmin.chocolates.fields.images').'', ['class' => 'control-label']) !!}

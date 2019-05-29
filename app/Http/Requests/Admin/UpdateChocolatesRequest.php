@@ -3,7 +3,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateChocolateRequest extends FormRequest
+class UpdateChocolatesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,6 +26,9 @@ class UpdateChocolateRequest extends FormRequest
             
             'category_id' => 'required',
             'title' => 'required',
+            'full_price' => 'numeric',
+            'half_price' => 'numeric',
+            'quarter_price' => 'numeric',
             'description' => '',
         ];
     }

@@ -42,12 +42,26 @@
             </div>
              <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('price', trans('quickadmin.flowers.fields.price').'*', ['class' => 'control-label']) !!}
-                    {!! Form::text('price', old('price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::label('big_price', trans('quickadmin.flowers.fields.big_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.flowers.fields.price_note')}}</div>
+                    {!! Form::number('big_price', old('big_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('price'))
+                    @if($errors->has('big_price'))
                         <p class="help-block">
-                            {{ $errors->first('price') }}
+                            {{ $errors->first('big_price') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('small_price', trans('quickadmin.flowers.fields.small_price'), ['class' => 'control-label']) !!}
+                    <div class="helper small">{{trans('quickadmin.flowers.fields.price_note')}}</div>
+                    {!! Form::number('small_price', old('small_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('small_price'))
+                        <p class="help-block">
+                            {{ $errors->first('small_price') }}
                         </p>
                     @endif
                 </div>
@@ -64,6 +78,7 @@
                     @endif
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('images', trans('quickadmin.flowers.fields.images').'', ['class' => 'control-label']) !!}
@@ -80,6 +95,7 @@
                         <div class="files-list">
                             @foreach($flower->getMedia('images') as $media)
                                 <p class="form-group">
+                                    <img height="50" src="{{ asset($media->getUrl()) }}"> 
                                     <a href="{{ $media->getUrl() }}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
                                     <a href="#" class="btn btn-xs btn-danger remove-file">Remove</a>
                                     <input type="hidden" name="images_id[]" value="{{ $media->id }}">

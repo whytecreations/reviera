@@ -35,7 +35,9 @@
 
                         <th>@lang('quickadmin.chocolates.fields.category')</th>
                         <th>@lang('quickadmin.chocolates.fields.title')</th>
-                        <th>@lang('quickadmin.chocolates.fields.price')</th>
+                        <th>@lang('quickadmin.chocolates.fields.full_price')</th>
+                        <th>@lang('quickadmin.chocolates.fields.half_price')</th>
+                        <th>@lang('quickadmin.chocolates.fields.quarter_price')</th>
                         <th>@lang('quickadmin.chocolates.fields.description')</th>
                         <th>@lang('quickadmin.chocolates.fields.images')</th>
                         @if( request('show_deleted') == 1 )
@@ -56,12 +58,12 @@
                                 
                                 <td field-key='category'>{{ $chocolate->category->name }}</td>
                                 <td field-key='title'>{{ $chocolate->title }}</td>
-                                <td field-key='title'>{{ $chocolate->price }}</td>
+                                <td field-key='full_price'>{{ $chocolate->full_price }}</td>
+                                <td field-key='half_price'>{{ $chocolate->half_price }}</td>
+                                <td field-key='quarter_price'>{{ $chocolate->quarter_price }}</td>
                                 <td field-key='description'>{!! $chocolate->description !!}</td>
-                                <td field-key='images'> @foreach($chocolate->getMedia('images') as $media)
-                                <p class="form-group">
-                                    <a href="{{ $media->getUrl() }}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
-                                </p>
+                                <td width="300" field-key='images'> @foreach($chocolate->getMedia('images') as $media)
+                               <img width="50" src="{{ asset($media->getUrl()) }}"> 
                             @endforeach</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>

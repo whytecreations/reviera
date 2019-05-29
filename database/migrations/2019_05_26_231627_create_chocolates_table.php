@@ -17,8 +17,11 @@ class CreateChocolatesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('category_id')->nullable();
             $table->string('title')->nullable();
-            $table->string('price')->nullable();
+            $table->string('full_price')->nullable();
+            $table->string('half_price')->nullable();
+            $table->string('quarter_price')->nullable();
             $table->text('description')->nullable();
+            $table->text('note')->nullable();
             
             $table->softDeletes();
             $table->index(['deleted_at']);

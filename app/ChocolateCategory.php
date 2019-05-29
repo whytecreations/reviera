@@ -12,8 +12,8 @@ class ChocolateCategory extends Model
     protected $fillable = ['name','slug'];
     protected $hidden = [];
     
-    public function flowers()
+    public function chocolates()
 	{
-		return $this->hasMany(Flower::class,'category_id','id');
+		return $this->hasMany(Chocolate::class,'category_id','id');
 	}
 }
