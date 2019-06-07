@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Gift;
+use App\WishList;
 use App\Flower;
 use App\FlowerCategory;
 use App\Chocolate;
@@ -48,10 +50,32 @@ class HomePageController extends Controller
     }
 
     public function giftWrapping(){
-        return view('frontend.giftWrapping');
+        $gifts=Gift::all();
+        return view('frontend.giftWrapping',compact('gifts'));
     }
+
+    public function addFlowerToWishList(Request $request ){
+        $wishlist = new WishList();
+        $wishlist->product_id = $request->flowerId;
+        $wishlist->product_type = 'flower';
+        $wishlist->user_id = auth()->guard('customer')->user()->id;
+        $wishlist->save();
+        return "added";
+    }
+
+    public function addChocolateToWishList(Request $request ){
+        $wishlist = new WishList();
+        $wishlist->product_id = $request->chocolateId;
+        $wishlist->product_type = 'chocolate';
+        $wishlist->user_id = auth()->guard('customer')->user()->id;
+        $wishlist->save();
+        return "added";
+    }
+
+
     public function account(){
-        return view('frontend.account');
+        $wishlists=auth()->guard('customer')->user()->wishlist;
+        return view('frontend.account',compact('wishlists'));
     }
     
     public function register(){
@@ -93,6 +117,23 @@ class HomePageController extends Controller
         return Cart::getSubTotal();
     }
     
+    public function wishlisttocart(Request $request ){
+        $wishlist = WishList::find($request->wishlistId);
+        if($wishlist->product_type == 'flower'){
+            $flower = $wishlist->product;
+            $image = $flower->getMedia('images')->first()!=null?$flower->getMedia('images')->first()->getUrl():'';
+            Cart::add($wishlist->product_id."-small", $flower->title,$flower->small_price, 1,['type'=>'flower','size'=>'small' ,'image'=>$image]);
+            return 'added';
+        }
+
+        if($wishlist->product_type == 'chocolate'){
+            $chocolate = $wishlist->product;
+            $image = $chocolate->getMedia('images')->first()!=null?$chocolate->getMedia('images')->first()->getUrl():'';
+            Cart::add($wishlist->product_id."-full", $chocolate->title,$chocolate->full_price, 1,['type'=>'chocolate','size'=>'1 KG','size_name'=>"full" ,'image'=>$image]);
+            return 'added';
+        }
+    }
+
     public function updatequantity(Request $request ){
         $quantity = 0;
         if($request->quantity > Cart::get($request->cartId)->quantity){

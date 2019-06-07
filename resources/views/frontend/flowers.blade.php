@@ -103,7 +103,11 @@
 				      	<div class="col-md-6 no-padding">
 				      	  <div class="pd_rgt">
 				      	  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-				      	  	<h4>{{$flower->title}}</h4>
+				      	  	<h4>{{$flower->title}}
+								@if(auth()->guard('customer')->check())
+								<a href="javascript:void(0);" style="color:tomato" onclick="addFlowerToWishList('{{$flower->id}}')" class="pull-right"><i class="fa fa-shopping-bag"></i></a>
+								@endif
+								</h4>
 				      	  	<p>{{$flower->description}}</p>
 				      	  	<h5>Select Size</h5>
 				      	  	<div class="slct-size">
@@ -157,8 +161,22 @@ function addToCart(e,form){
   type: "POST",
   url: '{{route("addflowertocart")}}',
   data: $(form).serialize(),
-  success: function(){console.log('suce');$('.modal').modal('hide');location.reload()},
-	error:function(){console.log('errr')},
+  success: function(){
+	  $('.modal').modal('hide');
+	  location.reload()},
+	error:function(){console.log('err')},
+});
+}
+
+function addFlowerToWishList(flowerId){
+	$.ajax({
+  type: "POST",
+  url: '{{route("addflowertowishlist")}}',
+  data: "flowerId="+flowerId,
+  success: function(){
+	  $('.modal').modal('hide');
+	},
+	error:function(){console.log('err')},
 });
 }
 </script>

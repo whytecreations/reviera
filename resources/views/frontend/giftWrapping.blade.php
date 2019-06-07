@@ -33,70 +33,21 @@
 					
 					<div class="col-md-12">
 						<div class="contents">
+						@foreach ($gifts->chunk(3) as $chunks)
+							
 					    <ul class="clearfix">
+						@foreach ($chunks as $gift)
 					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift1.png"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Gift Wrapping</h5></figcaption>
+								<figure><a href="#"  data-toggle="modal" data-target="#modal-{{$gift->id}}">
+									<div class="pdct-img">
+									<img src="{{asset($gift->getMedia('images')->first()!=null?$gift->getMedia('images')->first()->getUrl():'images/logo.png')}}">
+									<div class="quick">Quick View</div></div>
+									<figcaption><h5>{{$gift->title}}</h5></figcaption>
 								</a></figure>
 					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift2.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Kimono Bottle</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift3.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Candy Box Wrapping</h5></figcaption>
-								</a></figure>
-					    	</li>
+							@endforeach
 					    </ul>
-					    <ul class="clearfix">
-					    	
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift4.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Christmas Sweet Candy Box</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift1.png"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Gift Wrapping</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift2.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Kimono Bottle</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    
-					    <ul class="clearfix">
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift3.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Candy Box Wrapping</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift4.jpg"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Christmas Sweet Candy Box</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    	<li data-aos="fade-up">
-								<figure><a href="#"  data-toggle="modal" data-target="#modal1">
-									<div class="pdct-img"><img src="images/gift1.png"><div class="quick">Quick View</div></div>
-									<figcaption><h5>Gift Wrapping</h5></figcaption>
-								</a></figure>
-					    	</li>
-					    </ul>
-					    
-					    	
+						@endforeach	
 				  </div>
 					</div>
 				</div>
@@ -110,8 +61,8 @@
 </section>
 
 
-
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+@foreach ($gifts as $gift)
+<div class="modal fade" id="modal-{{$gift->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-md" role="document">
     <div class="modal-content">
       <div class="row">
@@ -119,8 +70,8 @@
       	<div class="col-md-12 no-padding">
       	  <div class="pd_rgt">
       	  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      	  	<h4>Kimono Bottle</h4>
-      	  	<p>A traditional Chocolate to keep you energized whole day.</p>
+      	  	<h4>{{$gift->title}}</h4>
+      	  	<p>{{$gift->description}}</p>
            	 <form>
            	 	<div class="form-group">
            	 		<div class="row">
@@ -159,6 +110,6 @@
     </div>
   </div>
 </div>
-
+@endforeach	
 
 @endsection

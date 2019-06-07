@@ -16,6 +16,10 @@ Route::post('addchocolatetocart', 'Front\HomePageController@addChocolateToCart')
 Route::post('removefromcart', 'Front\HomePageController@removefromcart')->name('removefromcart');
 Route::post('updatequantity', 'Front\HomePageController@updatequantity')->name('updatequantity');
 
+Route::post('addflowertowishlist', 'Front\HomePageController@addFlowerToWishList')->name('addflowertowishlist');
+Route::post('addchocolatetowishlist', 'Front\HomePageController@addChocolateToWishList')->name('addchocolatetowishlist');
+Route::post('wishlisttocart', 'Front\HomePageController@wishlisttocart')->name('wishlisttocart');
+
 Route::get('login','Front\Auth\LoginController@showLoginForm')->name('customer.login');
 Route::post('login','Front\Auth\LoginController@login')->name('customer.login');
 Route::get('register','Front\Auth\RegisterController@showRegistrationForm');
@@ -89,6 +93,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('chocolates_mass_destroy', ['uses' => 'Admin\ChocolateController@massDestroy', 'as' => 'chocolates.mass_destroy']);
     Route::post('chocolates_restore/{id}', ['uses' => 'Admin\ChocolateController@restore', 'as' => 'chocolates.restore']);
     Route::delete('chocolates_perma_del/{id}', ['uses' => 'Admin\ChocolateController@perma_del', 'as' => 'chocolates.perma_del']);
+
+
+    Route::resource('gifts', 'Admin\GiftController');
+    Route::post('gifts_mass_destroy', ['uses' => 'Admin\GiftController@massDestroy', 'as' => 'gifts.mass_destroy']);
+    Route::post('gifts_restore/{id}', ['uses' => 'Admin\GiftController@restore', 'as' => 'gifts.restore']);
+    Route::delete('gifts_perma_del/{id}', ['uses' => 'Admin\GiftController@perma_del', 'as' => 'gifts.perma_del']);
 
 
     Route::post('/spatie/media/upload', 'Admin\SpatieMediaController@create')->name('media.upload');

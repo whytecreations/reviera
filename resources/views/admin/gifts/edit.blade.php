@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('quickadmin.flowers.title')</h3>
+    <h3 class="page-title">@lang('quickadmin.gifts.title')</h3>
     
-    {!! Form::model($flower, ['method' => 'PUT', 'route' => ['admin.flowers.update', $flower->id], 'files' => true,]) !!}
+    {!! Form::model($gift, ['method' => 'PUT', 'route' => ['admin.gifts.update', $gift->id], 'files' => true,]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -11,26 +11,9 @@
         </div>
 
         <div class="panel-body">
-
-        <div class="row">
-                <div class="col-xs-12 form-group">
-                    <label>Category</label>
-                    <select name="category_id" class="select2 form-control" id="category_id"  required = "">
-                        @foreach ($flowerCategories as $category)
-                        @if($category->id == $flower->categoryId)
-                        <option value="{{$category->id}}" selected="">{{$category->name}}</option>
-                        @else
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endif
-                    @endforeach
-                    </select>
-                </div>
-            </div>
-
-
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('title', trans('quickadmin.flowers.fields.title').'*', ['class' => 'control-label']) !!}
+                    {!! Form::label('title', trans('quickadmin.gifts.fields.title').'*', ['class' => 'control-label']) !!}
                     {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('title'))
@@ -40,35 +23,10 @@
                     @endif
                 </div>
             </div>
-             <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('big_price', trans('quickadmin.flowers.fields.big_price'), ['class' => 'control-label']) !!}
-                    <div class="helper small">{{trans('quickadmin.flowers.fields.price_note')}}</div>
-                    {!! Form::number('big_price', old('big_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('big_price'))
-                        <p class="help-block">
-                            {{ $errors->first('big_price') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('small_price', trans('quickadmin.flowers.fields.small_price'), ['class' => 'control-label']) !!}
-                    <div class="helper small">{{trans('quickadmin.flowers.fields.price_note')}}</div>
-                    {!! Form::number('small_price', old('small_price'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('small_price'))
-                        <p class="help-block">
-                            {{ $errors->first('small_price') }}
-                        </p>
-                    @endif
-                </div>
-            </div>         
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('description', trans('quickadmin.flowers.fields.description').'*', ['class' => 'control-label']) !!}
+                    {!! Form::label('description', trans('quickadmin.gifts.fields.description').'*', ['class' => 'control-label']) !!}
                     {!! Form::textarea('description', old('description'), ['class' => 'form-control editor', 'placeholder' => '','rows'=> 2, 'required' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('description'))
@@ -81,7 +39,7 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('images', trans('quickadmin.flowers.fields.images').'', ['class' => 'control-label','accept'=>"image/*"]) !!}
+                    {!! Form::label('images', trans('quickadmin.gifts.fields.images').'', ['class' => 'control-label','accept'=>"image/*"]) !!}
                     {!! Form::file('images[]', [
                         'multiple',
                         'class' => 'form-control file-upload',
@@ -93,7 +51,7 @@
                     <div class="photo-block">
                         <div class="progress-bar form-group">&nbsp;</div>
                         <div class="files-list">
-                            @foreach($flower->getMedia('images') as $media)
+                            @foreach($gift->getMedia('images') as $media)
                                 <p class="form-group">
                                     <img height="50" src="{{ asset($media->getUrl()) }}"> 
                                     <a href="{{ $media->getUrl() }}" target="_blank">{{ $media->name }} ({{ $media->size }} KB)</a>
@@ -133,7 +91,7 @@
                 $(this).fileupload({
                     dataType: 'json',
                     formData: {
-                        model_name: 'Flower',
+                        model_name: 'Gift',
                         bucket: $this.data('bucket'),
                         file_key: $this.data('filekey'),
                         _token: '{{ csrf_token() }}'

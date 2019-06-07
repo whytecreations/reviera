@@ -76,7 +76,17 @@ return [
 			'price_note' => 'Set price to zero if you don\'t want to show the option in frontend',
 		],
 	],
-	
+	'gifts' => [
+		'title' => 'Gifts',
+		'fields' => [
+			'title' => 'Title',
+			'description' => 'Description',
+			'note' => 'Add Special Note',
+			'images' => 'Images',
+		],
+	],
+
+
 	'qa_create' => 'Create',
 	'qa_save' => 'Save',
 	'qa_edit' => 'Edit',

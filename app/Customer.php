@@ -19,4 +19,10 @@ class Customer extends Authenticatable
 		'email',
 		'password',
 	];
+
+	public function wishlist()
+	{
+		return $this->hasMany(WishList::class,'user_id');
+	}
+
 }

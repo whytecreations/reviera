@@ -75,33 +75,21 @@
 							<table class="table table-bordered">
 								
 								<tbody>
+								@foreach ($wishlists as $wishlist)
 									<tr>
 										<td width="55%" align="left">
-											<div class="crt-img"><img src="images/gift3.jpg"></div>
-											<div class="crt-txt"><h5>Candy Box Wrapping</h5></div>
+											<div class="crt-img">
+											<img src="{{asset($wishlist->product->getMedia('images')->first()!=null?$wishlist->product->getMedia('images')->first()->getUrl():'images/logo.png')}}">
+											</div>
+											<div class="crt-txt"><h5>{{$wishlist->product->title}}</h5></div>
 										</td>
-										<td width="15%">QAR 100</td>
-										<td width="15%"><i class="fa fa-shopping-bag"></i></td>
+										<td width="15%">QAR {{$wishlist->product->small_price ?$wishlist->product->small_price : $wishlist->product->full_price}}</td>
+										<td width="15%">
+										<a href="javascript:void(0);" style="color:#925d5c" onclick="wishlistToCart({{$wishlist->id}})" class="pull-right"><i class="fa fa-shopping-bag"></i></a>
+										</td>
 										<td width="15%"><i class="fa fa-trash-o"></i></td>
 									</tr>
-									<tr>
-										<td width="55%" align="left">
-											<div class="crt-img"><img src="images/chocolate4.jpg"></div>
-											<div class="crt-txt"><h5>Candy Box Wrapping</h5></div>
-										</td>
-										<td width="15%">QAR 100</td>
-										<td width="15%"><i class="fa fa-shopping-bag"></i></td>
-										<td width="15%"><i class="fa fa-trash-o"></i></td>
-									</tr>
-									<tr>
-										<td width="55%" align="left">
-											<div class="crt-img"><img src="images/flower5.jpg"></div>
-											<div class="crt-txt"><h5>Candy Box Wrapping</h5></div>
-										</td>
-										<td width="15%">QAR 100</td>
-										<td width="15%"><i class="fa fa-shopping-bag"></i></td>
-										<td width="15%"><i class="fa fa-trash-o"></i></td>
-									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>
@@ -178,3 +166,18 @@
 
 
 @endsection
+
+
+  <script>
+function wishlistToCart(wishlistId){
+	$.ajax({
+  type: "POST",
+  url: '{{route("wishlisttocart")}}',
+  data: 'wishlistId='+wishlistId,
+  success: function(data){
+    location.reload()
+    },
+	error:function(){console.log('errr')},
+});
+}
+</script>
