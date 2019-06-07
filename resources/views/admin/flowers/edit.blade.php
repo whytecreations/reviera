@@ -81,7 +81,7 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('images', trans('quickadmin.flowers.fields.images').'', ['class' => 'control-label']) !!}
+                    {!! Form::label('images', trans('quickadmin.flowers.fields.images').'', ['class' => 'control-label','accept'=>"image/*"]) !!}
                     {!! Form::file('images[]', [
                         'multiple',
                         'class' => 'form-control file-upload',

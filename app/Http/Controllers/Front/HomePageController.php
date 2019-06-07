@@ -7,6 +7,7 @@ use App\FlowerCategory;
 use App\Chocolate;
 use App\ChocolateCategory;
 
+use Cart;
 use Mail;
 use App\Mail\ContactEnquiry;
 
@@ -52,9 +53,7 @@ class HomePageController extends Controller
     public function account(){
         return view('frontend.account');
     }
-    public function login(){
-        return view('frontend.login');
-    }
+    
     public function register(){
         return view('frontend.register');
     }
@@ -64,10 +63,56 @@ class HomePageController extends Controller
     public function cart(){
         return view('frontend.cart');
     }
+
+    public function addFlowerToCart(Request $request ){
+        $price =$request->size=="small"?$request->small_price:$request->big_price;
+        Cart::add($request->flowerId."-".$request->size, $request->flower,$price, $request->quantity,['type'=>'flower','size'=>$request->size,'image'=>$request->image,'note'=>$request->note]);
+        return "added";
+    }
+    
+    public function addChocolateToCart(Request $request ){
+        $price =0;
+        $size="";
+        if($request->size=="full"){
+            $price=$request->full_price;
+            $size='1 KG';
+        }
+        elseif($request->size == "half"){
+            $price=$request->half_price;
+            $size='1/2 KG';
+        }else{
+            $price=$request->quarter_price;
+            $size='1/4 KG';
+        }
+        Cart::add($request->chocolateId."-".$request->size, $request->chocolate,$price, $request->quantity,['type'=>'chocolate','size'=>$size,'size_name'=>$request->size, 'image'=>$request->image,'note'=>$request->note]);
+        return "added";
+    }
+
+    public function removeFromCart(Request $request ){
+        Cart::remove($request->cartId);
+        return Cart::getSubTotal();
+    }
+    
+    public function updatequantity(Request $request ){
+        $quantity = 0;
+        if($request->quantity > Cart::get($request->cartId)->quantity){
+            $quantity = 1;
+        }
+        if($request->quantity < Cart::get($request->cartId)->quantity){
+            $quantity = -1;
+        }
+        
+        Cart::update($request->cartId, array(
+            'quantity' => $quantity,
+          ));
+        return Cart::getSubTotal();
+    }
+
+
+
     public function contact(){
         return view('frontend.contact');
     }
-
     public function contactEnquiry(Request $request){
         Mail::to(ContactEnquiry::getDestinationEmail())
         ->send(new ContactEnquiry($request));

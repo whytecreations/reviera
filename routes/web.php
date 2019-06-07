@@ -1,22 +1,32 @@
 <?php
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about','Front\HomePageController@about');
-Route::get('flowers','Front\HomePageController@flowers');
+Route::get('flowers','Front\HomePageController@flowers')->name('flowers');
 Route::get('flowers/{slug}','Front\HomePageController@flowersByCategory');
-Route::get('chocolates','Front\HomePageController@chocolates');
+Route::get('chocolates','Front\HomePageController@chocolates')->name('chocolates');
 Route::get('chocolates/{slug}','Front\HomePageController@chocolatesByCategory');
-Route::get('gift-wrapping','Front\HomePageController@giftWrapping');
+Route::get('gift-wrapping','Front\HomePageController@giftWrapping')->name('gift-wrapping');
 Route::get('account','Front\HomePageController@account');
-Route::get('login','Front\HomePageController@login');
-Route::get('register','Front\HomePageController@register');
 Route::get('checkout','Front\HomePageController@checkout');
 Route::get('cart','Front\HomePageController@cart');
 Route::get('contact','Front\HomePageController@contact');
 Route::post('contact', 'Front\HomePageController@contactEnquiry');
+Route::post('addflowertocart', 'Front\HomePageController@addFlowerToCart')->name('addflowertocart');
+Route::post('addchocolatetocart', 'Front\HomePageController@addChocolateToCart')->name('addchocolatetocart');
+Route::post('removefromcart', 'Front\HomePageController@removefromcart')->name('removefromcart');
+Route::post('updatequantity', 'Front\HomePageController@updatequantity')->name('updatequantity');
+
+Route::get('login','Front\Auth\LoginController@showLoginForm')->name('customer.login');
+Route::post('login','Front\Auth\LoginController@login')->name('customer.login');
+Route::get('register','Front\Auth\RegisterController@showRegistrationForm');
+Route::post('register','Front\Auth\RegisterController@register')->name('customer.register');
+Route::get('signout', 'Front\Auth\LoginController@logout')->name('customer.logout');
+Route::post('signout', 'Front\Auth\LoginController@logout')->name('customer.logout');
+
 
 // Authentication Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login')->name('auth.login');
+Route::get('admin', 'Auth\LoginController@showLoginForm')->name('auth.login');
+Route::post('admin', 'Auth\LoginController@login')->name('auth.login');
 Route::post('logout', 'Auth\LoginController@logout')->name('auth.logout');
 
 // Change Password Routes...

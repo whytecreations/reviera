@@ -22,8 +22,6 @@ class User extends Authenticatable
     protected $fillable = ['name', 'email', 'password', 'remember_token', 'role_id'];
     protected $hidden = ['password', 'remember_token'];
     
-    
-    
     /**
      * Hash password
      * @param $input

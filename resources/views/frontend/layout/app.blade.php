@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 
 <title>Riveria Master Flourist and Chocolatier</title>
 
@@ -30,8 +31,12 @@
         <div class="smllogo"><a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt=""/></a></div>
         <div class="head-rgt">
         	<ul>
-        		<li><a href="#0" class="cd-btn"><img src="{{asset('images/cart.svg')}}"><span>0</span></a></li>
+        		<li><a href="#0" class="cd-btn"><img src="{{asset('images/cart.svg')}}"><span>{{Cart::getContent()->count()}}</span></a></li>
+						@if(auth()->guard('customer')->check())
         		<li><a href="{{url('account')}}"><img src="{{asset('images/user.svg')}}"></a></li>
+						@else
+        		<li><a href="{{url('register')}}"><img src="{{asset('images/user.svg')}}"></a></li>
+						@endif
         	</ul>
         </div>
         <nav class="wsmenu clearfix">
@@ -50,7 +55,7 @@
 </header>
 
 @yield('content')
-
+@include('frontend.layout.cart-sidebar')
 
 <footer>
 <div class="ftr-tp clearfix">
@@ -98,6 +103,13 @@
 
 @yield('scripts')
 <script src="{{asset('js/main.js')}}" ></script>
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
 
 </body>
 </html>

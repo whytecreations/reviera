@@ -15,39 +15,53 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-12">
-						<form class="regi" data-aos="fade-up">
+						<form  method="POST" action="{{ route('customer.register') }}" class="regi" data-aos="fade-up">
+            {{csrf_field()}}
+
+                @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>@lang('quickadmin.qa_whoops')</strong> @lang('quickadmin.qa_there_were_problems_with_input'):
+                            <br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
                       <div class="form-group clearfix">
                         <div class="row">
                           <div class="col-md-12">
-                            <input type="text" value="" class="form-control" placeholder="Email Address">
+                            <input type="email" class="form-control" placeholder="Email Address" name="email">
                           </div>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <div class="row">
                           <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="password">
+                            <input type="password" class="form-control" placeholder="password" name="password">
                           </div>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <div class="row">
                           <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Confirm password">
+                            <input type="password" class="form-control" placeholder="Confirm password" name="password_confirmation">
                           </div>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <div class="row">
                           <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="First Name">
+                            <input type="text" class="form-control" placeholder="First Name" name="first_name">
                           </div>
                         </div>
                       </div>
                       <div class="form-group clearfix">
                         <div class="row">
                           <div class="col-md-12">
-                            <input type="password" class="form-control" placeholder="Last Name">
+                            <input type="text" class="form-control" placeholder="Last Name" name="last_name">
                           </div>
                         </div>
                       </div>
@@ -64,147 +78,16 @@
 					
 				</div>
               
-              
+              <div class="lgn-rgt" data-aos="fade-up">
+							<h4>ALREADY HAVE AN ACCOUNT?</h4>
+							<button class="btn-sub" onclick="window.location.href='{{route('customer.login')}}'"><span>Login</span></button>
+						</div>
               
 			</div>
 		</div>
 		
 	</div>
 </section>
-
-
-<div class="cd-panel from-right">
-		<div class="cd-panel-header">
-			<div class="crt-sec"><img src="images/cart.svg"><div class="cnt">01</div></div><h1>My Bags</h1>
-			<a href="#0" class="cd-panel-close">Close</a>
-		</div>
-		<div class="cd-panel-container">
-			<div class="cd-panel-content">
-				<div class="crt-chck clearfix">
-            <ul class="filt">
-              <li class="clearfix">
-                <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
-                <div class="crt-chck-center">
-                  <h4>Laketown Chocolates</h4>
-                  <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                  <div class="qty">
-    <div class="input-group quantity">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                        <span class="fa fa-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]">
-                        <span class="fa fa-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                  </div><a href="#">Remove</a>
-                </div>
-              </li>
-              
-              <li class="clearfix">
-                <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
-                <div class="crt-chck-center">
-                  <h4>Laketown Chocolates</h4>
-                  <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                  <div class="qty">
-    <div class="input-group quantity">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                        <span class="fa fa-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]">
-                        <span class="fa fa-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                  </div><a href="#">Remove</a>
-                </div>
-              </li>
-              
-            </ul>
-          </div>
-                <h3>SUBTOTAL  <span>260 Qar</span></h3>
-                <a href="{{url('checkout')}}" class="cht">Checkout</a>
-			</div> 
-		</div> 
-	</div>
-<div class="cd-panel from-right">
-		<div class="cd-panel-header">
-			<div class="crt-sec"><img src="images/cart.svg"><div class="cnt">01</div></div><h1>My Bags</h1>
-			<a href="#0" class="cd-panel-close">Close</a>
-		</div>
-		<div class="cd-panel-container">
-			<div class="cd-panel-content">
-				<div class="crt-chck clearfix">
-            <ul class="filt">
-              <li class="clearfix">
-                <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
-                <div class="crt-chck-center">
-                  <h4>Laketown Chocolates</h4>
-                  <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                  <div class="qty">
-    <div class="input-group quantity">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                        <span class="fa fa-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]">
-                        <span class="fa fa-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                  </div><a href="#">Remove</a>
-                </div>
-              </li>
-              
-              <li class="clearfix">
-                <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
-                <div class="crt-chck-center">
-                  <h4>Laketown Chocolates</h4>
-                  <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                  <div class="qty">
-    <div class="input-group quantity">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                        <span class="fa fa-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]">
-                        <span class="fa fa-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                  </div><a href="#">Remove</a>
-                </div>
-              </li>
-              
-            </ul>
-          </div>
-                <h3>SUBTOTAL  <span>260 Qar</span></h3>
-                <a href="{{url('checkout')}}" class="cht">Checkout</a>
-			</div> 
-		</div> 
-	</div>
 
 
 

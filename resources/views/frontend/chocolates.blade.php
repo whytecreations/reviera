@@ -72,6 +72,14 @@
 <div class="modal fade" id="modal{{$chocolate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
     <div class="modal-content">
+	<form onSubmit="addToCart(event,this)">
+			{{csrf_field()}}
+			<input type="hidden" name="chocolate" value="{{$chocolate->title}}" />
+			<input type="hidden" name="chocolateId" value="{{$chocolate->id}}" />
+			<input type="hidden" name="full_price" value="{{$chocolate->full_price}}" />
+			<input type="hidden" name="half_price" value="{{$chocolate->half_price}}" />
+			<input type="hidden" name="quarter_price" value="{{$chocolate->quarter_price}}" />
+			<input type="hidden" name="image" value="{{asset($chocolate->getMedia('images')->first()->getUrl())}}" />
       <div class="row">
       	<div class="col-md-6 no-padding">
       	   <div class="pdct-slider">
@@ -92,19 +100,19 @@
       	  		<ul>
 							@if($chocolate->full_price >0)
       	  			<li class="clearfix">
-						<div class="radio"><input id="radio-1" name="radio" type="radio" checked><label for="radio-1" class="radio-label">1KG</label></div>
+						<div class="radio"><input id="radio-1" name="size" value="full" type="radio" checked><label for="radio-1" class="radio-label">1KG</label></div>
 						<span>{{$chocolate->full_price}} QAR</span>
                     </li>
 										@endif
 										@if($chocolate->half_price >0)
                     <li class="clearfix">
-						<div class="radio"><input id="radio-2" name="radio" type="radio"><label for="radio-2" class="radio-label">1/2 KG</label></div>
+						<div class="radio"><input id="radio-2" name="size" value="half" type="radio"><label for="radio-2" class="radio-label">1/2 KG</label></div>
                         <span>{{$chocolate->half_price}} QAR</span>
                     </li>
                     @endif
 										@if($chocolate->quarter_price >0)
 										<li class="clearfix">
-						<div class="radio"><input id="radio-3" name="radio" type="radio"><label for="radio-3" class="radio-label">1/4 KG</label></div>
+						<div class="radio"><input id="radio-3" name="size" value="quarter" type="radio"><label for="radio-3" class="radio-label">1/4 KG</label></div>
                         <span>{{$chocolate->quarter_price}} QAR</span>
                     </li>
 										@endif
@@ -113,11 +121,10 @@
       	  	
       	  	<div class="price">
 				<div class="input-group quantity">
-					<span class="input-group-btn"><button type="button" class=" btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"><span class="fa fa-minus"></span></button></span>
-					<input type="text" name="quant[1]" class="input-number" value="1" min="1" max="30">
-					<span class="input-group-btn"><button type="button" class=" btn-plus btn-number" data-type="plus" data-field="quant[1]"><span class="fa fa-plus"></span></button></span>
+					<span class="input-group-btn"><button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quantity"><span class="fa fa-minus"></span></button></span>
+					<input type="number" name="quantity" class="input-number" value="1" min="1" max="30">
+					<span class="input-group-btn"><button type="button" class="btn-plus btn-number" data-type="plus" data-field="quantity"><span class="fa fa-plus"></span></button></span>
 				</div>
-     	  	  {{-- <h5>1000.00 <span>QAR</span></h5> --}}
       	  	</div>
       	  	<h5>Add Special Instructions</h5>
       	  	<textarea class="form-control" placeholder="Add a Note"></textarea>
@@ -130,77 +137,21 @@
 </div>
 @endforeach
 
-<div class="cd-panel from-right">
-		<div class="cd-panel-header">
-			<div class="crt-sec"><img src="{{asset('images/cart.svg')}}"><div class="cnt">01</div></div><h1>My Bags</h1>
-			<a href="#0" class="cd-panel-close">Close</a>
-		</div>
-		<div class="cd-panel-container">
-			<div class="cd-panel-content">
-				<div class="crt-chck clearfix">
-            <ul class="filt">
-              <li class="clearfix">
-                <div class="crt-chck-img"><img src="{{asset('images/chocolate4.jpg')}}"></div>
-                <div class="crt-chck-center">
-                  <h4>Laketown Chocolates</h4>
-                  <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                  <div class="qty">
-    <div class="input-group quantity">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                        <span class="fa fa-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]">
-                        <span class="fa fa-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                  </div><a href="#">Remove</a>
-                </div>
-              </li>
-              
-              <li class="clearfix">
-                <div class="crt-chck-img"><img src="{{asset('images/chocolate4.jpg')}}"></div>
-                <div class="crt-chck-center">
-                  <h4>Laketown Chocolates</h4>
-                  <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                  <div class="qty">
-    <div class="input-group quantity">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                        <span class="fa fa-minus"></span>
-                        </button>
-                    </span>
-                    <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]">
-                        <span class="fa fa-plus"></span>
-                        </button>
-                    </span>
-                </div>
-                  </div><a href="#">Remove</a>
-                </div>
-              </li>
-              
-            </ul>
-          </div>
-                <h3>SUBTOTAL  <span>260 Qar</span></h3>
-                <a href="{{url('checkout')}}" class="cht">Checkout</a>
-			</div> 
-		</div> 
-	</div>
-
-
-
 @endsection
 
 @section('scripts')
 <script src="{{asset('js/owl.carousel.js')}}" type="text/javascript"></script>
+<script>
+function addToCart(e,form){
+	e.preventDefault()
+
+	$.ajax({
+  type: "POST",
+  url: '{{route("addchocolatetocart")}}',
+  data: $(form).serialize(),
+  success: function(){console.log('suce');$('.modal').modal('hide');location.reload()},
+	error:function(){console.log('errr')},
+});
+}
+</script>
 @endsection
