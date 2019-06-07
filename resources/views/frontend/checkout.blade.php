@@ -12,7 +12,10 @@
     <div class="acct">
       <div class="col-md-12">
         <div class="row">
+          
           <div class="col-md-7" data-aos="fade-up">
+
+          @if(!auth()->guard('customer')->check())
             <article class="accord accord-single is-open">
               <h4 class="accord__head">Account DETAILS </h4>
               <div class="accord__body">
@@ -38,7 +41,9 @@
                       </div>
                     </div>
                   </div>
+                  
                   <div class="col-md-8">
+
                     <form>
                       <div class="form-group clearfix">
                         <div class="row">
@@ -61,11 +66,15 @@
                           </div>
                         </div>
                       </div>
-                    </form>
+                    </form> 
+                    
                   </div>
+                
                 </div>
               </div>
             </article>
+@endif
+            
             <article class="accord accord-single">
               <h4 class="accord__head">Billing Information </h4>
               <div class="accord__body">
@@ -74,11 +83,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>First Name</label>
-                        <input type="text" value="Libin" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                       <div class="col-md-6">
                         <label>Last Name</label>
-                        <input type="text" value="KR" class="form-control">
+                        <input type="text" class="form-control">
                       </div>
                     </div>
                   </div>
@@ -86,11 +95,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Address 1</label>
-                        <input type="text" value="Doha" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                       <div class="col-md-6">
                         <label>Address 2</label>
-                        <input type="text" value="Qatar" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                     </div>
                   </div>
@@ -98,11 +107,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <input type="text" value="Doha" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
-                        <input type="text" value="Qatar" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                     </div>
                   </div>
@@ -110,11 +119,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Phone </label>
-                        <input type="text" value="756320023" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                       <div class="col-md-6">
                         <label>Email</label>
-                        <input type="text" value="libinkr@whytecreations.in" class="form-control">
+                        <input type="text"  class="form-control">
                       </div>
                     </div>
                   </div>
@@ -181,48 +190,42 @@
           <div class="col-md-5 pl-35" data-aos="fade-up">
             <div class="crt-chck clearfix">
               <ul class="filt">
-                <li class="clearfix">
-                  <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
-                  <div class="crt-chck-center">
-                    <h4>Laketown Chocolates</h4>
-                    <h5>23 <span>QAR</span></h5>
+
+             @foreach (Cart::getContent() as $item)
+                
+              <li class="clearfix" id="{{$item->id}}">
+                <div class="crt-chck-img"><img src="{{asset($item->attributes['image'])}}"></div>
+                <div class="crt-chck-center">
+                  <h4>{{$item->name}}</h4>
+                  <h5>{{$item->price}} <span>QAR</span></h5>
+                  <h5>{{strtoupper($item->attributes['size'])}}</h5>
                   </div>
                   <div class="crt-chck-rgt">
-                    <div class="qty">
-                      <div class="input-group quantity"> <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="fa fa-minus"></span> </button>
-                        </span>
-                        <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                        <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]"> <span class="fa fa-plus"></span> </button>
-                        </span> </div>
-                    </div>
-                    <a href="#">Remove</a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="crt-chck-img"><img src="images/chocolate4.jpg"></div>
-                  <div class="crt-chck-center">
-                    <h4>Laketown Chocolates</h4>
-                    <h5>23 <span>QAR</span></h5>
-                  </div>
-                  <div class="crt-chck-rgt">
-                    <div class="qty">
-                      <div class="input-group quantity"> <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <span class="fa fa-minus"></span> </button>
-                        </span>
-                        <input type="text" name="quant[1]" class="input-number number" value="1" min="1" max="30">
-                        <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quant[1]"> <span class="fa fa-plus"></span> </button>
-                        </span> </div>
-                    </div>
-                    <a href="#">Remove</a> </div>
-                </li>
+                  <div class="qty">
+                  <div class="input-group quantity">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn-minus btn-number" data-type="minus" data-field="quantity-{{$item->id}}">
+                        <span class="fa fa-minus"></span>
+                        </button>
+                    </span>
+                    <input type="text" name="quantity-{{$item->id}}" id="quantity-{{$item->id}}" class="input-number number" value="{{$item->quantity}}" min="1" max="30" onChange="updateQuantity('{{$item->id}}')">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="quantity-{{$item->id}}">
+                        <span class="fa fa-plus"></span>
+                        </button>
+                    </span>
+                </div>
+                  </div><a href="javascript:void(0)" onClick="removeFromCart('{{$item->id}}')">Remove</a>
+                </div>
+              </li>
+              @endforeach
+
               </ul>
             </div>
             <div class="crt-ttl">
               <ul data-aos="fade-up" class="aos-init aos-animate">
-                <li class="clearfix"><span class="text-left">Subtotal</span><span class="text-right">300 QAR</span></li>
-                <li class="clearfix"><span class="text-left">Total</span><span class="text-right">300 QAR</span></li>
+                <li class="clearfix"><span class="text-left">Subtotal</span><span class="text-right">{{Cart::getSubTotal()}} QAR</span></li>
+                <li class="clearfix"><span class="text-left">Total</span><span class="text-right">{{Cart::getTotal()}} QAR</span></li>
               </ul>
             </div>
           </div>
