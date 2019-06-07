@@ -18,6 +18,7 @@ class Customer extends Authenticatable
 		'last_name',
 		'email',
 		'password',
+		'dob',
 	];
 
 	public function wishlist()

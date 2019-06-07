@@ -15,7 +15,7 @@
           
           <div class="col-md-7" data-aos="fade-up">
 
-          @if(!auth()->guard('customer')->check())
+          
             <article class="accord accord-single is-open">
               <h4 class="accord__head">Account DETAILS </h4>
               <div class="accord__body">
@@ -73,7 +73,7 @@
                 </div>
               </div>
             </article>
-@endif
+
             
             <article class="accord accord-single">
               <h4 class="accord__head">Billing Information </h4>
@@ -163,11 +163,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>First Name</label>
-                        <input type="text" value="Libin" class="form-control">
+                        <input type="text" class="form-control">
                       </div>
                       <div class="col-md-6">
                         <label>Last Name</label>
-                        <input type="text" value="KR" class="form-control">
+                        <input type="text" class="form-control">
                       </div>
                     </div>
                   </div>
@@ -175,11 +175,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Phone </label>
-                        <input type="text" value="756320023" class="form-control">
+                        <input type="text" class="form-control">
                       </div>
                       <div class="col-md-6">
                         <label>Email</label>
-                        <input type="text" value="libinkr@whytecreations.in" class="form-control">
+                        <input type="text" class="form-control">
                       </div>
                     </div>
                   </div>

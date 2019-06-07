@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use App\Customer;
 use Illuminate\Http\Request;
+use Hash;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -39,13 +41,34 @@ class LoginController extends Controller
     {
         // $this->middleware('guest');
         // $this->middleware('guest:web', ['except' => 'logout']);
-        $this->middleware('guest:customer', ['except' => 'logout']);
+        $this->middleware('guest:customer', ['except' => ['logout','changedetails','changePassword']]);
     }
 
     public function showLoginForm()
     {
         return view('frontend.login');
     }
+
+    public function changedetails(Request $request){
+        $customer = Customer::findOrFail(auth()->guard('customer')->user()->id);
+        $customer->update($request->except(['email','password']));
+        return back();
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = auth()->guard('customer')->user();
+        // $this->validator($request->all())->validate();
+        // dd($user);
+        if (Hash::check($request->get('current_password'), $user->password)) {
+            $user->password = Hash::make($request->get('new_password'));
+            $user->save();
+            return redirect($this->redirectTo)->with('success', 'Password change successfully!');
+        } else {
+            return redirect()->back()->withErrors('Current password is incorrect');
+        }
+    }
+
 
     public function login(Request $request)
     {

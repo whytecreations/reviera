@@ -35,7 +35,7 @@
 						@if(auth()->guard('customer')->check())
         		<li><a href="{{url('account')}}"><img src="{{asset('images/user.svg')}}"></a></li>
 						@else
-        		<li><a href="{{url('register')}}"><img src="{{asset('images/user.svg')}}"></a></li>
+        		<li><a href="{{url('login')}}"><img src="{{asset('images/user.svg')}}"></a></li>
 						@endif
         	</ul>
         </div>
@@ -96,6 +96,10 @@
   
 
 </div>
+
+{!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'signout']) !!}
+<button type="submit">Signout</button>
+{!! Form::close() !!}
 
 <script type="text/javascript" src="{{asset('js/webslidemenu.js')}}"></script>
 <script src="{{asset('js/jquery.easeScroll.js')}}" type="text/javascript"></script>

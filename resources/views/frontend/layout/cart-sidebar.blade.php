@@ -38,8 +38,12 @@
               
             </ul>
           </div>
+          @if(Cart::getContent()->count()>0)
                 <h3>SUBTOTAL  <span id="subtotal">{{Cart::getSubTotal()}} QAR</span></h3>
                 <a href="{{url('checkout')}}" class="cht">Checkout</a>
+                @else
+                <h3>Cart Empty</span></h3>
+                @endif
 			</div> 
 		</div> 
 	</div>

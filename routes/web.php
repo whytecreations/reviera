@@ -1,4 +1,8 @@
 <?php
+Route::get('test', function(){
+    return bcrypt('12341234');
+});
+
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about','Front\HomePageController@about');
 Route::get('flowers','Front\HomePageController@flowers')->name('flowers');
@@ -19,6 +23,9 @@ Route::post('updatequantity', 'Front\HomePageController@updatequantity')->name('
 Route::post('addflowertowishlist', 'Front\HomePageController@addFlowerToWishList')->name('addflowertowishlist');
 Route::post('addchocolatetowishlist', 'Front\HomePageController@addChocolateToWishList')->name('addchocolatetowishlist');
 Route::post('wishlisttocart', 'Front\HomePageController@wishlisttocart')->name('wishlisttocart');
+
+Route::post('changedetails','Front\Auth\LoginController@changedetails')->name('customer.changedetails');
+Route::post('changepassword','Front\Auth\LoginController@changePassword')->name('customer.changepassword');
 
 Route::get('login','Front\Auth\LoginController@showLoginForm')->name('customer.login');
 Route::post('login','Front\Auth\LoginController@login')->name('customer.login');

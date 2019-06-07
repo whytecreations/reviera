@@ -74,8 +74,9 @@ class HomePageController extends Controller
 
 
     public function account(){
-        $wishlists=auth()->guard('customer')->user()->wishlist;
-        return view('frontend.account',compact('wishlists'));
+        $customer=auth()->guard('customer')->user();
+        $wishlists=$customer->wishlist;
+        return view('frontend.account',compact('customer','wishlists'));
     }
     
     public function register(){

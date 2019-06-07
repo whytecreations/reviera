@@ -23,36 +23,38 @@
 					<div class="col-md-12 clearfix animated fadeIn">
 						<div class="row">
 							<div class="col-md-12">
-								<form>
+				<form method="POST" action="{{ route('customer.changedetails') }}" >
+				{{csrf_field()}}
                    	<div class="form-group clearfix">
                    		<div class="row">
-                   			<div class="col-md-6"><label>First Name</label><input type="text" class="form-control"></div>
-                   			<div class="col-md-6"><label>Last Name</label><input type="text" class="form-control"></div>
+                   			<div class="col-md-6"><label>First Name</label><input type="text" name="first_name" value="{{$customer->first_name}}" class="form-control"></div>
+                   			<div class="col-md-6"><label>Last Name</label><input type="text" name="last_name" value="{{$customer->last_name}}" class="form-control"></div>
                    		</div>
                    	</div>
                    	<div class="form-group clearfix">
                    		<div class="row">
-                   			<div class="col-md-6"><label>Email</label><input type="text" class="form-control"></div>
-                   			<div class="col-md-6"><label>Date of Birth</label><input type="text" placeholder="MM/DD/YYYY" class="form-control"></div>
+                   			<div class="col-md-6"><label>Email</label><input type="email" name="email" value="{{$customer->email}}" class="form-control"></div>
+                   			<div class="col-md-6"><label>Date of Birth</label><input type="text" name="dob" value="{{$customer->dob}}" placeholder="MM/DD/YYYY" class="form-control"></div>
                    		</div>
                    	</div>
                    	<div class="form-group clearfix">
                    		<div class="row">
-                   			<div class="col-md-12"><button class="btn-sub"><span>Save Changes</span></button></div>
+                   			<div class="col-md-12"><button type="submit" class="btn-sub"><span>Save Changes</span></button></div>
                    		</div>
                    	</div>
                    </form>
                    <h5>Change Password</h5>
-                   <form>
+                   	<form method="POST" action="{{ route('customer.changepassword') }}" >
+				{{csrf_field()}}
                    	<div class="form-group clearfix">
                    		<div class="row">
-                   			<div class="col-md-6"><label>Current Password</label><input type="password" class="form-control"></div>
-                   			<div class="col-md-6"><label>New Password</label><input type="password" class="form-control"></div>
+                   			<div class="col-md-6"><label>Current Password</label><input type="password" name="current_password" class="form-control"></div>
+                   			<div class="col-md-6"><label>New Password</label><input type="password" name="new_password" class="form-control"></div>
                    		</div>
                    	</div>
                    	<div class="form-group clearfix">
                    		<div class="row">
-                   			<div class="col-md-12"><label>Confirm Password</label><input type="password" class="form-control"></div>
+                   			<div class="col-md-12"><label>Confirm Password</label><input type="password"  name="confirm_password" class="form-control"></div>
                    		</div>
                    	</div>
                    	<div class="form-group clearfix">
@@ -61,6 +63,12 @@
                    		</div>
                    	</div>
                    </form>
+
+				    <div class="form-group clearfix">
+                   		<div class="row">
+                   			<div class="col-md-12"><button onclick="$('#signout').submit();" class="btn-sub"><span>Logout</span></button></div>
+                   		</div>
+                   	</div>
 							</div>
 						</div> 
 					</div>
