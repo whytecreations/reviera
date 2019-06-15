@@ -5,6 +5,7 @@ Route::get('test', function(){
 
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about','Front\HomePageController@about');
+Route::get('corporate-rate','Front\HomePageController@corporate');
 Route::get('flowers','Front\HomePageController@flowers')->name('flowers');
 Route::get('flowers/{slug}','Front\HomePageController@flowersByCategory');
 Route::get('chocolates','Front\HomePageController@chocolates')->name('chocolates');

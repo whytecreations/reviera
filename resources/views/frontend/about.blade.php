@@ -17,7 +17,7 @@
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="cclt-img" data-aos="fade-up"><img src="images/chocolate_tp.png" class="img-fluid less-height"></div>
+						<!--<div class="cclt-img" data-aos="fade-up"><img src="images/chocolate_tp.png" class="img-fluid less-height"></div>-->
 					</div>
 					<p data-aos="fade-up">20 years ago, owner of Riviera have passion for flowers, high end quality of pots, vases and exceptional flower arrangements and outstanding chocolate quality and arrangements.</p>
 

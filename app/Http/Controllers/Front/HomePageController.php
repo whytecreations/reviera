@@ -25,6 +25,9 @@ class HomePageController extends Controller
     public function about(){
         return view('frontend.about');
     }
+    public function corporate(){
+        return view('frontend.corporate');
+    }
     public function flowers(){
         $flowers=Flower::all();
         $flowerCategories=FlowerCategory::all();

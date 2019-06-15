@@ -16,7 +16,7 @@
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="cclt-img" data-aos="fade-up"><img src="{{asset('images/chocolate_tp.png')}}" class="img-fluid less-height"></div>
+					<!--<div class="cclt-img" data-aos="fade-up"><img src="{{asset('images/chocolate_tp.png')}}" class="img-fluid less-height"></div>-->
 					</div>
 				</div>
 			</div>

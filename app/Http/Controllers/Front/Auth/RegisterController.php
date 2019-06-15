@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Auth;
 
 
 class RegisterController extends Controller
@@ -90,10 +91,15 @@ class RegisterController extends Controller
 
         event(new Registered($customer = $this->create($request->all())));
 
-        $this->guard('customer')->login($customer);
+        $this->guard()->login($customer);
 
         return $this->registered($request, $customer)
                         ?: redirect($this->redirectPath());
     }
 
+
+    protected function guard()
+    {
+        return Auth::guard('customer');
+    }
 }

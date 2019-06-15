@@ -328,7 +328,7 @@ $(window).load(function () {
     resolution: 'low_resolution',
     template: '<a title="online marketing qatar" href="{{link}}" target="_blank" id="{{id}}"><img alt="web development, graphic design and branding" src="{{image}}" /></a>',
     sortBy: 'most-recent',
-    limit: 5,
+    limit: 6,
     links: false
   });
   userFeed.run();

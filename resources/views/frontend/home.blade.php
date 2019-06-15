@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">Chocolate or Flower?</h2>
+			<h2 data-aos="fade-up"><a href="{{route('chocolates')}}">Chocolate</a> or <a href="{{route('flowers')}}">Flower?</a></h2>
 			
 			<div class="cclt-sec">
 				<div class="row">
@@ -82,9 +82,15 @@
 					<div class="col-md-5"><div class="wrap-lft" data-aos="fade-up"><img src="images/wraper-dwn.png" class="img-fluid"></div></div>
 					<div class="col-md-7">
 						<div class="gft-txt">
-						<h5 data-aos="fade-up">Lorem Ipsum</h5>
-						<p data-aos="fade-up">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-						<p data-aos="fade-up">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						
+						<p data-aos="fade-up">Make a style statement with our creative and beautiful gift wrapping services in Qatar. 
+
+If you want to WOW your beloved family and friends, the moment they receive your gift, then a little creative gift wrapping perfection is  what you need. 
+
+With us, you design your own gift wrapping personality that easy,  charming and memorable.
+
+Avail our gift wrapping services for all your special occasions and festivities.</p>
+						
 					  </div>
 					  
 					  <div class="abox" data-aos="fade-up"><a href="{{route('gift-wrapping')}}"><span><img src="images/gift_box.svg"> View Wrap Styles</span></a></div>

@@ -1081,7 +1081,7 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 .cutting-player{position: absolute; left: 3%; bottom: 15px; width: 150px}
 .cutting{position: absolute; right: 0%; top: 10%; width: 280px;}
 .flower2{position: absolute; left:0px; bottom: 0; width: 350px; display: none}
-.flwrimg2{position: absolute; right: 0px; bottom: -30px; width: 230px}
+.flwrimg2{position: absolute; right: 0px; bottom: 0px; width: 230px}
 .flwr h2, .gft h2, .cclt h2{font-family: 'TrajanProRegular'; color: #925D5C; font-size: 40px; margin-bottom: 15px}
 .flwr h4, .gft h4, .cclt h4{font-family: 'BuketRetroBasic'; color: #D99F9E; font-size: 18px; padding: 0 20%; line-height: 30px}
 .flwr-sec{margin: 50px 0 0}
@@ -1106,7 +1106,7 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 .gft2{position: absolute; left: 10%; width: 90px; top: 21%}
 .gft5{position: absolute; left: 25%; width: 80px; top: -30px}
 .gft5-1{position: absolute; left: 5%; width: 70px; top: -30px}
-.scissor{position: absolute; left: 20%; width: 180px; top: 40px}
+.scissor{position: absolute; left: 10%; width: 250px; top: 40px}
 .papper{position: absolute; right: 0; top: 300px; width: 500px}
 .box3{position: absolute; right: 0; top: 55%; width: 250px}
 .gft5-2{position: absolute; right: 10%; top: -30px; width: 50px}
@@ -1126,21 +1126,24 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 .choco3{position: absolute; right: 30px; top: 300px; width: 300px}
 .choco4{position: absolute; left: 8%; bottom: 300px; width: 200px}
 .choco5{position: absolute; right: 0; bottom: 100px; width: 300px}
-.cclt h2{color: #945036}
+.cclt h2, .cclt h2 a{color: #945036}
 .cclt h4{color: #d07d5d}
+.cclt h4 span{    font-size: 14px;}
 .cclt h5{color: #945036}
 .cclt p{color: #BC7B52; padding: 0 13%;    margin: 30px 0 0; font-size: 21px; line-height: 35px}
+.cclt form{width:70%; margin:30px auto;}
+.cclt form label{color: #925d5c; font-weight: 600; font-size: 13px;display: block;}
+.cclt form select{padding:0;}
 .cclt .abox{text-align: center; margin: 50px 0 0}
 .cclt .abox a:first-child{background: #ae936c}
 .cclt .abox a:first-child:hover::before{box-shadow: inset 0 0 0 11em #8a7557; }
 .cclt .abox a:first-child:hover::after {box-shadow: inset 0 0 0 11em #584a36;}
 .ftr-tp{padding: 20px 0 15px; background: #b3c1be; overflow: hidden}
-.ftr-tp ul li{float: left; width: 23%; padding: 0 15px 0 50px; position: relative; font-size: 18px; font-weight: 500; color: #37232B}
-.ftr-tp ul li:nth-child(2n){width: 33%}
-.ftr-tp ul li:nth-child(3n){width: 24%}
-.ftr-tp ul li:nth-child(4n){width: 20%}
+.ftr-tp ul li{float: left; width: 18.75%; padding: 0 0px 0 6%; position: relative; font-size: 18px; font-weight: 500; color: #37232B}
+.ftr-tp ul li:nth-child(3n){width: 25%}
 .ftr-tp ul li span{font-weight: 400}
-.ftr-tp ul li img{position: absolute; left: 0; top: 7px; height: 30px}
+.ftr-tp ul li img{position: absolute; left: 15%; top: 7px; height: 30px}
+.ftr-tp ul li:nth-child(3n) img{left: 10%;}
 .ftr-tp ul li a{color: #37232B}
 .ftr-btm{padding: 15px 0; text-align: center}
 .ftr-btm ul li{display: inline-block}
@@ -1340,10 +1343,16 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 .modal-md select.form-control{padding: 0}
 .wrap-lft{text-align: right; margin: 40px 20px 0}
 .insta{background: #b3c1be; padding: 50px 0 0; text-align: center}
-.insta a{width: 20%; float: left}
-.insta a img{width: 100%; height: 300px; object-fit: cover}
+.insta a{width: 16.666666%; float: left; padding:2px; background:#fff;}
+.insta a img{width: 100%; height: 290px; object-fit: cover}
 .insta h3{color: #37514B; margin: 0 0 30px; text-transform: uppercase; font-size: 30px;font-family: 'TrajanProRegular';}
 .flw a{margin-right: 10px}
+
+
+@media (max-width:1450px) {
+  .insta a img{height: 220px;}  
+    
+}
 
 
 

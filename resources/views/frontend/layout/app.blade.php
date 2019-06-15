@@ -45,6 +45,7 @@
             <li><a href="{{url('flowers')}}">FLOWERS</a></li>
             <li><a href="{{url('chocolates')}}">CHOCOLATES</a></li>
             <li><a href="{{url('gift-wrapping')}}">GIFT WRAPPING</a></li>
+            <li><a href="{{url('corporate-rate')}}">Corporate rate Tag</a></li>
           </ul>
         </nav>
         
@@ -59,10 +60,11 @@
 
 <footer>
 <div class="ftr-tp clearfix">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="col-md-12">
 				<ul>
-					<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>Give us a call</span> <br><a href="tel:+974 44366365">+974 44366365</a></li>
+					<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>Give us a call / Whatsapp</span> <br><a href="tel:+974 33750041">+974 33750041</a></li>
+					<li data-aos="fade-up"><img src="{{asset('images/lphn.svg')}}"> <span>Give us a call</span> <br><a href="tel:+974 44366365">+974 44366365</a></li>
 					<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}"> <span>E-Mail</span> <br><a href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></li>
 					<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}"> <span>Opening Hours</span> <br>9AM - 9.30PM </li>
 					<li class="flw" data-aos="fade-up" data-aos-delay="600"><img src="{{asset('images/share.svg')}}"> <span>Follow On</span> <br><a href="https://www.instagram.com/rivieraqatar/" target="_blank"><i class="fa fa-instagram"></i></a><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>

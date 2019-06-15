@@ -2800,9 +2800,9 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 .custom-control {
 	position: relative;
-	display: block;
+	display: inline-block;
 	min-height: 1.5rem;
-	padding-left: 1.5rem
+	padding-left: 1.5rem;margin: 15px 20px 0 0;
 }
 .custom-control-inline {
 	display: -ms-inline-flexbox;
@@ -2816,7 +2816,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 .custom-control-input:checked~.custom-control-label::before {
 	color: #fff;
-	background-color: #007bff
+	background-color: #d07d7e
 }
 .custom-control-input:focus~.custom-control-label::before {
 	box-shadow: 0 0 0 1px #fff, 0 0 0 .2rem rgba(0,123,255,.25)
@@ -2837,7 +2837,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 .custom-control-label::before {
 	position: absolute;
-	top: .25rem;
+	top: 1px;
 	left: -1.5rem;
 	display: block;
 	width: 1rem;
@@ -2852,7 +2852,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 .custom-control-label::after {
 	position: absolute;
-	top: .25rem;
+	top: 1px;
 	left: -1.5rem;
 	display: block;
 	width: 1rem;
@@ -2887,7 +2887,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	border-radius: 50%
 }
 .custom-radio .custom-control-input:checked~.custom-control-label::before {
-	background-color: #007bff
+	background-color: #d07d7e
 }
 .custom-radio .custom-control-input:checked~.custom-control-label::after {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E")
