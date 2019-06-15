@@ -14,7 +14,7 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.flowers.fields.title')</th>
-                            <td field-key='title'>{{ $friends_of_db->title }}</td>
+                            <td field-key='title'>{{ $flower->title }}</td>
                         </tr>
                     </table>
                 </div>
@@ -22,7 +22,7 @@
 
             <p>&nbsp;</p>
 
-            <a href="{{ route('admin.friends_of_dbs.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
+            <a href="{{ route('admin.flowers.index') }}" class="btn btn-default">@lang('quickadmin.qa_back_to_list')</a>
         </div>
     </div>
 @stop

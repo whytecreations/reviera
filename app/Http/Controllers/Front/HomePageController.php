@@ -8,6 +8,7 @@ use App\Flower;
 use App\FlowerCategory;
 use App\Chocolate;
 use App\ChocolateCategory;
+use App\Corporate;
 
 use Cart;
 use Mail;
@@ -176,6 +177,7 @@ class HomePageController extends Controller
     }
 
     public function corporateEnquiry(Request $request){
+        $corporate = Corporate::create($request->all());
         Mail::to(CorporateEnquiry::getDestinationEmail())
         ->send(new CorporateEnquiry($request));
       

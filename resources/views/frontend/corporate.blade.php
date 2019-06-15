@@ -72,7 +72,7 @@ You must initially show a Business Card or other form of Authentication to show 
 					              <div class="col-md-6"><label>Fax</label><input name="fax" type="number" class="form-control"></div>
 					          </div>
 					      </div>
-						  <div id="mailStatus" class="alert" role="alert"></div>
+						  <div id="mailStatus"><div  class="alert" role="alert"></div></div>
 					      <div class="form-group">
 					          <div class="row">
 					              <div class="col-md-12"><button type="submit" id="SendBtn" class="btn-sub"><span>Submit</span></button></div>
@@ -103,10 +103,10 @@ You must initially show a Business Card or other form of Authentication to show 
 
     <script type="text/javascript">
 	var popup = function(message,status){
-          $('#mailStatus').addClass(status).html(message).alert();
-          $("#mailStatus").delay(4000).slideUp(200, function() {
-			$(this).alert('close');
-		});
+          $('#mailStatus div').addClass(status).css('opacity',1).html(message).show().alert();
+          window.setTimeout(function() {
+				$("#mailStatus div").fadeTo(500, 0).slideUp(500);
+			}, 4000);
       };
 
 	  $('#CorporateForm').submit(function(event) {
@@ -136,6 +136,7 @@ You must initially show a Business Card or other form of Authentication to show 
 	      encode          : true,
 	      success: function(data){
 	        if(data.status=="success"){
+			  document.getElementById("CorporateForm").reset();
 	          message= "Thank you! We will contact you soon.";
               popup(message,'alert-success');
 	        }
@@ -151,7 +152,6 @@ You must initially show a Business Card or other form of Authentication to show 
 	      complete: function(){
 	        $('#SendBtn').prop('disabled', false);
 	        $('#SendBtn').html('SEND');
-	        document.getElementById("CorporateForm").reset();
 	      }
 	    })
 	});

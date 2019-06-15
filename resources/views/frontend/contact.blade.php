@@ -67,10 +67,10 @@
     <script type="text/javascript">
 
 	var popup = function(message,status){
-          $('#mailStatus').addClass(status).html(message).alert();
-          $("#mailStatus").delay(4000).slideUp(200, function() {
-			$(this).alert('close');
-		});
+          $('#mailStatus').addClass(status).html(message).show().alert();
+          window.setTimeout(function() {
+				$("#mailStatus").fadeTo(500, 0).slideUp(500);
+			}, 4000);
       };
 
 	  $('#ContactForm').submit(function(event) {
