@@ -6,6 +6,7 @@ Route::get('test', function(){
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about','Front\HomePageController@about');
 Route::get('corporate-rate','Front\HomePageController@corporate');
+Route::post('corporate', 'Front\HomePageController@corporateEnquiry');
 Route::get('flowers','Front\HomePageController@flowers')->name('flowers');
 Route::get('flowers/{slug}','Front\HomePageController@flowersByCategory');
 Route::get('chocolates','Front\HomePageController@chocolates')->name('chocolates');
@@ -82,6 +83,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     
+    Route::resource('corporates', 'Admin\CorporateController');
+    Route::post('corporates_mass_destroy', ['uses' => 'Admin\CorporateController@massDestroy', 'as' => 'corporates.mass_destroy']);
+    Route::post('corporates_restore/{id}', ['uses' => 'Admin\CorporateController@restore', 'as' => 'corporates.restore']);
+    Route::delete('corporates_perma_del/{id}', ['uses' => 'Admin\CorporateController@perma_del', 'as' => 'flowercategories.perma_del']);
+    
+
     Route::resource('flowercategories', 'Admin\FlowerCategoryController');
     Route::post('flowercategories_mass_destroy', ['uses' => 'Admin\FlowerCategoryController@massDestroy', 'as' => 'flowercategories.mass_destroy']);
     Route::post('flowercategories_restore/{id}', ['uses' => 'Admin\FlowerCategoryController@restore', 'as' => 'flowercategories.restore']);

@@ -12,6 +12,7 @@ use App\ChocolateCategory;
 use Cart;
 use Mail;
 use App\Mail\ContactEnquiry;
+use App\Mail\CorporateEnquiry;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,9 +26,7 @@ class HomePageController extends Controller
     public function about(){
         return view('frontend.about');
     }
-    public function corporate(){
-        return view('frontend.corporate');
-    }
+
     public function flowers(){
         $flowers=Flower::all();
         $flowerCategories=FlowerCategory::all();
@@ -158,6 +157,7 @@ class HomePageController extends Controller
     public function contact(){
         return view('frontend.contact');
     }
+
     public function contactEnquiry(Request $request){
         Mail::to(ContactEnquiry::getDestinationEmail())
         ->send(new ContactEnquiry($request));
@@ -165,9 +165,28 @@ class HomePageController extends Controller
         // return view('frontend.email.contact-enquiry')->with(['request'=> $request]);
         if( count(Mail::failures()) > 0 ) {
           return response()->json(["status"=>"failed"]);
+
         } else {
           return response()->json(["status"=>"success"]);
         }
       }
+
+    public function corporate(){
+        return view('frontend.corporate');
+    }
+
+    public function corporateEnquiry(Request $request){
+        Mail::to(CorporateEnquiry::getDestinationEmail())
+        ->send(new CorporateEnquiry($request));
+      
+        // return view('frontend.email.corporate-enquiry')->with(['request'=> $request]);
+        if( count(Mail::failures()) > 0 ) {
+          return response()->json(["status"=>"failed"]);
+
+        } else {
+          return response()->json(["status"=>"success"]);
+        }
+    }
+
 
 }

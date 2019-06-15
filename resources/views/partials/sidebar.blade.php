@@ -119,6 +119,16 @@
             @endcan
 
 
+            @can('gift_access')
+            <li>
+                <a href="{{ route('admin.corporates.index') }}">
+                    <i class="fa fa-gift"></i>
+                    <span>@lang('quickadmin.corporates.title')</span>
+                </a>
+            </li>
+            @endcan
+
+
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">

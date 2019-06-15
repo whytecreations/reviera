@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use Illuminate\Http\Request;
 
-class ContactEnquiry extends Mailable
+class CorporateEnquiry extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -46,6 +46,6 @@ class ContactEnquiry extends Mailable
      */
     public function build()
     {
-        return $this->view('frontend.email.contact-enquiry');
+        return $this->view('frontend.email.corporate-enquiry');
     }
 }

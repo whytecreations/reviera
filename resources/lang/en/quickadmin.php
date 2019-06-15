@@ -35,6 +35,24 @@ return [
 			'remember-token' => 'Remember token',
 		],
 	],
+	
+	'corporates' => [
+		'title' => 'Corporate Rate Tags',
+		'fields' => [
+			'company_name' =>     'Company Name',
+			'corporate_type' =>         'Corporate Type',
+			'address_type' =>     'Address Type',
+			'address' =>     'Address',
+			'number_of_employees' =>     'Number Of Employees',
+			'nature_of_business' =>     'Nature Of Business',
+			'person_in_charge' =>     'Person In Charge',
+			'position' =>     'Position',
+			'email' =>     'Email',
+			'mobile' =>     'Mobile',
+			'tel' =>     'Tel',
+			'fax' =>     'Fax',
+		],
+	],	
 
 	'flowercategories' => [
 		'title' => 'Flower Categories',

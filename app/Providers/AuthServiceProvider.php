@@ -69,6 +69,22 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
 
+        Gate::define('corporate_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('corporate_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('corporate_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('corporate_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('corporate_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
         Gate::define('flower_category_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });

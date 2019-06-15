@@ -3,14 +3,14 @@
 
 @section('content')
     <h3 class="page-title">@lang('quickadmin.flowercategories.title')</h3>
-    @can('flower_create')
+    @can('flower_category_create')
     <p>
         <a href="{{ route('admin.flowercategories.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
         
     </p>
     @endcan
 
-    @can('flower_delete')
+    @can('flower_category_delete')
     <p>
         <ul class="list-inline">
             <li><a href="{{ route('admin.flowercategories.index') }}" style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">@lang('quickadmin.qa_all')</a></li> |
@@ -26,10 +26,10 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($flowerCategories) > 0 ? 'datatable' : '' }} @can('flower_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
+            <table class="table table-bordered table-striped {{ count($flowerCategories) > 0 ? 'datatable' : '' }} @can('flower_category_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
                 <thead>
                     <tr>
-                        @can('flower_delete')
+                        @can('flower_category_delete')
                             @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox" id="select-all" /></th>@endif
                         @endcan
 
@@ -46,13 +46,13 @@
                     @if (count($flowerCategories) > 0)
                         @foreach ($flowerCategories as $flowerCategory)
                             <tr data-entry-id="{{ $flowerCategory->id }}">
-                                @can('flower_delete')
+                                @can('flower_category_delete')
                                     @if ( request('show_deleted') != 1 )<td></td>@endif
                                 @endcan
                                 <td field-key='name'>{{ $flowerCategory->name }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
-                                    @can('flower_delete')
+                                    @can('flower_category_delete')
                                                                         {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'POST',
@@ -61,7 +61,7 @@
                                     {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                                     {!! Form::close() !!}
                                 @endcan
-                                    @can('flower_delete')
+                                    @can('flower_category_delete')
                                                                         {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
@@ -73,13 +73,13 @@
                                 </td>
                                 @else
                                 <td>
-                                    @can('flower_view')
+                                    @can('flower_category_view')
                                     <a href="{{ route('admin.flowercategories.show',[$flowerCategory->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
                                     @endcan
-                                    @can('flower_edit')
+                                    @can('flower_category_edit')
                                     <a href="{{ route('admin.flowercategories.edit',[$flowerCategory->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     @endcan
-                                    @can('flower_delete')
+                                    @can('flower_category_delete')
 {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
@@ -105,7 +105,7 @@
 
 @section('javascript') 
     <script>
-        @can('flower_delete')
+        @can('flower_category_delete')
             @if ( request('show_deleted') != 1 ) window.route_mass_crud_entries_destroy = '{{ route('admin.flowercategories.mass_destroy') }}'; @endif
         @endcan
 

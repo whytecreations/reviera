@@ -19,62 +19,63 @@ You must initially show a Business Card or other form of Authentication to show 
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12 text-left">
-					  <form>
+					  <form id="CorporateForm">
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-12"><label>Application Form For</label><select class="form-control"><option>Corporate</option><option>Government </option><option>Others</option></select></div>
+					              <div class="col-md-12"><label>Application Form For</label><select name="corporate_type" class="form-control"><option>Corporate</option><option>Government </option><option>Others</option></select></div>
 					          </div>
 					      </div>
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-12"><label>Company Name</label><input type="text" class="form-control"></div>
+					              <div class="col-md-12"><label>Company Name</label><input name="company_name" required  type="text" class="form-control"></div>
 					          </div>
 					      </div>
 					      <div class="form-group">
 					          <div class="row">
 					              <div class="col-md-12"><label>Company Address</label>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio">Head office</label>
+                                        <input id="headOffice" name="address_type"  type="radio" class="custom-control-input" value="Head Office">
+                                        <label class="custom-control-label" for="headOffice">Head office</label>
                                     </div> 
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio1">Regional office</label>
+                                        <input type="radio" class="custom-control-input" id="regionalOffice" name="address_type" value="Regional Office">
+                                        <label class="custom-control-label" for="regionalOffice">Regional office</label>
                                     </div> 
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customRadio2" name="example1" value="customEx">
-                                        <label class="custom-control-label" for="customRadio2">Others</label>
+                                        <input type="radio" class="custom-control-input" id="Others" name="address_type" value="Others">
+                                        <label class="custom-control-label" for="Others">Others</label>
                                     </div> 
-					              <textarea class="form-control"></textarea></div>
+					              <textarea name="address" class="form-control"></textarea></div>
 					          </div>
 					      </div>
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-6"><label>Number of Employees within the Firm</label><input type="text" class="form-control"></div>
-					              <div class="col-md-6"><label>Nature of business</label><input type="text" class="form-control"></div>
+					              <div class="col-md-6"><label>Number of Employees within the Firm</label><input name="number_of_employees" type="number" class="form-control"></div>
+					              <div class="col-md-6"><label>Nature of business</label><input name="nature_of_business" type="text" class="form-control"></div>
 					          </div>
 					      </div>
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-6"><label>Name of person in charge of the corporate Section</label><input type="text" class="form-control"></div>
-					              <div class="col-md-6"><label>Position</label><input type="text" class="form-control"></div>
+					              <div class="col-md-6"><label>Name of person in charge of the corporate Section</label><input name="person_in_charge" type="text" class="form-control"></div>
+					              <div class="col-md-6"><label>Position</label><input name="position" type="text" class="form-control"></div>
 					          </div>
 					      </div>
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-6"><label>Email</label><input type="text" class="form-control"></div>
-					              <div class="col-md-6"><label>Mobile</label><input type="text" class="form-control"></div>
+					              <div class="col-md-6"><label>Email</label><input name="email" type="email" required class="form-control"></div>
+					              <div class="col-md-6"><label>Mobile</label><input name="mobile" type="number" class="form-control"></div>
 					          </div>
 					      </div>
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-6"><label>Tel</label><input type="text" class="form-control"></div>
-					              <div class="col-md-6"><label>Fax</label><input type="text" class="form-control"></div>
+					              <div class="col-md-6"><label>Tel</label><input name="tel" type="number" class="form-control"></div>
+					              <div class="col-md-6"><label>Fax</label><input name="fax" type="number" class="form-control"></div>
 					          </div>
 					      </div>
+						  <div id="mailStatus" class="alert" role="alert"></div>
 					      <div class="form-group">
 					          <div class="row">
-					              <div class="col-md-12"><button class="btn-sub"><span>Submit</span></button></div>
+					              <div class="col-md-12"><button type="submit" id="SendBtn" class="btn-sub"><span>Submit</span></button></div>
 					          </div>
 					      </div>
 					  </form>
@@ -93,60 +94,77 @@ You must initially show a Business Card or other form of Authentication to show 
 
 
 
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
-    <div class="modal-content">
-      <div class="row">
-      	<div class="col-md-6 no-padding">
-      	   <div class="pdct-slider">
-      		<div id="owl-demo" class="owl-carousel owl-theme">
-              <div class="item"><img src="images/chocolate1.jpg"></div>
-              <div class="item"><img src="images/chocolate2.jpg"></div>
-              <div class="item"><img src="images/chocolate3.jpg"></div>
-	        </div>
-	       </div> 
-      	</div>
-      	<div class="col-md-6 no-padding">
-      	  <div class="pd_rgt">
-      	  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      	  	<h4>Laketown Chocolates</h4>
-      	  	<p>A traditional Chocolate to keep you energized whole day.</p>
-      	  	<h5>Select Size</h5>
-      	  	<div class="slct-size">
-      	  		<ul>
-      	  			<li class="clearfix">
-						<div class="radio"><input id="radio-1" name="radio" type="radio" checked><label for="radio-1" class="radio-label">Big Size</label></div>
-						<span>1000.00 QAR</span>
-                    </li>
-                    <li class="clearfix">
-						<div class="radio"><input id="radio-2" name="radio" type="radio"><label for="radio-2" class="radio-label">Small Size</label></div>
-                        <span>800.00 QAR</span>
-                    </li>
-                    
-      	  		</ul>
-      	  	</div>
-      	  	
-      	  	<div class="price">
-				<div class="input-group quantity">
-					<span class="input-group-btn"><button type="button" class=" btn-minus btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"><span class="fa fa-minus"></span></button></span>
-					<input type="text" name="quant[1]" class="input-number" value="1" min="1" max="30">
-					<span class="input-group-btn"><button type="button" class=" btn-plus btn-number" data-type="plus" data-field="quant[1]"><span class="fa fa-plus"></span></button></span>
-				</div>
-     	  	  <h5>1000.00 <span>QAR</span></h5>
-      	  	</div>
-      	  	<h5>Add Special Instructions</h5>
-      	  	<textarea class="form-control" placeholder="Add a Note"></textarea>
-      	  	<button class="btn-ac">Add to Cart</button>
-      	  </div>
-      	</div>
-      </div>
-      
-      
-      
-    </div>
-  </div>
-</div>
-
-
-
 @endsection
+
+
+
+@section('scripts')
+    @parent
+
+    <script type="text/javascript">
+	var popup = function(message,status){
+          $('#mailStatus').addClass(status).html(message).alert();
+          $("#mailStatus").delay(4000).slideUp(200, function() {
+			$(this).alert('close');
+		});
+      };
+
+	  $('#CorporateForm').submit(function(event) {
+	    event.preventDefault();
+	    $('#SendBtn').html('Sending...</i>');
+	    $('#SendBtn').prop('disabled', true);
+	    var formData = {
+			'corporate_type': $('select[name=corporate_type]').val(),
+			'company_name': $('input[name=company_name]').val(),
+			'address_type': $('input[name=address_type]').val(),
+			'address': $('textarea[name=address]').val(),
+			'number_of_employees': $('input[name=number_of_employees]').val(),
+			'nature_of_business': $('input[name=nature_of_business]').val(),
+			'person_in_charge': $('input[name=person_in_charge]').val(),
+			'position': $('input[name=position]').val(),
+			'email': $('input[name=email]').val(),
+			'mobile': $('input[name=mobile]').val(),
+			'tel': $('input[name=tel]').val(),
+			'fax': $('input[name=fax]').val(),
+	    };
+	    var message;
+	    $.ajax({
+	      type        : 'POST',
+	      url         : '{{url('corporate')}}',
+	      data        : formData, 
+	      dataType    : 'json', // what type of data do we expect back from the server
+	      encode          : true,
+	      success: function(data){
+	        if(data.status=="success"){
+	          message= "Thank you! We will contact you soon.";
+              popup(message,'alert-success');
+	        }
+	        else{
+	          message= "Sorry! Couldnot send mail.";
+              popup(message,'alert-danger');
+	        }
+	      },
+	      error: function(e){
+	        message = "Failed! Couldnot send mail.";
+            popup(message,'alert-danger');
+	      },
+	      complete: function(){
+	        $('#SendBtn').prop('disabled', false);
+	        $('#SendBtn').html('SEND');
+	        document.getElementById("CorporateForm").reset();
+	      }
+	    })
+	});
+
+</script>
+
+
+<script type="text/javascript">
+	$.ajaxSetup({
+	headers: {
+		'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+</script>
+@endsection
+
