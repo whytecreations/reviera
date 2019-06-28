@@ -190,7 +190,6 @@ $(function () {
 
 $('.btn-number').click(function (e) {
   e.preventDefault();
-
   fieldName = $(this).attr('data-field');
   type = $(this).attr('data-type');
   var input = $("input[name='" + fieldName + "']");
@@ -219,6 +218,7 @@ $('.btn-number').click(function (e) {
     input.val(0);
   }
 });
+
 $('.input-number').focusin(function () {
   $(this).data('oldValue', $(this).val());
 });

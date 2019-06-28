@@ -5,7 +5,7 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
 
-             
+
 
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ route('admin.home') }}">
@@ -31,7 +31,7 @@
                             <span>@lang('quickadmin.roles.title')</span>
                         </a>
                     </li>@endcan
-                    
+
                     @can('user_access')
                     <li>
                         <a href="{{ route('admin.users.index') }}">
@@ -39,7 +39,7 @@
                             <span>@lang('quickadmin.users.title')</span>
                         </a>
                     </li>@endcan
-                    
+
                 </ul>
             </li>
             @endcan
@@ -55,24 +55,24 @@
                 </a>
                 <ul class="treeview-menu">
 
-            @can('flower_category_access')
-            <li>
-                <a href="{{ route('admin.flowercategories.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span>@lang('quickadmin.flowercategories.title')</span>
-                </a>
-            </li>
-            @endcan
-                    
-            @can('flower_access')
-            <li>
-                <a href="{{ route('admin.flowers.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span>@lang('quickadmin.flowers.title')</span>
-                </a>
-            </li>
-            @endcan
-                    
+                    @can('flower_category_access')
+                    <li>
+                        <a href="{{ route('admin.flowercategories.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.flowercategories.title')</span>
+                        </a>
+                    </li>
+                    @endcan
+
+                    @can('flower_access')
+                    <li>
+                        <a href="{{ route('admin.flowers.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.flowers.title')</span>
+                        </a>
+                    </li>
+                    @endcan
+
                 </ul>
             </li>
 
@@ -88,26 +88,38 @@
                 </a>
                 <ul class="treeview-menu">
 
-            @can('chocolate_category_access')
-            <li>
-                <a href="{{ route('admin.chocolatecategories.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span>@lang('quickadmin.chocolatecategories.title')</span>
-                </a>
-            </li>
-            @endcan
-                    
-            @can('chocolate_access')
-            <li>
-                <a href="{{ route('admin.chocolates.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span>@lang('quickadmin.chocolates.title')</span>
-                </a>
-            </li>
-            @endcan
-                    
+                    @can('chocolate_category_access')
+                    <li>
+                        <a href="{{ route('admin.chocolatecategories.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.chocolatecategories.title')</span>
+                        </a>
+                    </li>
+                    @endcan
+
+                    @can('chocolate_access')
+                    <li>
+                        <a href="{{ route('admin.chocolates.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.chocolates.title')</span>
+                        </a>
+                    </li>
+                    @endcan
+
                 </ul>
             </li>
+
+
+            @can('order_access')
+            <li>
+                <a href="{{ route('admin.orders.index') }}">
+                    <i class="fa fa-order"></i>
+                    <span>@lang('quickadmin.orders.title')</span>
+                </a>
+            </li>
+            @endcan
+
+
 
             @can('gift_access')
             <li>
@@ -146,5 +158,3 @@
         </ul>
     </section>
 </aside>
-
- 

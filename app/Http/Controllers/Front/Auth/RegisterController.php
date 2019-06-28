@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Front\Auth;
 
 use App\Customer;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Auth;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
-use Auth;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -23,7 +22,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -42,8 +41,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         // $this->middleware('guest');
-            // $this->middleware('guest:web');
-            // $this->middleware('guest:customer');
+        // $this->middleware('guest:web');
+        // $this->middleware('guest:customer');
     }
 
     public function showRegistrationForm()
@@ -63,7 +62,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'dob' => ['nullable','date_format:d/m/Y'],
+            'dob' => ['nullable', 'date_format:d/m/Y'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -92,11 +91,12 @@ class RegisterController extends Controller
         event(new Registered($customer = $this->create($request->all())));
 
         $this->guard()->login($customer);
-
-        return $this->registered($request, $customer)
-                        ?: redirect($this->redirectPath());
+        session(['token_id' => $customer->id]);
+        if ($request->has('checkout') == true) {
+            return $this->registered($request, $customer) ?: redirect()->intended(url('checkout'));
+        }
+        return $this->registered($request, $customer) ?: redirect($this->redirectPath());
     }
-
 
     protected function guard()
     {

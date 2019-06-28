@@ -31,7 +31,7 @@
         <div class="smllogo"><a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt=""/></a></div>
         <div class="head-rgt">
         	<ul>
-        		<li><a href="#0" class="cd-btn"><img src="{{asset('images/cart.svg')}}"><span>{{Cart::getContent()->count()}}</span></a></li>
+        		<li><a href="#0" class="cd-btn"><img src="{{asset('images/cart.svg')}}"><span id="cartQty" class="cartQty">{{Cart::getTotalQuantity()}}</span></a></li>
 						@if(auth()->guard('customer')->check())
         		<li><a href="{{url('account')}}"><img src="{{asset('images/user.svg')}}"></a></li>
 						@else
@@ -98,6 +98,9 @@
   
 
 </div>
+
+
+<div class="Growler" id="Growler" style="position: fixed; padding: 10px; width: 400px; z-index: 50000; bottom: 0px; right: 0px;display:none;">	</div>
 
 {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'signout']) !!}
 <button type="submit">Signout</button>

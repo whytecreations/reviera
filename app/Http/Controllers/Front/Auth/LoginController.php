@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Front\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
 use App\Customer;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Auth;
 use Hash;
-use Validator;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,7 +20,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -41,7 +40,7 @@ class LoginController extends Controller
     {
         // $this->middleware('guest');
         // $this->middleware('guest:web', ['except' => 'logout']);
-        $this->middleware('guest:customer', ['except' => ['logout','changedetails','changePassword']]);
+        $this->middleware('guest:customer', ['except' => ['logout', 'changedetails', 'changePassword']]);
     }
 
     public function showLoginForm()
@@ -49,9 +48,10 @@ class LoginController extends Controller
         return view('frontend.login');
     }
 
-    public function changedetails(Request $request){
+    public function changedetails(Request $request)
+    {
         $customer = Customer::findOrFail(auth()->guard('customer')->user()->id);
-        $customer->update($request->except(['email','password']));
+        $customer->update($request->except(['email', 'password']));
         return back();
     }
 
@@ -69,7 +69,6 @@ class LoginController extends Controller
         }
     }
 
-
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -85,7 +84,14 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
+            $customer = $this->guard()->user();
+            session(['token_id' => $customer->id]);
+            session(['email' => $customer->email]);
+            if ($request->has('checkout') == true) {
+                return redirect()->intended(url('checkout'));
+            }
             return $this->sendLoginResponse($request);
+
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -107,5 +113,5 @@ class LoginController extends Controller
     {
         return Auth::guard('customer');
     }
-    
+
 }

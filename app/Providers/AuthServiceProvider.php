@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
-use App\Role;
 use App\User;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,7 +28,6 @@ class AuthServiceProvider extends ServiceProvider
 
         $user = \Auth::user();
 
-        
         // Auth gates for: User management
         Gate::define('user_management_access', function ($user) {
             return in_array($user->role_id, [1]);
@@ -101,6 +99,22 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        Gate::define('order_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('order_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('order_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('order_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('order_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
         Gate::define('flower_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
@@ -116,7 +130,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('flower_delete', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-
 
         Gate::define('chocolate_category_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
@@ -150,7 +163,6 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
-
         Gate::define('gift_access', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
@@ -166,7 +178,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('gift_delete', function ($user) {
             return in_array($user->role_id, [1, 2]);
         });
-
 
     }
 }
