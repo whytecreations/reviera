@@ -14,24 +14,41 @@ Route::get('chocolates/{slug}', 'Front\HomePageController@chocolatesByCategory')
 Route::get('gift-wrapping', 'Front\HomePageController@giftWrapping')->name('gift-wrapping');
 Route::get('account', 'Front\HomePageController@account');
 Route::get('checkout', 'Front\HomePageController@checkout');
-Route::post('placeorder', 'Front\HomePageController@placeOrder')->name('place-order');
 Route::get('cart', 'Front\HomePageController@cart');
 Route::get('getcart', 'Front\HomePageController@getCart')->name('getcart');
 Route::get('contact', 'Front\HomePageController@contact');
+
+Route::group(['prefix' => 'ar'], function () {
+    Route::get('/', 'Front\ArabicHomePageController@index');
+    Route::get('about', 'Front\ArabicHomePageController@about');
+    Route::get('corporate-rate', 'Front\ArabicHomePageController@corporate');
+    Route::post('corporate', 'Front\ArabicHomePageController@corporateEnquiry');
+    Route::get('flowers', 'Front\ArabicHomePageController@flowers')->name('flowers');
+    Route::get('flowers/{slug}', 'Front\ArabicHomePageController@flowersByCategory');
+    Route::get('chocolates', 'Front\ArabicHomePageController@chocolates')->name('chocolates');
+    Route::get('chocolates/{slug}', 'Front\ArabicHomePageController@chocolatesByCategory');
+    Route::get('gift-wrapping', 'Front\ArabicHomePageController@giftWrapping')->name('gift-wrapping');
+    Route::get('account', 'Front\ArabicHomePageController@account');
+    Route::get('checkout', 'Front\ArabicHomePageController@checkout');
+    Route::get('cart', 'Front\ArabicHomePageController@cart');
+    Route::get('getcart', 'Front\ArabicHomePageController@getCart')->name('getcart');
+    Route::get('contact', 'Front\ArabicHomePageController@contact');
+});
+
+Route::post('placeorder', 'Front\HomePageController@placeOrder')->name('place-order');
 Route::post('contact', 'Front\HomePageController@contactEnquiry');
 Route::post('addflowertocart', 'Front\HomePageController@addFlowerToCart')->name('addflowertocart');
 Route::post('addchocolatetocart', 'Front\HomePageController@addChocolateToCart')->name('addchocolatetocart');
 Route::post('removefromcart', 'Front\HomePageController@removefromcart')->name('removefromcart');
 Route::post('updatequantity', 'Front\HomePageController@updatequantity')->name('updatequantity');
-
 Route::post('addflowertowishlist', 'Front\HomePageController@addFlowerToWishList')->name('addflowertowishlist');
 Route::post('addchocolatetowishlist', 'Front\HomePageController@addChocolateToWishList')->name('addchocolatetowishlist');
 Route::post('wishlisttocart', 'Front\HomePageController@wishlisttocart')->name('wishlisttocart');
-
 Route::post('changedetails', 'Front\Auth\LoginController@changedetails')->name('customer.changedetails');
 Route::post('changepassword', 'Front\Auth\LoginController@changePassword')->name('customer.changepassword');
 
 Route::get('login', 'Front\Auth\LoginController@showLoginForm')->name('customer.login');
+Route::get('login', 'Front\Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Front\Auth\LoginController@login')->name('customer.login');
 Route::get('register', 'Front\Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Front\Auth\RegisterController@register')->name('customer.register');

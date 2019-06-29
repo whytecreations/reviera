@@ -27,17 +27,17 @@
 		<div class="wsmenucontainer clearfix">
 			<div id="overlapblackbg"></div>
 			<div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a
-					href="{{url('/')}}" class="smallogo"><img src="{{asset('images/logo.png')}}" /></a> </div>
+					href="{{url('ar/')}}" class="smallogo"><img src="{{asset('images/logo.png')}}" /></a> </div>
 			<div class="header">
 				<div class="wsmain">
-					<div class="smllogo"><a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt="" /></a>
+					<div class="smllogo"><a href="{{url('ar/')}}"><img src="{{asset('images/logo.png')}}" alt="" /></a>
 					</div>
 					<div class="head-rgt">
 						<ul>
 							<li><a href="#0" class="cd-btn"><img src="{{asset('images/cart.svg')}}"><span id="cartQty"
 										class="cartQty">{{Cart::getTotalQuantity()}}</span></a></li>
 							@if(auth()->guard('customer')->check())
-							<li><a href="{{url('account')}}"><img src="{{asset('images/user.svg')}}"></a></li>
+							<li><a href="{{url('ar/account')}}"><img src="{{asset('images/user.svg')}}"></a></li>
 							@else
 							<li><a href="{{url('login')}}"><img src="{{asset('images/user.svg')}}"></a></li>
 							@endif
@@ -45,12 +45,12 @@
 					</div>
 					<nav class="wsmenu clearfix">
 						<ul class="mobile-sub wsmenu-list">
-							<li><a href="{{url('about')}}">About Us</a></li>
-							<li><a href="{{url('flowers')}}">FLOWERS</a></li>
-							<li><a href="{{url('chocolates')}}">CHOCOLATES</a></li>
-							<li><a href="{{url('gift-wrapping')}}">GIFT WRAPPING</a></li>
-							<li><a href="{{url('corporate-rate')}}">Corporate Rate Tag</a></li>
-							<li><a href="{{url('ar')}}">العربية</a></li>
+							<li><a href="{{url('ar/about')}}">About Us</a></li>
+							<li><a href="{{url('ar/flowers')}}">FLOWERS</a></li>
+							<li><a href="{{url('ar/chocolates')}}">CHOCOLATES</a></li>
+							<li><a href="{{url('ar/gift-wrapping')}}">GIFT WRAPPING</a></li>
+							<li><a href="{{url('ar/corporate-rate')}}">Corporate rate Tag</a></li>
+							<li><a href="{{url('/')}}">English</a></li>
 						</ul>
 					</nav>
 
@@ -90,7 +90,7 @@
 			<div class="container">
 				<div class="col-md-12">
 					<ul>
-						<li><a href="{{url('contact')}}">Contact Us</a></li>
+						<li><a href="{{url('ar/contact')}}">Contact Us</a></li>
 						{{-- <li><a href="#">Order History</a></li> --}}
 						<li><a href="#">Terms & Policies</a></li>
 						<li><a href="#">FAQ</a></li>

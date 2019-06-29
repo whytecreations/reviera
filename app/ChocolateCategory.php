@@ -9,11 +9,11 @@ class ChocolateCategory extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name','slug'];
+    protected $fillable = ['name', 'name_ar', 'slug'];
     protected $hidden = [];
-    
+
     public function chocolates()
-	{
-		return $this->hasMany(Chocolate::class,'category_id','id');
-	}
+    {
+        return $this->hasMany(Chocolate::class, 'category_id', 'id');
+    }
 }

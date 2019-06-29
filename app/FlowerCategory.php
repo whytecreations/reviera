@@ -13,16 +13,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property text $description
  * @property string $text_ar
  * @property text $description_ar
-*/
+ */
 class FlowerCategory extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name','slug'];
+    protected $fillable = ['name', 'slug', 'name_ar'];
     protected $hidden = [];
-    
+
     public function flowers()
-	{
-		return $this->hasMany(Flower::class,'category_id','id');
-	}
+    {
+        return $this->hasMany(Flower::class, 'category_id', 'id');
+    }
 }

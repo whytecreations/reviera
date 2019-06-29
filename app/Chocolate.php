@@ -4,17 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Chocolate extends Model implements HasMedia
 {
     use SoftDeletes, HasMediaTrait;
 
-    protected $fillable = ['category_id', 'title', 'full_price','half_price','quarter_price','description','note'];
+    protected $fillable = ['category_id', 'title', 'title_ar', 'full_price', 'half_price', 'quarter_price', 'description', 'note', 'description_ar', 'note_ar'];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(ChocolateCategory::class);
     }
-    
+
 }

@@ -23,49 +23,49 @@ use Illuminate\Http\Request;
 use Mail;
 use \Session;
 
-class HomePageController extends Controller
+class ArabicHomePageController extends Controller
 {
     public function index()
     {
-        return view('frontend.home');
+        return view('frontend_ar.home');
     }
     public function about()
     {
-        return view('frontend.about');
+        return view('frontend_ar.about');
     }
 
     public function flowers()
     {
         $flowers = Flower::all();
         $flowerCategories = FlowerCategory::all();
-        return view('frontend.flowers', compact('flowers', 'flowerCategories'));
+        return view('frontend_ar.flowers', compact('flowers', 'flowerCategories'));
     }
 
     public function flowersByCategory($slug)
     {
         $flowers = FlowerCategory::where('slug', $slug)->firstOrFail()->flowers;
         $flowerCategories = FlowerCategory::all();
-        return view('frontend.flowers', compact('flowers', 'flowerCategories'));
+        return view('frontend_ar.flowers', compact('flowers', 'flowerCategories'));
     }
 
     public function chocolates()
     {
         $chocolates = Chocolate::all();
         $chocolateCategories = ChocolateCategory::all();
-        return view('frontend.chocolates', compact('chocolates', 'chocolateCategories'));
+        return view('frontend_ar.chocolates', compact('chocolates', 'chocolateCategories'));
     }
 
     public function chocolatesByCategory($slug)
     {
         $chocolates = ChocolateCategory::where('slug', $slug)->firstOrFail()->chocolates;
         $chocolateCategories = ChocolateCategory::all();
-        return view('frontend.chocolates', compact('chocolates', 'chocolateCategories'));
+        return view('frontend_ar.chocolates', compact('chocolates', 'chocolateCategories'));
     }
 
     public function giftWrapping()
     {
         $gifts = Gift::all();
-        return view('frontend.giftWrapping', compact('gifts'));
+        return view('frontend_ar.giftWrapping', compact('gifts'));
     }
 
     public function addFlowerToWishList(Request $request)
@@ -93,12 +93,12 @@ class HomePageController extends Controller
         $customer = auth()->guard('customer')->user();
         $wishlists = $customer->wishlist;
         $addresses = $customer->addresses;
-        return view('frontend.account', compact('customer', 'wishlists', 'addresses'));
+        return view('frontend_ar.account', compact('customer', 'wishlists', 'addresses'));
     }
 
     public function register()
     {
-        return view('frontend.register');
+        return view('frontend_ar.register');
     }
     public function checkout()
     {
@@ -130,7 +130,7 @@ class HomePageController extends Controller
         }
         $shippingCharge = env('SHIPPING_CHARGE', 0);
         $countries = Country::all();
-        return view('frontend.checkout', compact(['cart', 'shipping', 'billing', 'shippingCharge', 'countries']));
+        return view('frontend_ar.checkout', compact(['cart', 'shipping', 'billing', 'shippingCharge', 'countries']));
     }
 
     public function placeOrder(Request $request)
@@ -215,7 +215,7 @@ class HomePageController extends Controller
 
     public function cart()
     {
-        return view('frontend.cart');
+        return view('frontend_ar.cart');
     }
     public function getCart()
     {
@@ -289,7 +289,7 @@ class HomePageController extends Controller
 
     public function contact()
     {
-        return view('frontend.contact');
+        return view('frontend_ar.contact');
     }
 
     public function contactEnquiry(Request $request)
@@ -297,7 +297,7 @@ class HomePageController extends Controller
         Mail::to(ContactEnquiry::getDestinationEmail())
             ->send(new ContactEnquiry($request));
 
-        // return view('frontend.email.contact-enquiry')->with(['request'=> $request]);
+        // return view('frontend_ar.email.contact-enquiry')->with(['request'=> $request]);
         if (count(Mail::failures()) > 0) {
             return response()->json(["status" => "failed"]);
 
@@ -308,7 +308,7 @@ class HomePageController extends Controller
 
     public function corporate()
     {
-        return view('frontend.corporate');
+        return view('frontend_ar.corporate');
     }
 
     public function corporateEnquiry(Request $request)
@@ -317,7 +317,7 @@ class HomePageController extends Controller
         Mail::to(CorporateEnquiry::getDestinationEmail())
             ->send(new CorporateEnquiry($request));
 
-        // return view('frontend.email.corporate-enquiry')->with(['request'=> $request]);
+        // return view('frontend_ar.email.corporate-enquiry')->with(['request'=> $request]);
         if (count(Mail::failures()) > 0) {
             return response()->json(["status" => "failed"]);
 

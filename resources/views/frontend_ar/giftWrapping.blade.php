@@ -1,4 +1,4 @@
-@extends('frontend.layout.app')
+@extends('frontend_ar.layout.app')
 @section('title','Riveria')
 
 @section('content')
@@ -10,6 +10,7 @@
 	<div class="gft5-2"><img src="{{asset('images/gft5.png')}}" class="img-fluid"></div>
 	<div class="box1" data-aos="fade-right"><img src="{{asset('images/box1.png')}}" class="img-fluid"></div>
 	<div class="box3" data-aos="fade-left"><img src="{{asset('images/box3.png')}}" class="img-fluid"></div>
+
 
 	<div class="container">
 		<div class="col-md-12">
@@ -46,7 +47,7 @@
 													<div class="quick">Quick View</div>
 												</div>
 												<figcaption>
-													<h5>{{$gift->title}}</h5>
+													<h5>{{$gift->title_ar?:$gift->title}}</h5>
 												</figcaption>
 											</a></figure>
 									</li>
@@ -77,8 +78,8 @@
 					<div class="pd_rgt">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
 								aria-hidden="true">×</span></button>
-						<h4>{{$gift->title}}</h4>
-						<p>{{$gift->description}}</p>
+						<h4>{{$gift->title_ar?:$gift->title}}</h4>
+						<p>{{$gift->description_ar?:$gift->description}}</p>
 						<form>
 							<div class="form-group">
 								<div class="row">

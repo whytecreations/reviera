@@ -1,4 +1,4 @@
-@extends('frontend.layout.app')
+@extends('frontend_ar.layout.app')
 @section('title','Riveria')
 
 @section('content')
