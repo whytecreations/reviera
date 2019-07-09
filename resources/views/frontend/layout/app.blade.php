@@ -49,7 +49,7 @@
 							<li><a href="{{url('flowers')}}">FLOWERS</a></li>
 							<li><a href="{{url('chocolates')}}">CHOCOLATES</a></li>
 							<li><a href="{{url('gift-wrapping')}}">GIFT WRAPPING</a></li>
-							<li><a href="{{url('corporate-rate')}}">Corporate Rate Tag</a></li>
+							<li><a href="{{url('corporate-rate-tag')}}">Corporate Rate</a></li>
 							<li><a href="{{url('ar')}}">العربية</a></li>
 						</ul>
 					</nav>

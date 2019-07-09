@@ -1018,6 +1018,7 @@ dl dt:nth-child(7):before, .responsive-tabs .active:before {display: none}
 }
 @media only screen and (min-width: 768px) {
 dt {width: 25%;}
+
 .responsive-tabs {}
 .responsive-tabs dt {float: left; border-top: 0; margin-top: 1px;}
 .responsive-tabs .active + dd {display: none;}
@@ -1351,9 +1352,76 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 
 @media (max-width:1450px) {
   .insta a img{height: 220px;}  
-    
 }
 
+
+@media (min-width:993px) and (max-width:1024px) {
+	.insta a{width: 16.666666%}
+	.ftr-tp ul li{width: 33% !important; padding: 0 0 0 60px; margin: 0 0 20px}
+	.ftr-tp ul li img{left: 0 !important}
+	.flwr-txt {margin: 50px 0 30px;}
+}
+
+@media (min-width:768px) and (max-width:992px) {
+	
+	.flwrimg2, .cutting, .scissor, .tag, .box1, .box3{width: 120px}
+	.flwr-txt {margin: 0px 0 30px;}
+	.flwr {padding: 100px 0 50px}
+	.gft-txt{margin: 0}
+	.gft-sec {margin: 30px 0 0;}
+	.insta a{width: 16.666666%}
+	.insta a img {height: 160px;}
+	.head-rgt {float: left; margin: 29px 0;}
+	.ftr-tp ul li{width: 50% !important; padding: 0 0 0 60px; margin: 0 0 20px}
+	.ftr-tp ul li img{left: 0 !important}
+	.pdct-img img, .pdct-img{height: 200px}
+	.pdct-img{line-height: 200px}
+	.pdct figcaption{padding: 15px 0}
+	.modal-dialog{max-width: 700px}
+	
+}
+
+
+
+@media (max-width:767px) {
+	
+	.wrap-lft{display: none}
+	.head-rgt{float: left; margin: 29px 0 20px 0px;}
+	.cclt-img img{max-width: 100%}
+	.choco5{bottom: 10px}
+	.flwrimg1, .cutting-player{width: 80px}
+	.cutting, .flwrimg2, .scissor, .tag, .box3, .box1, .choco3, .choco2{width: 100px}
+	.flwr p, .gft p, .cclt p{padding: 0;text-align: center;}
+	.flwr-txt {margin: 50px 0 30px;}
+	.flwr-sec {margin: 50px 0 100px;}
+	.abox {text-align: center;}
+	.gft-sec {margin: 0px 0 0;}
+	.insta a{width: 49.666666%}
+	.insta a img {height: 180px;}
+	.ftr-tp ul li{width: 100% !important; padding: 0 0px 0 60px;margin-bottom: 10px;}
+	.ftr-tp ul li img{left: 0 !important}
+	.flwr h4, .gft h4, .cclt h4, .crt-txt, .responsive-tabs .active + dd .col-md-12{padding: 0}
+	.sidebar, .gft-txt{margin: 0 !important}
+	.contents ul li, .gft .contents ul li{width: 100%; margin: 0 !important; padding: 0}
+	.sidebar ul{margin: 0 0 40px}
+	.pdct-slider .owl-carousel{position: relative;top: 0; transform: none;}
+	.pdct-slider .owl-carousel .owl-item img{height: auto}
+	.owl-theme .owl-nav.disabled+.owl-dots {margin-top: 10px; position: absolute; bottom: 0; left: 0; right: 0;}
+	.close{right: -9px; z-index: 1}
+	.responsive-tabs dt:before{top: inherit; bottom: 0; width: 100%; height: 1px}
+	.acct h5{margin: 5px 0 0px;font-size: 14px;}
+	.cclt form {width: 93%; text-align: left;}
+	.acct .form-control{margin-bottom: 10px}
+	.ana, .ab{margin: 0 auto 40px; width: 95%}
+	.re{margin: 20px 0 0}
+	.ab p{font-size: 14px}
+	.re ul li{width: 49%}
+	.pi ul li{padding: 15px 15px 5px;}
+	.pi ul li p{text-align: left}
+	.pl-35{padding: 0}
+	.gft{padding:80px 0 50px;}
+	
+}
 
 
 

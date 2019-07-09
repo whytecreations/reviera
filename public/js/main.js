@@ -324,7 +324,7 @@ $(window).load(function () {
     get: 'user',
     userId: '235330573',
     clientId: '03f624bc12454fd5ac69518b4703860d',
-    accessToken: '235330573.1677ed0.500ef5ebbf8f47a0af4d34c9926c70fe',
+    accessToken: '235330573.8f4c5bf.922eeabd72a341d899e5eb63b19cb683',
     resolution: 'low_resolution',
     template: '<a title="online marketing qatar" href="{{link}}" target="_blank" id="{{id}}"><img alt="web development, graphic design and branding" src="{{image}}" /></a>',
     sortBy: 'most-recent',

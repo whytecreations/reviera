@@ -5,7 +5,7 @@ Route::get('test', function () {
 
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about', 'Front\HomePageController@about');
-Route::get('corporate-rate', 'Front\HomePageController@corporate');
+Route::get('corporate-rate-tag', 'Front\HomePageController@corporate');
 Route::post('corporate', 'Front\HomePageController@corporateEnquiry');
 Route::get('flowers', 'Front\HomePageController@flowers')->name('flowers');
 Route::get('flowers/{slug}', 'Front\HomePageController@flowersByCategory');
@@ -21,7 +21,7 @@ Route::get('contact', 'Front\HomePageController@contact');
 Route::group(['prefix' => 'ar'], function () {
     Route::get('/', 'Front\ArabicHomePageController@index');
     Route::get('about', 'Front\ArabicHomePageController@about');
-    Route::get('corporate-rate', 'Front\ArabicHomePageController@corporate');
+    Route::get('corporate-rate-tag', 'Front\ArabicHomePageController@corporate');
     Route::post('corporate', 'Front\ArabicHomePageController@corporateEnquiry');
     Route::get('flowers', 'Front\ArabicHomePageController@flowers')->name('flowers');
     Route::get('flowers/{slug}', 'Front\ArabicHomePageController@flowersByCategory');
