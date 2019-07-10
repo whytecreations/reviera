@@ -52,32 +52,32 @@
 											</div>
 										</div>
 									</form>
-									{{-- <h5>Change Password</h5>
+									<h5>Change Password</h5>
 									<form method="POST" action="{{ route('customer.changepassword') }}">
-									{{csrf_field()}}
-									<div class="form-group clearfix">
-										<div class="row">
-											<div class="col-md-6"><label>Current Password</label><input type="password"
-													name="current_password" class="form-control">
-											</div>
-											<div class="col-md-6"><label>New Password</label><input type="password"
-													name="new_password" class="form-control"></div>
-										</div>
-									</div>
-									<div class="form-group clearfix">
-										<div class="row">
-											<div class="col-md-12"><label>Confirm Password</label><input type="password"
-													name="confirm_password" class="form-control">
+										{{csrf_field()}}
+										<div class="form-group clearfix">
+											<div class="row">
+												<div class="col-md-6"><label>Current Password</label><input
+														type="password" name="current_password" class="form-control">
+												</div>
+												<div class="col-md-6"><label>New Password</label><input type="password"
+														name="new_password" class="form-control"></div>
 											</div>
 										</div>
-									</div>
-									<div class="form-group clearfix">
-										<div class="row">
-											<div class="col-md-12"><button class="btn-sub"><span>Save
-														Changes</span></button></div>
+										<div class="form-group clearfix">
+											<div class="row">
+												<div class="col-md-12"><label>Confirm Password</label><input
+														type="password" name="confirm_password" class="form-control">
+												</div>
+											</div>
 										</div>
-									</div>
-									</form> --}}
+										<div class="form-group clearfix">
+											<div class="row">
+												<div class="col-md-12"><button class="btn-sub"><span>Save
+															Changes</span></button></div>
+											</div>
+										</div>
+									</form>
 
 									{{-- <div class="form-group clearfix">
 										<div class="row">
@@ -111,7 +111,7 @@
 														</div>
 													</td>
 													<td width="15%">QAR
-														{{$wishlist->product->small_price ?$wishlist->product->small_price : $wishlist->product->full_price}}
+														{{$wishlist->product->small_price?$wishlist->product->small_price : $wishlist->product->big_price}}
 													</td>
 													<td width="15%">
 														<a href="javascript:void(0);" style="color:#925d5c"
@@ -159,41 +159,83 @@
 						</div>
 					</dd>
 
-					<dt>Payment Information</dt>
+					<dt>My Orders</dt>
 					<dd>
-						{{-- <div class="col-md-12 clearfix animated fadeIn">
+						<div class="col-md-12 clearfix animated fadeIn">
 							<div class="row">
+								@foreach ($myorders as $order)
 								<div class="col-md-12">
-									<div class="ana"><a href="#">Add New Card</a></div>
 									<div class="ab">
 										<div class="pi">
 											<ul>
 												<li>
-													<p><span>Name on Card</span> Libin KR</p>
+													<p><span>Order Reference Number</span>
+														{{$order->created_at->format('Ymd').$order->id}}</p>
 												</li>
 												<li>
-													<p><span>Card Number</span> 1452 1298 6574 1287</p>
+													<p><span>Payment Method</span>{{$order->payment_method}}</p>
+												</li>
+
+
+												<li class="order-item">
+													<p><span>Items</span>
+														<div class="table-responsive" data-aos="fade-up">
+															<table class="table table-bordered">
+
+																<tbody>
+																	@foreach ($order->orderDetails as $detail)
+																	<tr>
+																		<td width="55%" align="left">
+																			<div class="crt-img">
+																				<img
+																					src="{{asset($detail->product->getMedia('images')->first()!=null?$detail->product->getMedia('images')->first()->getUrl():'images/logo.png')}}">
+																			</div>
+																			<div class="crt-txt">
+																				<h5>{{$detail->product->title}}</h5>
+																			</div>
+																		</td>
+																		<td width="15%">QAR
+																			{{$detail->product->small_price ?$detail->product->small_price : $detail->product->big_price}}
+																		</td>
+																	</tr>
+																	@endforeach
+																</tbody>
+															</table>
+														</div>
+													</p>
+												</li>
+												<li> </li>
+
+												<li>
+													<p><span>Shipping
+															Address</span>{!! $order->shipping_address->readable() !!}
+													</p>
 												</li>
 												<li>
-													<p><span>Valid Through</span> 02/22</p>
+													<p><span>Billing Address</span>{!!
+														$order->shipping_address->readable() !!}
+													</p>
 												</li>
 												<li>
-													<p><span>CVV</span> 201</p>
+													<p><span>Total Amount</span>QAR {{ $order->amount}}</p>
+												</li>
+												<li>
+													<p><span>Status</span>{{$order->status}}</p>
 												</li>
 											</ul>
 										</div>
-										<div class="re">
+										{{-- <div class="re">
 											<ul>
 												<li><a href="#"> <i class="fa fa-close"></i> Remove</a></li>
 												<li><a href="#"> <i class="fa fa-edit"></i> Edit</a></li>
 											</ul>
-										</div>
+										</div> --}}
 
 									</div>
-
 								</div>
+								@endforeach
 							</div>
-						</div> --}}
+						</div>
 					</dd>
 
 

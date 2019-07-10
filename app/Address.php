@@ -23,4 +23,16 @@ class Address extends Model
         return $this->belongsTo(Customer::class);
     }
 
+    public function readable()
+    {
+        return "<small>
+        $this->first_name  $this->last_name  <br/>
+         $this->address1 <br/>
+         $this->address2 <br/>
+         $this->city , $this->country <br/>
+         Phone: $this->phone <br/>
+         Email: $this->email <br/>
+
+         </small>";
+    }
 }

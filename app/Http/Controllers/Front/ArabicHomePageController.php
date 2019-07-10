@@ -21,6 +21,8 @@ use Cart;
 use Hash;
 use Illuminate\Http\Request;
 use Mail;
+use Omnipay\Omnipay;
+use stdClass;
 use \Session;
 
 class ArabicHomePageController extends Controller
@@ -93,13 +95,15 @@ class ArabicHomePageController extends Controller
         $customer = auth()->guard('customer')->user();
         $wishlists = $customer->wishlist;
         $addresses = $customer->addresses;
-        return view('frontend_ar.account', compact('customer', 'wishlists', 'addresses'));
+        $myorders = $customer->orders;
+        return view('frontend_ar.account', compact('customer', 'wishlists', 'addresses', 'myorders'));
     }
 
     public function register()
     {
         return view('frontend_ar.register');
     }
+
     public function checkout()
     {
         $cart = Cart::getContent();
@@ -175,11 +179,34 @@ class ArabicHomePageController extends Controller
             $od->save();
         }
 
+        if ($request->payment_method == 'Card') {
+            $gateway = Omnipay::create('Migs_ThreeParty');
+            $gateway->setMerchantId(env('PAYMENT_MIGS_MERCHANT_ID'));
+            $gateway->setMerchantAccessCode(env('PAYMENT_MIGS_ACCESS_CODE'));
+            $gateway->setSecureHash(env('PAYMENT_MIGS_SECURE_HASH'));
+            $gateway->setTestMode(env('PAYMENT_MIGS_TEST_MODE'));
+
+            $totalAmount = $order->amount + $order->shipping_cost;
+            $response = $gateway->purchase(['amount' => $totalAmount,
+                'currency' => 'QAR',
+                'locale' => 'en',
+                'returnUrl' => env('APP_URL') . '/payment/response',
+                // 'description' => '',
+                'transactionId' => $order->id,
+            ])->send()->redirect();
+        } else {
+            $data = new stdClass();
+            $data->title = 'Order Placed Successfully';
+            $data->type = 'success';
+            $data->message = 'Thank you for your order';
+            $data->description = 'Order Reference Number is ' . $order->created_at->format("Ymd") . $order->id;
+            Cart::clear();
+            return view('frontend.statusMessage', compact('data'));
+        }
         // $pdf = PDF::loadView('emails.invoice', array('order' => $order));
         // $pdf->save('./assets/alchemy/invoice/' . $order->id . $order->customer_id . $order->amount . '.pdf')->stream('download.pdf');
-        $response = $this->checkout();
-        Cart::clear();
-        return $order;
+        // $response = $this->checkout();
+        // return $order;
     }
 
     public function saveAddress($data)
@@ -259,8 +286,13 @@ class ArabicHomePageController extends Controller
         if ($wishlist->product_type == 'flower') {
             $flower = $wishlist->product;
             $image = $flower->getMedia('images')->first() != null ? $flower->getMedia('images')->first()->getUrl() : '';
-            Cart::add($wishlist->product_id . "-small", $flower->title, $flower->small_price, 1, ['type' => 'flower', 'size' => 'small', 'image' => $image, 'id' => $flower->id]);
-            return Cart::get($wishlist->product_id . "-small");
+            if ($wishlist->product->small_price) {
+                Cart::add($wishlist->product_id . "-small", $flower->title, $flower->small_price, 1, ['type' => 'flower', 'size' => 'small', 'image' => $image, 'id' => $flower->id]);
+                return Cart::get($wishlist->product_id . "-small");
+            } else {
+                Cart::add($wishlist->product_id . "-big", $flower->title, $flower->big_price, 1, ['type' => 'flower', 'size' => 'big', 'image' => $image, 'id' => $flower->id]);
+                return Cart::get($wishlist->product_id . "-big");
+            }
         }
 
         if ($wishlist->product_type == 'chocolate') {

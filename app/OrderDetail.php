@@ -19,4 +19,13 @@ class OrderDetail extends Model
         'total_amount',
         'status',
     ];
+
+    public function product()
+    {
+        if ($this->product_type == 'flower') {
+            return $this->belongsTo(Flower::class, 'product_id', 'id');
+        } else {
+            return $this->belongsTo(Chocolate::class, 'product_id', 'id');
+        }
+    }
 }

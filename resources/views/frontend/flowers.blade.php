@@ -14,7 +14,8 @@
 	<div class="container">
 		<div class="col-md-12 ">
 			<h2 data-aos="fade-up">Flower <br> Arrangements</h2>
-			<h4 data-aos="fade-up">Our master florist design Different Unique Flower Arrangement for every occasion.</h4>
+			<h4 data-aos="fade-up">Our master florist design Different Unique Flower Arrangement for every occasion.
+			</h4>
 
 		</div>
 

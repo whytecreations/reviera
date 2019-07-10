@@ -4,62 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66f3a069c7251743853e993d518eb5f5",
+    "content-hash": "e756c408d6568dec104c18c5168c2089",
     "packages": [
-        {
-            "name": "barryvdh/laravel-omnipay",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barryvdh/laravel-omnipay.git",
-                "reference": "2e0ab9de54ccef687cb572ccde67aeb8d54477f2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-omnipay/zipball/2e0ab9de54ccef687cb572ccde67aeb8d54477f2",
-                "reference": "2e0ab9de54ccef687cb572ccde67aeb8d54477f2",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^5",
-                "league/omnipay": "~3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Barryvdh\\Omnipay\\ServiceProvider"
-                    ],
-                    "aliases": {
-                        "Omnipay": "Barryvdh\\Omnipay\\Facade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Barryvdh\\Omnipay\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "Omnipay Service Provider for Laravel",
-            "keywords": [
-                "laravel",
-                "omnipay"
-            ],
-            "time": "2018-05-15T10:25:31+00:00"
-        },
         {
             "name": "clue/stream-filter",
             "version": "v1.4.1",
@@ -1812,6 +1758,66 @@
                 "purchase"
             ],
             "time": "2018-05-15T08:36:43+00:00"
+        },
+        {
+            "name": "omnipay/migs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/omnipay-migs.git",
+                "reference": "e113393fb336239da09229331a28b41d6a5adf78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-migs/zipball/e113393fb336239da09229331a28b41d6a5adf78",
+                "reference": "e113393fb336239da09229331a28b41d6a5adf78",
+                "shasum": ""
+            },
+            "require": {
+                "omnipay/common": "^3"
+            },
+            "require-dev": {
+                "omnipay/tests": "^3",
+                "phpro/grumphp": "^0.14",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Omnipay\\Migs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adrian Macneil",
+                    "email": "adrian@adrianmacneil.com"
+                },
+                {
+                    "name": "Omnipay Contributors",
+                    "homepage": "https://github.com/thephpleague/omnipay-migs/contributors"
+                }
+            ],
+            "description": "MIGS driver for the Omnipay payment processing library",
+            "homepage": "https://github.com/thephpleague/omnipay-migs",
+            "keywords": [
+                "gateway",
+                "mastercard internet gateway service",
+                "merchant",
+                "migs",
+                "omnipay",
+                "pay",
+                "payment"
+            ],
+            "time": "2019-03-03T17:32:04+00:00"
         },
         {
             "name": "opis/closure",
@@ -6483,8 +6489,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "unisharp/laravel-filemanager": 20,
-        "barryvdh/laravel-omnipay": 20
+        "unisharp/laravel-filemanager": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -161,7 +161,8 @@
             </article>
             @endif
 
-            <form id="AddressForm">
+            <form id="AddressForm" action='{{route("place-order")}}' method="post">
+              {{ csrf_field() }}
               @if(auth()->guard('customer')->check() && count((array)$shipping)!=0 )
               <article id="ShippingInfo" class="accord accord-single">
                 <h4 class="accord__head">Shipping Information </h4>
@@ -360,13 +361,13 @@
                     <ul>
                       <li class="clearfix">
                         <div class="radio">
-                          <input id="radio-1" name="payment_method" value="Cash On Delivery" type="radio" checked="">
+                          <input id="radio-1" name="payment_method" value="Cash On Delivery" type="radio">
                           <label for="radio-1" class="radio-label">Cash On Delivery</label>
                         </div>
                       </li>
                       <li class="clearfix">
                         <div class="radio">
-                          <input id="radio-2" name="payment_method" value="Card" type="radio">
+                          <input id="radio-2" name="payment_method" value="Card" type="radio" checked="">
                           <label for="radio-2" class="radio-label">Debit/Credit Card</label>
                         </div>
                       </li>
@@ -453,21 +454,6 @@
     }else{
       $('#BillingInfo').show()
     }
-  })
-
-  $('#AddressForm').submit(function (e) {
-    e.preventDefault()
-
-    let data =   $('#AddressForm').serializeArray()
-    $.ajax({
-      type: "POST",
-      url: '{{route("place-order")}}',
-      data: data,
-      success: function(data){
-        document.location.href="{{env('APP_URL','/')}}";
-        },
-      error:function(){console.log('errr')},
-    });
   })
 
 </script>

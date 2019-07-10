@@ -1,7 +1,30 @@
 <?php
+
 Route::get('test', function () {
-    return bcrypt('12341234');
+    // $gateway = Omnipay::create('Migs_ThreeParty');
+    // $gateway->setMerchantId(env('PAYMENT_MIGS_MERCHANT_ID'));
+    // $gateway->setMerchantAccessCode(env('PAYMENT_MIGS_ACCESS_CODE'));
+    // $gateway->setSecureHash(env('PAYMENT_MIGS_SECURE_HASH'));
+    // // $gateway->setTestMode(true);
+
+    // $response = $gateway->purchase(['amount' => '1.00',
+    //     'currency' => 'QAR',
+    //     'locale' => 'en',
+    //     'returnUrl' => env('APP_URL') . '/payment/response',
+    //     'description' => 'Hello',
+    //     'transactionId' => mt_rand(100, 999999)])->send();
+    // if ($response->isSuccessful()) {
+    //     dd('success');
+    //     dd($response->getMessage());
+    // } elseif ($response->isRedirect()) {
+    //     $response->redirect();
+    // } else {
+    //     dd('failed');
+    //     dd($response->getMessage());
+    // }
 });
+
+Route::get('payment/response', 'TransactionController@onPaymentResponse');
 
 Route::get('/', 'Front\HomePageController@index');
 Route::get('about', 'Front\HomePageController@about');

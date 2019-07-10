@@ -16,9 +16,10 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
+        "league/omnipay": "^3",
+        "omnipay/migs": "~3.0",
         "spatie/laravel-medialibrary": "^7.0.0",
-        "unisharp/laravel-filemanager": "dev-master",
-        "barryvdh/laravel-omnipay": "0.3.*@dev"
+        "unisharp/laravel-filemanager": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
