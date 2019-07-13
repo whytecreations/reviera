@@ -19,9 +19,9 @@ class OrderController extends Controller
             if (!Gate::allows('order_delete')) {
                 return abort(401);
             }
-            $orders = Order::onlyTrashed()->get();
+            $orders = Order::onlyTrashed()->orderBy('created_at', 'desc')->get();
         } else {
-            $orders = Order::all();
+            $orders = Order::orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.orders.index', compact('orders'));

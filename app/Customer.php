@@ -32,7 +32,7 @@ class Customer extends Authenticatable
 
     public function getDefaultAddress()
     {
-        return $this->addresses()->first();
+        return $this->addresses()->orderBy('created_at', 'desc')->first();
 
     }
 

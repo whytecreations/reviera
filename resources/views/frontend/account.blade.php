@@ -210,6 +210,12 @@
 													<p><span>Shipping
 															Address</span>{!! $order->shipping_address->readable() !!}
 													</p>
+													@if($order->shipping_address->hasLocation())
+													<a class="btn btn-link"
+														href="https://maps.google.com/?q=25.280336,51.499729"
+														target="blank" /><i class="fa fa-location-arrow"></i> Shipping
+													Location</a>
+													@endif
 												</li>
 												<li>
 													<p><span>Billing Address</span>{!!
@@ -217,6 +223,9 @@
 													</p>
 												</li>
 												<li>
+													@if($order->shipping_cost>0)
+													<p><span>Shipping Cost</span>QAR {{ $order->shipping_cost}}</p>
+													@endif
 													<p><span>Total Amount</span>QAR {{ $order->amount}}</p>
 												</li>
 												<li>

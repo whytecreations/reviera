@@ -210,6 +210,12 @@
 													<p><span>Shipping
 															Address</span>{!! $order->shipping_address->readable() !!}
 													</p>
+													@if($order->shipping_address->hasLocation())
+													<a class="btn btn-link"
+														href="https://maps.google.com/?q={{$order->shipping_address->latitude}},{{$order->shipping_address->longitude}}"
+														target="blank" /><i class="fa fa-location-arrow"></i> Shipping
+													Location</a>
+													@endif
 												</li>
 												<li>
 													<p><span>Billing Address</span>{!!
@@ -217,6 +223,9 @@
 													</p>
 												</li>
 												<li>
+													@if($order->shipping_cost>0)
+													<p><span>Shipping Cost</span>QAR {{ $order->shipping_cost}}</p>
+													@endif
 													<p><span>Total Amount</span>QAR {{ $order->amount}}</p>
 												</li>
 												<li>
@@ -225,11 +234,11 @@
 											</ul>
 										</div>
 										{{-- <div class="re">
-											<ul>
-												<li><a href="#"> <i class="fa fa-close"></i> Remove</a></li>
-												<li><a href="#"> <i class="fa fa-edit"></i> Edit</a></li>
-											</ul>
-										</div> --}}
+												<ul>
+													<li><a href="#"> <i class="fa fa-close"></i> Remove</a></li>
+													<li><a href="#"> <i class="fa fa-edit"></i> Edit</a></li>
+												</ul>
+											</div> --}}
 
 									</div>
 								</div>

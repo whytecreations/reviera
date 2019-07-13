@@ -16,11 +16,18 @@ class Address extends Model
         'country',
         'phone',
         'email',
+        'latitude',
+        'longitude',
     ];
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function hasLocation()
+    {
+        return $this->latitude != null && $this->longitude != null;
     }
 
     public function readable()

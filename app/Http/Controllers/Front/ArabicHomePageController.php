@@ -95,7 +95,7 @@ class ArabicHomePageController extends Controller
         $customer = auth()->guard('customer')->user();
         $wishlists = $customer->wishlist;
         $addresses = $customer->addresses;
-        $myorders = $customer->orders;
+        $myorders = $customer->orders()->orderBy('created_at', 'desc')->get();
         return view('frontend_ar.account', compact('customer', 'wishlists', 'addresses', 'myorders'));
     }
 
@@ -139,6 +139,7 @@ class ArabicHomePageController extends Controller
 
     public function placeOrder(Request $request)
     {
+        $data = $request->all();
         $cart = Cart::getContent();
         $coupon = '';
         $discount = 0;
@@ -150,11 +151,13 @@ class ArabicHomePageController extends Controller
         if ($customer == null) {
             $customer = $this->saveCustomer($request->all());
         } else {
-            $data = $request->all();
-            $data['custormer_id'] = $customer->id;
+            $data['customer_id'] = $customer->id;
             $this->saveAddress($data);
         }
-        $shippingCharge = env('SHIPPING_CHARGE', 0);
+        $shippingCharge = 0;
+        if (Cart::getTotal() < 1000) {
+            $shippingCharge = $data['inAllowedCircle'] == "true" ? 20 : 60;
+        }
         $order = new Order(['amount' => Cart::getTotal(),
             'billing_address_id' => session('bid'),
             'shipping_address_id' => session('sid'),

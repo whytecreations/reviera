@@ -22,7 +22,7 @@
                 <tr>
                     <th>OrderID</th>
                     <th>Date</th>
-                    <th>Name</th>
+                    <th>Customer Name</th>
                     <th>Email</th>
                     <th>Items</th>
                     <th>Payment Method</th>
@@ -41,7 +41,13 @@
                     <td>{{$order->customer->first_name." ".$order->customer->last_name}}</td>
                     <td>{{$order->customer->email}}</td>
 
-                    <td> @foreach($order->orderDetails as $orderDetail){{$orderDetail->product_name}}, @endforeach</td>
+                    <td> @foreach($order->orderDetails as $orderDetail)
+                        @php
+                        $orderItems = $orderDetail->product_name .",";
+                        @endphp
+                        @endforeach
+                        {{rtrim($orderItems, ',') }}
+                    </td>
                     <td> @if($order->payment_method=="Paypal") <img
                             src="https://png.pngtree.com/svg/20170322/paypal_1215259.png" class="img-responsive"
                             style="width: 119px;"> -
@@ -56,7 +62,7 @@
                         {{$order->payment_method}}
                         @endif
                     </td>
-                    <td>{{$order->amount}}</td>
+                    <td>{{$order->amount}} QAR</td>
 
                     <td>
                         @can('order_view')
@@ -77,7 +83,7 @@
 </div>
 
 <div id="myModal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -85,7 +91,7 @@
             </div>
 
             <div class="modal-body">
-                <div class="alert alert-info alert-styled-left text-blue-800 content-group" id="alert-data">
+                <div class="" id="alert-data">
                     <span class="text-semibold">Here we go!</span> Example of an alert inside modal.
                     <button type="button" class="close" data-dismiss="alert">×</button>
                 </div>
@@ -97,7 +103,7 @@
                         <div class="col-md-6 "><b class="font-15">Shipping Address:</b></div>
                         <div class="col-md-6 "><b class="font-15">Billing Address:</b></div>
                     </h6>
-                    <div class="col-md-6"> <i id="shipping-ad">Address</i></div>
+                    <div class="col-md-6"> <i id="shipping-ad">Address</i> <span id="location"></span></div>
                     <div class="col-md-6"><i id="billing-ad">Address</i></div>
                 </div>
 
@@ -175,10 +181,12 @@
                     url:"{{asset('admin/order')}}/"+id,
                     dataType:'json',
                     success: function(data) {
-                        console.log(data);
                         $(".modal-title").html('<i class="icon-menu7"></i> &nbsp;Order ID: #'+data.data[0].id+data.data[0].customer_id+data.data[0].amount);
-                        $("#alert-data").html('<span class=\"text-semibold\">'+data.data[0].customer.first_name+' '+data.data[0].customer.last_name+'</span> '+NullChecker(data.data[0].customer.phone)+', '+NullChecker(data.data[0].customer.email));
+                        $("#alert-data").html('<h4 class=\"text-semibold\">'+data.data[0].customer.first_name+' '+data.data[0].customer.last_name+'</h4> '+NullChecker(data.data[0].customer.email)+'<br/> '+NullChecker(data.data[0].customer.phone)+'<br/>');
                         $("#shipping-ad").html(data.data[0].shipping_address.address1+' '+data.data[0].shipping_address.address2+' '+data.data[0].shipping_address.city+'- '+data.data[0].shipping_address.country+data.data[0].shipping_address.phone);
+                        $("#location").html(
+                        '<br/><a class="btn btn-link" href="https://maps.google.com/?q='+data.data[0].shipping_address.latitude+','+data.data[0].shipping_address.longitude
+                        +'" target="blank" ><i class="fa fa-location-arrow"></i> Shipping Location</a>')
                         $("#billing-ad").html(data.data[0].billing_address.address1+' '+data.data[0].billing_address.address2+' '+data.data[0].billing_address.city+'- '+data.data[0].billing_address.country+data.data[0].billing_address.phone);
                         $("#tbody").empty();
                         $("#tbody2").empty();
@@ -191,17 +199,17 @@
                             '                                <th>Shipping Charge : </th>\n' +
                             '                                <th></th>\n' +
                             '                                <th></th>\n' +
-                            '                                <th>'+data.data[0].shipping_cost+'</th>\n' +
+                            '                                <th>'+data.data[0].shipping_cost+' QAR</th>\n' +
                             '                            </tr> <tr>\n' +
                             '                                <th>Sub Total : </th>\n' +
                             '                                <th></th>\n' +
                             '                                <th></th>\n' +
-                            '                                <th>'+data.data[0].order_details[0].total_amount+'</th>\n' +
+                            '                                <th>'+data.data[0].order_details[0].total_amount+' QAR</th>\n' +
                             '                            </tr><tr>\n' +
                             '                                <th><b>Total : </b></th>\n' +
                             '                                <th></th>\n' +
                             '                                <th><b>'+sum+'</b></th>\n' +
-                            '                                <th><b>'+parseFloat(parseFloat(data.data[0].order_details[0].total_amount)+parseFloat(data.data[0].shipping_cost))+'</b></th>\n' +
+                            '                                <th><b>'+parseFloat(parseFloat(data.data[0].order_details[0].total_amount)+parseFloat(data.data[0].shipping_cost))+' QAR</b></th>\n' +
                             '                            </tr>');
                         $("#payment-method").text("Payment Method: "+data.data[0].payment_method);
                         if(data.data[0].payment_method=="Paypal"){
@@ -237,7 +245,7 @@
               '                                <td><img src="'+data.product_image+'" width="75" /></td>\n' +
               '                                <td>'+data.product_name+'</td>\n' +
               '                                <td>'+data.quantity+'</td>\n' +
-              '                                <td>'+data.amount+'</td>\n' +
+              '                                <td>'+data.amount+' QAR</td>\n' +
               '                            </tr>';
           $("#tbody").append(text);
           console.log(data);

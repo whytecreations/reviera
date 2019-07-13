@@ -25,6 +25,8 @@ class CreateAddressesTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('type')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('customer_id')->nullable();
 
             $table->timestamps();

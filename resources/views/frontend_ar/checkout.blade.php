@@ -183,11 +183,13 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Address 1</label>
-                        <input type="text" class="form-control" value="{{$shipping->address1}}" name="address1">
+                        <input type="text" class="form-control" value="{{$shipping->address1}}" name="address1"
+                          required>
                       </div>
                       <div class="col-md-6">
                         <label>Address 2</label>
-                        <input type="text" class="form-control" value="{{$shipping->address2}}" name="address2">
+                        <input type="text" class="form-control" value="{{$shipping->address2}}" name="address2"
+                          required>
                       </div>
                     </div>
                   </div>
@@ -195,7 +197,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <input type="text" class="form-control" value="{{$shipping->city}}" name="city">
+                        <input type="text" class="form-control" value="{{$shipping->city}}" name="city" required>
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
@@ -213,15 +215,37 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Phone </label>
-                        <input type="number" class="form-control" value="{{$shipping->phone}}" name="phone">
+                        <input type="number" class="form-control" value="{{$shipping->phone}}" name="phone" required>
                       </div>
                       <div class="col-md-6">
                         <label>Email</label>
-                        <input type="email" class="form-control" value="{{$shipping->email}}" name="email">
+                        <input type="email" class="form-control" value="{{$shipping->email}}" name="email" required>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Location</h4>
+                  </div>
+                  <div class="col-md-6">
+                    <a class="btn btn-link " style="display:none" id="SelectedLocation"
+                      href="https://maps.google.com/?q=25.280336,51.499729" target="blank" />Selected Location</a>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-sm rounded text-danger" type="button" style="display:none"
+                      onClick="clearSelectedLocation()" id="ClearSelectedLocation">clear</button>
+                  </div>
+                  <div id="SelectedMap"></div>
+                  <div class="col-md-6">
+                    <button id="MyLocation" type="button" class="btn-sub mb-4" onClick="getLocation()"><i
+                        class="fa fa-dot-circle-o"></i>
+                      My Location</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
+                        class="fa fa-map-marker"></i> <small>Select On Map</small></button>
+                  </div>
               </article>
               @else
               <article id="ShippingInfo" class="accord accord-single">
@@ -243,11 +267,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Address 1</label>
-                        <input type="text" class="form-control" name="address1">
+                        <input type="text" class="form-control" name="address1" required>
                       </div>
                       <div class="col-md-6">
                         <label>Address 2</label>
-                        <input type="text" class="form-control" name="address2">
+                        <input type="text" class="form-control" name="address2" required>
                       </div>
                     </div>
                   </div>
@@ -255,13 +279,13 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <input type="text" class="form-control" name="city">
+                        <input type="text" class="form-control" name="city" required>
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
                         <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
-                          <option @if($country->name=='Qatar') selected
+                          <option @if($country->name=='Qatar') selected value="{{$country->name}}"
                             @endif>{{$country->name}}
                           </option>
                           @endforeach
@@ -273,15 +297,17 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>Phone </label>
-                        <input type="number" class="form-control" name="phone">
+                        <input type="number" class="form-control" name="phone" required>
                       </div>
                       <div class="col-md-6">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" required>
                       </div>
                     </div>
                   </div>
                 </div>
+                <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
+                    class="fa fa-map-marker"></i> Select Location</button>
               </article>
               @endif
 
@@ -373,6 +399,10 @@
                       </li>
                     </ul>
                   </div>
+
+                  <input id="latitude" type="hidden" name="latitude" value="">
+                  <input id="longitude" type="hidden" name="longitude" value="">
+                  <input id="inCircle" type="hidden" name="inAllowedCircle" value="false">
                   <button class="btn-sub" type="submit"><span>Checkout</span></button>
                 </div>
               </article>
@@ -430,12 +460,165 @@
       </div>
     </div>
   </div>
+  <div class="modal" id="mapModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Select Delivery Location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="map"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+  #map {
+    height: 80vh;
+    width: 100%;
+  }
+
+  #SelectedMap {
+    height: 0;
+    width: 100%;
+  }
+</style>
 
 @endsection
 
-
 @section('scripts')
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDxxgJUmtzK_fXH-MmRuCqEAtUu_lEVoA&callback=initMap"
+  type="text/javascript"></script>
+
+<script>
+  var map, infoWindow,markers=[];
+      function initMap() {
+        var latitude = 25.280336
+        var longitude = 51.499729
+        map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: latitude, lng: longitude},
+              zoom: 14
+            });
+
+    var clickableMap = google.maps.event.addListener(map, "click", function (event) {
+    var latitude = event.latLng.lat();
+    var longitude = event.latLng.lng();
+    setSelectedLocation( latitude , longitude );
+    markers.forEach(mark => {
+      remove_circle(mark)
+    });
+    
+    radius = new google.maps.Circle({map: map,
+        radius: 10,
+        center: event.latLng,
+        fillColor: '#777',
+        fillOpacity: 0.1,
+        strokeColor: '#AA0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        draggable: true,    // Dragable
+        editable: true      // Resizable
+    });
+    markers.push(radius)
+
+    var geocoder= new google.maps.Geocoder()
+    var latlng = {lat: latitude, lng: longitude};
+    geocoder.geocode({'location': latlng }, function(results, status){
+      let inAllowedCircle = JSON.stringify(results).toLowerCase().includes ('al sadd')
+      if(inAllowedCircle){
+        $('#inAllowedCircle').val(true)
+      }else{
+        $('#inAllowedCircle').val(false)
+      }
+    });
+
+    // Center of map
+    map.panTo(new google.maps.LatLng(latitude,longitude));
+
+});
+        infoWindow = new google.maps.InfoWindow;
+      }
+      function remove_circle(circle) {
+    // remove event listers
+    google.maps.event.clearListeners(circle, 'click_handler_name');
+    google.maps.event.clearListeners(circle, 'drag_handler_name');
+    circle.setRadius(0);
+    // if polygon:
+    // polygon_shape.setPath([]); 
+    circle.setMap(null);
+}
+function getLocation(){
+         if (navigator.geolocation) {
+          $('#MyLocation').prop('disabled', true).html('Fetching...')
+          navigator.geolocation.getCurrentPosition(function(position) {
+
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+          
+            var lat =pos.lat
+            var lng =pos.lng
+            $('#latitude').val(lat)
+            $('#longitude').val(lng)
+            $('#SelectedLocation').attr('href',"https://maps.google.com/?q="+lat+","+lng).show()
+            $('#ClearSelectedLocation').show()
+            $('#MyLocation').prop('disabled', false).html('<i class="fa fa-dot-circle-o"></i> My Location')
+            setSelectedLocation(lat,lng)
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+            $('#MyLocation').prop('disabled', false).html('<i class="fa fa-dot-circle-o"></i> My Location')
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+          $('#MyLocation').prop('disabled', false).html('<i class="fa fa-dot-circle-o"></i> My Location')
+        }
+      }
+
+      function setSelectedLocation(lat,lng){
+        clearSelectedLocation()
+        $('#latitude').val(lat)
+            $('#longitude').val(lng)
+            $('#SelectedLocation').attr('href',"https://maps.google.com/?q="+lat+","+lng).slideDown()
+            $('#ClearSelectedLocation').show()
+            $('#MyLocation').prop('disabled', false).html('<i class="fa fa-dot-circle-o"></i> My Location')
+            // $('#SelectedMap').css('height','200px')
+            // var currentMap = new google.maps.Map(document.getElementById('SelectedMap'), {
+            //   center: {lat:lat , lng: lng},
+            //   zoom: 13
+            // });
+            // currentMap.setCenter(pos);
+      }
+
+      function clearSelectedLocation(){
+            $('#latitude').val("")
+            $('#longitude').val("")
+            $('#SelectedLocation').slideUp()
+            $('#ClearSelectedLocation').hide()
+            // $('#SelectedMap').css('height','0')
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+</script>
+
 
 <script>
   $('input[name=checkoutas]').change(function (event) {
