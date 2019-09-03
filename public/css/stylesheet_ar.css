@@ -1,0 +1,45 @@
+body{text-align: right;direction: rtl;}
+.head-rgt, .wsmenu{float:left;}
+.smllogo, .wsmenu-list>li, .crt-chck-img, .crt-chck-rgt, .crt-chck-center{float:right;}
+.abox a img{margin-left: 5px; margin-right: 0px;}
+.flwr-txt, .gft-txt, .abox, .sidebar, .con, .crt-chck-center, .crt-chck-img, .crt-chck-rgt{text-align:right;}
+.flwr p, .gft p, .cclt p{ padding-right: 0px; padding-left: 100px;}
+.ftr-tp ul li{    padding: 0 6% 0 0;    float: right;}
+.ftr-tp ul li img{    right: 15%; left:inherit;}
+.ftr-tp ul li:nth-child(3n) img { left: inherit; right:10%;}
+.ftr-btm ul li a:before{    right: inherit; left:-4px;}
+.sidebar ul li a:before{    left: inherit; right:0;}
+.sidebar ul li a:hover {padding-left: 0px;padding-right: 60px;}
+.slct-size span{text-align: left;  float: left;}
+.radio{    float: right;text-align: right;}
+.radio input[type="radio"] + .radio-label:before{margin-left: 1em; margin-right: 0}
+.close{left: -15px; right: 0;}
+.text-left {text-align: right!important;}
+.custom-control-label::before{    right: -1.5rem;left: 0;}
+
+
+
+@media (min-width:993px) and (max-width:1024px) {
+    .ftr-tp ul li { padding: 0 60px 0 0px;}
+	.ftr-tp ul li img, .ftr-tp ul li:nth-child(3n) img {right: 0; left: inherit;}
+}
+
+
+@media (min-width:768px) and (max-width:992px) {
+    .ftr-tp ul li { padding: 0 60px 0 0px;}
+	.ftr-tp ul li img, .ftr-tp ul li:nth-child(3n) img {right: 0; left: inherit;}
+	.animated-arrow{direction: ltr;}
+	.cclt p{padding:0;}
+    
+}
+
+
+@media (max-width:767px) {
+	
+	.animated-arrow{direction: ltr;}
+	.flwr p, .gft p, .cclt p{padding:0;}
+	.ftr-tp ul li { padding: 0 60px 0 0px;}
+	.ftr-tp ul li img, .ftr-tp ul li:nth-child(3n) img {right: 0; left: inherit;}
+	.cclt form label{text-align:right;}
+	
+}

@@ -9,8 +9,8 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">Contact Us</h2>
-			<h4 data-aos="fade-up">Our master florist design Different Unique Fower Arrangement for every occasion.</h4>
+			<h2 data-aos="fade-up">اتصل بنا</h2>
+			<h4 data-aos="fade-up">لدينا بائع الزهور تصميم مختلف فريد Fower الترتيب في كل مناسبة.</h4>
 		</div>
 
 		<div class="con">
@@ -19,15 +19,15 @@
 				<div class="con-sec clearfix">
 					<ul>
 						<li data-aos="fade-up"><i class="fa fa-map-marker"></i>
-							<h5>Our Address</h5>
-							<p>Al Sadd - main street، Doha, Qatar</p>
+							<h5>عنواننا</h5>
+							<p>السد - الشارع الرئيسي ، الدوحة ، قطر</p>
 						</li>
 						<li data-aos="fade-up"><i class="fa fa-phone"></i>
-							<h5>Phone Number</h5>
+							<h5>رقم الهاتف</h5>
 							<p><a href="tel:+974 44366365">+974 44366365</a></p>
 						</li>
 						<li data-aos="fade-up"><i class="fa fa-envelope-o"></i>
-							<h5>Email Address</h5>
+							<h5>عنوان بريد الكتروني</h5>
 							<p><a href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></p>
 						</li>
 					</ul>
@@ -35,26 +35,26 @@
 
 				<div class="row">
 					<div class="col-md-6" data-aos="fade-up">
-						<h5>Drop us a line</h5>
+						<h5>ترك لنا خطا</h5>
 						<form id="ContactForm">
 							<div class="form-group clearfix">
 								<div class="row">
-									<div class="col-md-12"><input name="name" type="text" placeholder="Name"
+									<div class="col-md-12"><input name="name" type="text" placeholder="اسم"
 											class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group clearfix">
 								<div class="row">
-									<div class="col-md-6"><input name="email" type="email" placeholder="Email"
+									<div class="col-md-6"><input name="email" type="email" placeholder="البريد الإلكتروني"
 											class="form-control"></div>
-									<div class="col-md-6"><input name="phone" type="number" placeholder="Phone"
+									<div class="col-md-6"><input name="phone" type="number" placeholder="هاتف"
 											class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group clearfix">
 								<div class="row">
 									<div class="col-md-12"><textarea name="message" class="form-control"
-											placeholder="Message"></textarea></div>
+											placeholder="رسالة"></textarea></div>
 								</div>
 							</div>
 
@@ -63,7 +63,7 @@
 							<div class="form-group clearfix">
 								<div class="row">
 									<div class="col-md-12"><button id="SendBtn"
-											class="btn-sub"><span>Send</span></button></div>
+											class="btn-sub"><span>إرسال</span></button></div>
 								</div>
 							</div>
 						</form>

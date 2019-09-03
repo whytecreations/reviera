@@ -7,8 +7,8 @@
 <section class="cclt whyte_bg">
   <div class="container">
     <div class="col-md-12">
-      <h2 data-aos="fade-up">Register</h2>
-      <h4 data-aos="fade-up">Riviera offers a Variety of Rich Chocolates that cater to an exquisite taste</h4>
+      <h2 data-aos="fade-up">تسجيل</h2>
+      <h4 data-aos="fade-up">يقدم فندق Riviera مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرائع</h4>
     </div>
 
     <div class="acct">
@@ -33,21 +33,21 @@
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="email" class="form-control" placeholder="Email Address" name="email">
+                    <input type="email" class="form-control" placeholder="عنوان بريد الكتروني" name="email">
                   </div>
                 </div>
               </div>
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="password" class="form-control" placeholder="password" name="password">
+                    <input type="password" class="form-control" placeholder="كلمه السر" name="password">
                   </div>
                 </div>
               </div>
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="password" class="form-control" placeholder="Confirm password"
+                    <input type="password" class="form-control" placeholder="تأكيد كلمة المرور"
                       name="password_confirmation">
                   </div>
                 </div>
@@ -55,14 +55,14 @@
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="text" class="form-control" placeholder="First Name" name="first_name">
+                    <input type="text" class="form-control" placeholder="الاسم الاول" name="first_name">
                   </div>
                 </div>
               </div>
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="text" class="form-control" placeholder="Last Name" name="last_name">
+                    <input type="text" class="form-control" placeholder="الكنية" name="last_name">
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn-sub"><span>Register</span></button>
+                    <button class="btn-sub"><span>تسجيل</span></button>
                   </div>
                 </div>
               </div>
@@ -80,9 +80,9 @@
         </div>
 
         <div class="lgn-rgt" data-aos="fade-up">
-          <h4>ALREADY HAVE AN ACCOUNT?</h4>
+          <h4>هل لديك حساب؟</h4>
           <button class="btn-sub"
-            onclick="window.location.href='{{route('customer.login')}}'"><span>Login</span></button>
+            onclick="window.location.href='{{route('customer.login')}}'"><span>تسجيل الدخول</span></button>
         </div>
 
       </div>

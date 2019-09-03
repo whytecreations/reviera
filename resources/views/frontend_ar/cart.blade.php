@@ -7,9 +7,9 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">Cart</h2>
-			<h4 data-aos="fade-up">Riviera hand picks its Unique Wrapping Papers and Accessories from all parts of the
-				world.</h4>
+			<h2 data-aos="fade-up">عربة التسوق</h2>
+			<h4 data-aos="fade-up">يد ريفييرا تختار أوراق التغليف الفريدة وملحقاتها من جميع أنحاء العالم
+العالمية.</h4>
 		</div>
 
 		<div class="crt">
@@ -18,10 +18,10 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th align="left">Product</th>
-								<th>Price</th>
-								<th>Quantity</th>
-								<th>Total</th>
+								<th align="left">المنتج</th>
+								<th>السعر</th>
+								<th>كمية</th>
+								<th>مجموع</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,7 +31,7 @@
 												class="fa fa-trash-o"></i></a></div>
 									<div class="crt-img"><img src="images/gift3.jpg"></div>
 									<div class="crt-txt">
-										<h5>Candy Box Wrapping</h5>
+										<h5>حلوى مربع التفاف</h5>
 									</div>
 								</td>
 								<td width="15%">QAR 100</td>
@@ -44,7 +44,7 @@
 												class="fa fa-trash-o"></i></a></div>
 									<div class="crt-img"><img src="images/chocolate4.jpg"></div>
 									<div class="crt-txt">
-										<h5>Candy Box Wrapping</h5>
+										<h5>حلوى مربع التفاف</h5>
 									</div>
 								</td>
 								<td width="15%">QAR 100</td>
@@ -57,7 +57,7 @@
 												class="fa fa-trash-o"></i></a></div>
 									<div class="crt-img"><img src="images/flower5.jpg"></div>
 									<div class="crt-txt">
-										<h5>Candy Box Wrapping</h5>
+										<h5>حلوى مربع التفاف</h5>
 									</div>
 								</td>
 								<td width="15%">QAR 100</td>
@@ -68,14 +68,14 @@
 					</table>
 				</div>
 				<div class="crt-ttl">
-					<h5 data-aos="fade-up">Cart total</h5>
+					<h5 data-aos="fade-up">مجموع العربة</h5>
 					<ul data-aos="fade-up">
-						<li class="clearfix"><span class="text-left">Subtotal</span><span class="text-right">300
+						<li class="clearfix"><span class="text-left">حاصل الجمع</span><span class="text-right">300
 								QAR</span></li>
-						<li class="clearfix"><span class="text-left">Total</span><span class="text-right">300 QAR</span>
+						<li class="clearfix"><span class="text-left">مجموع</span><span class="text-right">300 QAR</span>
 						</li>
 						<li class="clearfix"><span class="text-left">&nbsp;</span><span class="text-right"><a
-									href="#">Proceed to Checkout</a></span></li>
+									href="#">باشرالخروج من الفندق</a></span></li>
 					</ul>
 				</div>
 			</div>
@@ -103,19 +103,19 @@
 					<div class="pd_rgt">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
 								aria-hidden="true">×</span></button>
-						<h4>Laketown Chocolates</h4>
-						<p>A traditional Chocolate to keep you energized whole day.</p>
-						<h5>Select Size</h5>
+						<h4>لاك تاون الشوكولاتة</h4>
+						<p>شوكولاتة تقليدية للحفاظ على نشاطك طوال اليوم.</p>
+						<h5>أختر الحجم</h5>
 						<div class="slct-size">
 							<ul>
 								<li class="clearfix">
 									<div class="radio"><input id="radio-1" name="radio" type="radio" checked><label
-											for="radio-1" class="radio-label">Big Size</label></div>
+											for="radio-1" class="radio-label">حجم كبير</label></div>
 									<span>1000.00 QAR</span>
 								</li>
 								<li class="clearfix">
 									<div class="radio"><input id="radio-2" name="radio" type="radio"><label
-											for="radio-2" class="radio-label">Small Size</label></div>
+											for="radio-2" class="radio-label">حجم صغير</label></div>
 									<span>800.00 QAR</span>
 								</li>
 
@@ -134,9 +134,9 @@
 							</div>
 							<h5>1000.00 <span>QAR</span></h5>
 						</div>
-						<h5>Add Special Instructions</h5>
-						<textarea class="form-control" placeholder="Add a Note"></textarea>
-						<button class="btn-ac">Add to Cart</button>
+						<h5>إضافة تعليمات خاصة</h5>
+						<textarea class="form-control" placeholder="أضف ملاحظة"></textarea>
+						<button class="btn-ac">أضف إلى السلة</button>
 					</div>
 				</div>
 			</div>

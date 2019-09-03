@@ -12,22 +12,17 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">About Riviera</h2>
-			<h4 data-aos="fade-up">Riviera offers a Variety of Rich Chocolates that cater to an exquisite taste</h4>
+			<h2 data-aos="fade-up">حول ريفييرا</h2>
+			<h4 data-aos="fade-up">يقدّم منتج ريفيرا مختلف أنواع الشوكولا الغنيّة التي تقدّم طعماً رّائعاً</h4>
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12">
 						<!--<div class="cclt-img" data-aos="fade-up"><img src="images/chocolate_tp.png" class="img-fluid less-height"></div>-->
 					</div>
-					<p data-aos="fade-up">20 years ago, owner of Riviera have passion for flowers, high end quality of
-						pots, vases and exceptional flower arrangements and outstanding chocolate quality and
-						arrangements.</p>
+					<p data-aos="fade-up">منذ 20 سنة، كان مالك شركة ريفييرا يعشق الزهور ونوعيّات الأوعية ذات الجودة العالية والجرّات وترتيب الزهور بشكل استثنائيّ وجودة الشوكولا الرائعة وترتيبها.</p>
 
 					<p data-aos="fade-up">
-						We are family owned and operated. We are committed to offer only the finest floral & chocolate
-						arrangements and gifts, backed by service that is friendly and prompt. Because all of our
-						customers are important, our professional staff is dedicated to making your experience a
-						pleasant one. That is why we always go the extra mile to make your floral gift perfect.</p>
+						نحن عائلة تملك وتشغّل هذه الشركة ونحن ملتزمون في تقديم أحسن الزهور وهدايا وترتيبات الشوكولا المدعومة بخدمات وديّة وفوريّة. ولأنّ كل زبائننا مهمّون بالنسبة إلينا، يكرّس فريق عملنا الحرفيّ نفسه لتحويل تجربتك هذه إلى تجربة لا تنسى بمتعتها. ولهذا السبب فإنّنا نبذل جهداً إضافيّاً لجعل هديّتك مثاليّة.</p>
 				</div>
 
 			</div>

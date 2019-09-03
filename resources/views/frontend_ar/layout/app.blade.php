@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="{{asset('css/aos.css')}}" type="text/css">
 	<link rel="stylesheet" href="{{asset('css/font-awesome.css')}}" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/stylesheet_ar.css')}}">
 
 	<script src="{{asset('js/jquery-2.1.0.min.js')}}" type="text/javascript"></script>
 	<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -45,11 +46,11 @@
 					</div>
 					<nav class="wsmenu clearfix">
 						<ul class="mobile-sub wsmenu-list">
-							<li><a href="{{url('ar/about')}}">About Us</a></li>
-							<li><a href="{{url('ar/flowers')}}">FLOWERS</a></li>
-							<li><a href="{{url('ar/chocolates')}}">CHOCOLATES</a></li>
-							<li><a href="{{url('ar/gift-wrapping')}}">GIFT WRAPPING</a></li>
-							<li><a href="{{url('ar/corporate-rate-tag')}}">Corporate rate</a></li>
+							<li><a href="{{url('ar/about')}}">معلومات عنا</a></li>
+							<li><a href="{{url('ar/flowers')}}">زهور</a></li>
+							<li><a href="{{url('ar/chocolates')}}">الشوكولاتة</a></li>
+							<li><a href="{{url('ar/gift-wrapping')}}">تغليف الهدايا</a></li>
+							<li><a href="{{url('ar/corporate-rate-tag')}}">معدل الشركات</a></li>
 							<li><a href="{{url('/')}}">English</a></li>
 						</ul>
 					</nav>
@@ -68,17 +69,16 @@
 			<div class="container-fluid">
 				<div class="col-md-12">
 					<ul>
-						<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>Give us a call /
-								Whatsapp</span> <br><a href="tel:+974 33750041">+974 33750041</a></li>
-						<li data-aos="fade-up"><img src="{{asset('images/lphn.svg')}}"> <span>Give us a call</span>
+						<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>اتصل بنا / واتس اب</span> <br><a href="tel:+974 33750041">+974 33750041</a></li>
+						<li data-aos="fade-up"><img src="{{asset('images/lphn.svg')}}"> <span>اعطينا اتصال</span>
 							<br><a href="tel:+974 44366365">+974 44366365</a></li>
 						<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}">
-							<span>E-Mail</span> <br><a
+							<span>البريد الإلكتروني</span> <br><a
 								href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></li>
 						<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}">
-							<span>Opening Hours</span> <br>9AM - 9.30PM </li>
+							<span>ساعات العمل</span> <br>9AM - 9.30PM </li>
 						<li class="flw" data-aos="fade-up" data-aos-delay="600"><img
-								src="{{asset('images/share.svg')}}"> <span>Follow On</span> <br><a
+								src="{{asset('images/share.svg')}}"> <span>اتبع</span> <br><a
 								href="https://www.instagram.com/rivieraqatar/" target="_blank"><i
 									class="fa fa-instagram"></i></a><a href="#" target="_blank"><i
 									class="fa fa-facebook"></i></a></li>
@@ -90,11 +90,11 @@
 			<div class="container">
 				<div class="col-md-12">
 					<ul>
-						<li><a href="{{url('ar/contact')}}">Contact Us</a></li>
-						{{-- <li><a href="#">Order History</a></li> --}}
-						<li><a href="#">Terms & Policies</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="{{url('ar/contact')}}">اتصل بنا</a></li>
+						{{-- <li><a href="#">تاريخ الطلب</a></li> --}}
+						<li><a href="#">سياسات الشروط</a></li>
+						<li><a href="#">التعليمات</a></li>
+						<li><a href="#">سياسة خاصة</a></li>
 					</ul>
 					<p>Copyright© 2019 RIVERIA All Rights Reserved. <br> <span>Powered by <a
 								href="https://www.whytecreations.com/" target="_blank" rel="dofollow"
@@ -132,7 +132,7 @@
 	<script src="{{asset('js/aos.js')}}" type="text/javascript"></script>
 
 	@yield('scripts')
-	<script src="{{asset('js/main.js')}}"></script>
+	<script src="{{asset('js/main_ar.js')}}"></script>
 	<script type="text/javascript">
 		$.ajaxSetup({
     headers: {

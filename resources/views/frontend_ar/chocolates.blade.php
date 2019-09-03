@@ -13,8 +13,8 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">Chocolate Seasonal <br> Baskets and Gifts</h2>
-			<h4 data-aos="fade-up">Riviera offers a Variety of Rich Chocolates that cater to an exquisite taste</h4>
+			<h2 data-aos="fade-up"> الشوكولاته الموسمية <br>سلال وهدايا  </h2>
+			<h4 data-aos="fade-up">يقدم فندق Riviera مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرائع</h4>
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12">
@@ -32,7 +32,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div id="sidebar" class="sidebar">
-								<h3 data-aos="fade-up">Chocolate</h3>
+								<h3 data-aos="fade-up">شوكولاتة</h3>
 								<ul data-aos="fade-up">
 									@foreach ($chocolateCategories as $chocolateCategory)
 									<li><a
@@ -52,7 +52,7 @@
 												<div class="pdct-img">
 													<img
 														src="{{asset($chocolate->getMedia('images')->first()!=null?$chocolate->getMedia('images')->first()->getUrl():'images/logo.png')}}">
-													<div class="quick">Quick View</div>
+													<div class="quick">نظرة سريعة</div>
 												</div>
 												<figcaption>
 													<h5>{{$chocolate->title_ar?:$chocolate->title}}</h5>
@@ -114,7 +114,7 @@
 								@endif
 							</h4>
 							<p>{{$chocolate->description_ar?:$chocolate->description}}</p>
-							<h5>Select Size</h5>
+							<h5>أختر الحجم</h5>
 							<div class="slct-size">
 								<ul>
 									@if($chocolate->full_price >0)
@@ -155,9 +155,9 @@
 												class="fa fa-plus"></span></button></span>
 								</div>
 							</div>
-							<h5>Add Special Instructions</h5>
-							<textarea class="form-control" placeholder="Add a Note"></textarea>
-							<button class="btn-ac">Add to Cart</button>
+							<h5>إضافة تعليمات خاصة</h5>
+							<textarea class="form-control" placeholder="أضف ملاحظة"></textarea>
+							<button class="btn-ac">أضف إلى السلة</button>
 						</div>
 					</div>
 				</div>

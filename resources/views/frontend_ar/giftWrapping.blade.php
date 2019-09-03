@@ -14,9 +14,10 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">gift <br> wrappings</h2>
-			<h4 data-aos="fade-up">Riviera hand picks its Unique Wrapping Papers and Accessories from all parts of the
-				world.</h4>
+			<h2 data-aos="fade-up">هدية مجانية
+ <br> الأغلفة</h2>
+			<h4 data-aos="fade-up">يد ريفييرا تختار أوراق التغليف الفريدة وملحقاتها من جميع أنحاء العالم
+العالمية.</h4>
 			<div class="gft-sec">
 				<div class="row">
 					<div class="col-md-12">
@@ -44,7 +45,7 @@
 												<div class="pdct-img">
 													<img
 														src="{{asset($gift->getMedia('images')->first()!=null?$gift->getMedia('images')->first()->getUrl():'images/logo.png')}}">
-													<div class="quick">Quick View</div>
+													<div class="quick">نظرة سريعة</div>
 												</div>
 												<figcaption>
 													<h5>{{$gift->title_ar?:$gift->title}}</h5>
@@ -94,13 +95,13 @@
 									<div class="col-md-6"><input type="text" class="form-control" placeholder="Email">
 									</div>
 									<div class="col-md-6"><select class="form-control">
-											<option>Choose Wrapping Style</option>
-											<option>Fabric Wraps</option>
-											<option>Boxes & Crates</option>
-											<option>Cards</option>
-											<option>Embellishments</option>
-											<option>Gift Sets</option>
-											<option>Bits & Bobs</option>
+											<option>اختيار التفاف النمط</option>
+											<option>الأغطية النسيج</option>
+											<option>صناديق وصناديق</option>
+											<option>بطاقات</option>
+											<option>الزينة</option>
+											<option>طقم هدايا</option>
+											<option>بت و بوبز</option>
 										</select></div>
 								</div>
 							</div>
@@ -122,9 +123,9 @@
 										data-type="plus" data-field="quant[1]"><span
 											class="fa fa-plus"></span></button></span>
 							</div>
-							<h5>Quantity</h5>
+							<h5>كمية</h5>
 						</div>
-						<button class="btn-ac">SEND</button>
+						<button class="btn-ac">إرسال</button>
 					</div>
 				</div>
 			</div>

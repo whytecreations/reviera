@@ -6,8 +6,8 @@
 <section class="cclt whyte_bg chck">
   <div class="container">
     <div class="col-md-12">
-      <h2 data-aos="fade-up">Checkout</h2>
-      <h4 data-aos="fade-up">Riviera offers a Variety of Rich Chocolates that cater to an exquisite taste</h4>
+      <h2 data-aos="fade-up">الدفع</h2>
+      <h4 data-aos="fade-up">يقدم فندق Riviera مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرائع</h4>
     </div>
     <div class="acct">
       <div class="col-md-12">
@@ -17,24 +17,24 @@
 
             @if(!auth()->guard('customer')->check())
             <article class="accord accord-single is-open">
-              <h4 class="accord__head">Account DETAILS </h4>
+              <h4 class="accord__head">تفاصيل الحساب</h4>
               <div class="accord__body">
                 <div class="row">
                   <div class="col-md-4">
-                    <h5>Checkout as: </h5>
+                    <h5>الخروج باسم:</h5>
                     <div class="ckas">
                       <div class="slct-size">
                         <ul>
                           <li class="clearfix">
                             <div class="radio">
                               <input id="GuestRadio" name="checkoutas" type="radio" value="guest" checked="">
-                              <label for="GuestRadio" class="radio-label">Guest</label>
+                              <label for="GuestRadio" class="radio-label">زائر</label>
                             </div>
                           </li>
                           <li class="clearfix">
                             <div class="radio">
                               <input id="RegisterRadio" name="checkoutas" value="register" type="radio">
-                              <label for="RegisterRadio" class="radio-label">Register</label>
+                              <label for="RegisterRadio" class="radio-label">تسجيل</label>
                             </div>
                           </li>
                         </ul>
@@ -61,28 +61,28 @@
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="email" value="" class="form-control" placeholder="Email" name="email">
+                              <input type="email" value="" class="form-control" placeholder="البريد الإلكتروني" name="email">
                             </div>
                           </div>
                         </div>
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="password" class="form-control" placeholder="password" name="password">
+                              <input type="password" class="form-control" placeholder="كلمه السر" name="password">
                             </div>
                           </div>
                         </div>
                         {{-- <div class="form-group clearfix">
                                         <div class="row">
                                           <div class="col-md-12">
-                                            <a href="#">Forgot Your Password</a>
+                                            <a href="#">نسيت رقمك السري</a>
                                           </div>
                                         </div>
                                       </div> --}}
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <button class="btn-sub"><span>Login</span></button>
+                              <button class="btn-sub"><span>تسجيل الدخول</span></button>
                             </div>
                           </div>
                         </div>
@@ -109,21 +109,21 @@
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="email" class="form-control" placeholder="Email Address" name="email">
+                              <input type="email" class="form-control" placeholder="عنوان بريد الكتروني" name="email">
                             </div>
                           </div>
                         </div>
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="password" class="form-control" placeholder="password" name="password">
+                              <input type="password" class="form-control" placeholder="كلمه السر" name="password">
                             </div>
                           </div>
                         </div>
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="password" class="form-control" placeholder="Confirm password"
+                              <input type="password" class="form-control" placeholder="تأكيد كلمة المرور"
                                 name="password_confirmation">
                             </div>
                           </div>
@@ -131,14 +131,14 @@
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="First Name" name="first_name">
+                              <input type="text" class="form-control" placeholder="الاسم الاول" name="first_name">
                             </div>
                           </div>
                         </div>
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="text" class="form-control" placeholder="Last Name" name="last_name">
+                              <input type="text" class="form-control" placeholder="الكنية" name="last_name">
                             </div>
                           </div>
                         </div>
@@ -146,7 +146,7 @@
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <button class="btn-sub"><span>Register</span></button>
+                              <button class="btn-sub"><span>تسجيل</span></button>
                             </div>
                           </div>
                         </div>
@@ -165,16 +165,16 @@
               {{ csrf_field() }}
               @if(auth()->guard('customer')->check() && count((array)$shipping)!=0 )
               <article id="ShippingInfo" class="accord accord-single">
-                <h4 class="accord__head">Shipping Information </h4>
+                <h4 class="accord__head">معلومات الشحن </h4>
                 <div class="accord__body">
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>First Name</label>
+                        <label>الاسم الاول</label>
                         <input type="text" class="form-control" value="{{$shipping->first_name}}" name="first_name">
                       </div>
                       <div class="col-md-6">
-                        <label>Last Name</label>
+                        <label>الكنية</label>
                         <input type="text" class="form-control" value="{{$shipping->last_name}}" name="last_name">
                       </div>
                     </div>
@@ -182,12 +182,12 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Address 1</label>
+                        <label>العنوان 1</label>
                         <input type="text" class="form-control" value="{{$shipping->address1}}" name="address1"
                           required>
                       </div>
                       <div class="col-md-6">
-                        <label>Address 2</label>
+                        <label>العنوان 2</label>
                         <input type="text" class="form-control" value="{{$shipping->address2}}" name="address2"
                           required>
                       </div>
@@ -196,11 +196,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>City </label>
+                        <label>مدينة </label>
                         <input type="text" class="form-control" value="{{$shipping->city}}" name="city" required>
                       </div>
                       <div class="col-md-6">
-                        <label>Country</label>
+                        <label>بلد</label>
                         <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
                           <option value="{{$shipping->country}}" @if($country->name=='Qatar') selected
@@ -214,11 +214,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Phone </label>
+                        <label>هاتف </label>
                         <input type="number" class="form-control" value="{{$shipping->phone}}" name="phone" required>
                       </div>
                       <div class="col-md-6">
-                        <label>Email</label>
+                        <label>البريد الإلكتروني</label>
                         <input type="email" class="form-control" value="{{$shipping->email}}" name="email" required>
                       </div>
                     </div>
@@ -226,39 +226,39 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h4>Location</h4>
+                    <h4>البريد الإلكتروني</h4>
                   </div>
                   <div class="col-md-6">
                     <a class="btn btn-link " style="display:none" id="SelectedLocation"
-                      href="https://maps.google.com/?q=25.280336,51.499729" target="blank" />Selected Location</a>
+                      href="https://maps.google.com/?q=25.280336,51.499729" target="blank" />الموقع المختار</a>
                   </div>
                   <div class="col-md-6">
                     <button class="btn btn-sm rounded text-danger" type="button" style="display:none"
-                      onClick="clearSelectedLocation()" id="ClearSelectedLocation">clear</button>
+                      onClick="clearSelectedLocation()" id="ClearSelectedLocation">واضح</button>
                   </div>
                   <div id="SelectedMap"></div>
                   <div class="col-md-6">
                     <button id="MyLocation" type="button" class="btn-sub mb-4" onClick="getLocation()"><i
                         class="fa fa-dot-circle-o"></i>
-                      My Location</button>
+                      موقعي</button>
                   </div>
                   <div class="col-md-6">
                     <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
-                        class="fa fa-map-marker"></i> <small>Select On Map</small></button>
+                        class="fa fa-map-marker"></i> <small>اختر على الخريطة</small></button>
                   </div>
               </article>
               @else
               <article id="ShippingInfo" class="accord accord-single">
-                <h4 class="accord__head">Shipping Information </h4>
+                <h4 class="accord__head">معلومات الشحن </h4>
                 <div class="accord__body">
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>First Name</label>
+                        <label>الاسم الاول</label>
                         <input type="text" class="form-control" name="first_name">
                       </div>
                       <div class="col-md-6">
-                        <label>Last Name</label>
+                        <label>الكنية</label>
                         <input type="text" class="form-control" name="last_name">
                       </div>
                     </div>
@@ -266,11 +266,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Address 1</label>
+                        <label>العنوان 1</label>
                         <input type="text" class="form-control" name="address1" required>
                       </div>
                       <div class="col-md-6">
-                        <label>Address 2</label>
+                        <label>العنوان 2</label>
                         <input type="text" class="form-control" name="address2" required>
                       </div>
                     </div>
@@ -278,11 +278,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>City </label>
+                        <label>مدينة </label>
                         <input type="text" class="form-control" name="city" required>
                       </div>
                       <div class="col-md-6">
-                        <label>Country</label>
+                        <label>بلد</label>
                         <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
                           <option @if($country->name=='Qatar') selected value="{{$country->name}}"
@@ -296,29 +296,29 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Phone </label>
+                        <label>هاتف </label>
                         <input type="number" class="form-control" name="phone" required>
                       </div>
                       <div class="col-md-6">
-                        <label>Email</label>
+                        <label>البريد الإلكتروني</label>
                         <input type="email" class="form-control" name="email" required>
                       </div>
                     </div>
                   </div>
                 </div>
                 <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
-                    class="fa fa-map-marker"></i> Select Location</button>
+                    class="fa fa-map-marker"></i> اختر موقعا</button>
               </article>
               @endif
 
               <article class="accord accord-single">
-                <h4 class="accord__head">Billing Information </h4>
+                <h4 class="accord__head">معلومات الفواتير</h4>
                 <div class="form-group clearfix">
                   <div class="row">
                     <div class="col-md-12">
                       <label class="label--checkbox">
                         <input id="SameAsShipping" type="checkbox" class="checkbox" checked="" name="sameAsShipping">
-                        Same As Shipping Information</label>
+                        نفس معلومات الشحن</label>
                     </div>
                   </div>
                 </div>
@@ -326,11 +326,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>First Name</label>
+                        <label>الاسم الاول</label>
                         <input type="text" class="form-control" name="billing_first_name">
                       </div>
                       <div class="col-md-6">
-                        <label>Last Name</label>
+                        <label>الكنية</label>
                         <input type="text" class="form-control" name="billing_last_name">
                       </div>
                     </div>
@@ -338,11 +338,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Address 1</label>
+                        <label>العنوان 1</label>
                         <input type="text" class="form-control" name="billing_address1">
                       </div>
                       <div class="col-md-6">
-                        <label>Address 2</label>
+                        <label>العنوان 2</label>
                         <input type="text" class="form-control" name="billing_address2">
                       </div>
                     </div>
@@ -350,11 +350,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>City </label>
+                        <label>مدينة </label>
                         <input type="text" class="form-control" name="billing_city">
                       </div>
                       <div class="col-md-6">
-                        <label>Country</label>
+                        <label>بلد</label>
                         <select required id="billing_country" name="billing_country" class="form-control">
                           @foreach($countries as $country)
                           <option value="{{$country->name}}" @if($country->name=='Qatar') selected
@@ -368,11 +368,11 @@
                   <div class="form-group clearfix">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Phone </label>
+                        <label>هاتف </label>
                         <input type="number" class="form-control" name="billing_phone">
                       </div>
                       <div class="col-md-6">
-                        <label>Email</label>
+                        <label>البريد الإلكتروني</label>
                         <input type="email" class="form-control" name="billing_email">
                       </div>
                     </div>
@@ -381,20 +381,20 @@
               </article>
 
               <article class="accord accord-single">
-                <h4 class="accord__head">Payment</h4>
+                <h4 class="accord__head">دفع</h4>
                 <div class="accord__body clearfix">
                   <div class="slct-size">
                     <ul>
                       <li class="clearfix">
                         <div class="radio">
                           <input id="radio-1" name="payment_method" value="Cash On Delivery" type="radio">
-                          <label for="radio-1" class="radio-label">Cash On Delivery</label>
+                          <label for="radio-1" class="radio-label">الدفع عن الاستلامy</label>
                         </div>
                       </li>
                       <li class="clearfix">
                         <div class="radio">
                           <input id="radio-2" name="payment_method" value="Card" type="radio" checked="">
-                          <label for="radio-2" class="radio-label">Debit/Credit Card</label>
+                          <label for="radio-2" class="radio-label">بطاقة الخصم / الائتمان</label>
                         </div>
                       </li>
                     </ul>
@@ -403,7 +403,7 @@
                   <input id="latitude" type="hidden" name="latitude" value="">
                   <input id="longitude" type="hidden" name="longitude" value="">
                   <input id="inCircle" type="hidden" name="inAllowedCircle" value="false">
-                  <button class="btn-sub" type="submit"><span>Checkout</span></button>
+                  <button class="btn-sub" type="submit"><span>الدفع</span></button>
                 </div>
               </article>
             </form>
@@ -440,7 +440,7 @@
                           </button>
                         </span>
                       </div>
-                    </div><a href="javascript:void(0)" onClick="removeFromCart('{{$item->id}}')">Remove</a>
+                    </div><a href="javascript:void(0)" onClick="removeFromCart('{{$item->id}}')">إزالة</a>
                   </div>
                 </li>
                 @endforeach
@@ -449,9 +449,9 @@
             </div>
             <div class="crt-ttl">
               <ul data-aos="fade-up" class="aos-init aos-animate">
-                <li class="clearfix"><span class="text-left">Subtotal</span><span
+                <li class="clearfix"><span class="text-left">حاصل الجمع</span><span
                     class="text-right subtotal-updatable">{{Cart::getSubTotal()}} QAR</span></li>
-                <li class="clearfix"><span class="text-left">Total</span><span
+                <li class="clearfix"><span class="text-left">مجموع</span><span
                     class="text-right total-updatable">{{Cart::getTotal()}} QAR</span></li>
               </ul>
             </div>
@@ -464,7 +464,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Select Delivery Location</h5>
+          <h5 class="modal-title">حدد موقع التسليم</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -473,7 +473,7 @@
           <div id="map"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">منجز</button>
         </div>
       </div>
     </div>

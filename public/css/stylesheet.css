@@ -1360,10 +1360,12 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 	.ftr-tp ul li{width: 33% !important; padding: 0 0 0 60px; margin: 0 0 20px}
 	.ftr-tp ul li img{left: 0 !important}
 	.flwr-txt {margin: 50px 0 30px;}
+	.wsmenu-list>li>a{    font-size: 14px;}
 }
 
 @media (min-width:768px) and (max-width:992px) {
 	
+	.dot{display: none}
 	.flwrimg2, .cutting, .scissor, .tag, .box1, .box3{width: 120px}
 	.flwr-txt {margin: 0px 0 30px;}
 	.flwr {padding: 100px 0 50px}
@@ -1385,7 +1387,7 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 
 @media (max-width:767px) {
 	
-	.wrap-lft{display: none}
+	.wrap-lft, .dot{display: none}
 	.head-rgt{float: left; margin: 29px 0 20px 0px;}
 	.cclt-img img{max-width: 100%}
 	.choco5{bottom: 10px}
@@ -1420,6 +1422,11 @@ header{position: absolute; left: 0; top: 0; width: 100%; z-index: 1}
 	.pi ul li p{text-align: left}
 	.pl-35{padding: 0}
 	.gft{padding:80px 0 50px;}
+	.con-sec ul li{width:100%;}
+	.form-group{margin-bottom: 0;}
+	.form-control{margin-bottom: 1.5rem;}
+	
+	
 	
 }
 

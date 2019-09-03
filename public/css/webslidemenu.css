@@ -807,7 +807,7 @@
 .wsmenu {
 }
 .smllogo {
-	width: 10% !important;
+	width: 16% !important;
 }
 .wsmain {
 	width: 96%;
@@ -1025,7 +1025,7 @@
 	width: 100%;
 }
 .smallogo>img {
-	margin-top: 6px; width: 150px
+	margin-top: 0px; width: 150px
 }
 .wsmenu-list>li:hover>a {
 	background-color: rgba(0, 0, 0, 0.08) !important;
@@ -1140,7 +1140,7 @@
 .animated-arrow {
 	cursor: pointer;
 	padding: 13px 35px 16px 0px;
-	margin: 10px 0 0 15px;
+	margin: 20px 0 0 15px;
 }
 .animated-arrow span, .animated-arrow span:before, .animated-arrow span:after {
 	cursor: pointer;

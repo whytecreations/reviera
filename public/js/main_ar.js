@@ -152,6 +152,7 @@ $(document).ready(function () {
     loop: false,
     autoplay: true,
     dots: true,
+    rtl: true,
     rewind: true,
     autoplayTimeout: 4000,
     autoplayHoverPause: true,

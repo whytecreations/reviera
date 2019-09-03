@@ -8,8 +8,8 @@
 <section class="cclt whyte_bg">
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">My Account</h2>
-			<h4 data-aos="fade-up">Riviera offers a Variety of Rich Chocolates that cater to an exquisite taste</h4>
+			<h2 data-aos="fade-up">حسابي</h2>
+			<h4 data-aos="fade-up">يقدم فندق Riviera مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرائع</h4>
 		</div>
 
 		<div class="acct" data-aos="fade-up">
@@ -18,7 +18,7 @@
 
 			<div class="col-md-12">
 				<dl class="responsive-tabs clearfix">
-					<dt>Account DETAILS </dt>
+					<dt>تفاصيل الحساب </dt>
 					<dd>
 						<div class="col-md-12 clearfix animated fadeIn">
 							<div class="row">
@@ -27,54 +27,54 @@
 										{{csrf_field()}}
 										<div class="form-group clearfix">
 											<div class="row">
-												<div class="col-md-6"><label>First Name</label><input type="text"
+												<div class="col-md-6"><label>الاسم الاول</label><input type="text"
 														name="first_name" value="{{$customer->first_name}}"
 														class="form-control"></div>
-												<div class="col-md-6"><label>Last Name</label><input type="text"
+												<div class="col-md-6"><label>الكنية</label><input type="text"
 														name="last_name" value="{{$customer->last_name}}"
 														class="form-control"></div>
 											</div>
 										</div>
 										<div class="form-group clearfix">
 											<div class="row">
-												<div class="col-md-6"><label>Email</label><input type="email"
+												<div class="col-md-6"><label>البريد الإلكتروني</label><input type="email"
 														name="email" value="{{$customer->email}}" class="form-control">
 												</div>
-												<div class="col-md-6"><label>Date of Birth</label><input type="text"
+												<div class="col-md-6"><label>تاريخ الولادة</label><input type="text"
 														name="dob" value="{{$customer->dob}}" placeholder="MM/DD/YYYY"
 														class="form-control"></div>
 											</div>
 										</div>
 										<div class="form-group clearfix">
 											<div class="row">
-												<div class="col-md-12"><button type="submit" class="btn-sub"><span>Save
-															Changes</span></button></div>
+												<div class="col-md-12"><button type="submit" class="btn-sub"><span>حفظ
+التغييرات</span></button></div>
 											</div>
 										</div>
 									</form>
-									<h5>Change Password</h5>
+									<h5>غير كلمة السر</h5>
 									<form method="POST" action="{{ route('customer.changepassword') }}">
 										{{csrf_field()}}
 										<div class="form-group clearfix">
 											<div class="row">
-												<div class="col-md-6"><label>Current Password</label><input
+												<div class="col-md-6"><label>كلمة المرور الحالي</label><input
 														type="password" name="current_password" class="form-control">
 												</div>
-												<div class="col-md-6"><label>New Password</label><input type="password"
+												<div class="col-md-6"><label>كلمة السر الجديدة</label><input type="password"
 														name="new_password" class="form-control"></div>
 											</div>
 										</div>
 										<div class="form-group clearfix">
 											<div class="row">
-												<div class="col-md-12"><label>Confirm Password</label><input
+												<div class="col-md-12"><label>تأكيد كلمة المرور</label><input
 														type="password" name="confirm_password" class="form-control">
 												</div>
 											</div>
 										</div>
 										<div class="form-group clearfix">
 											<div class="row">
-												<div class="col-md-12"><button class="btn-sub"><span>Save
-															Changes</span></button></div>
+												<div class="col-md-12"><button class="btn-sub"><span>حفظ
+التغييرات</span></button></div>
 											</div>
 										</div>
 									</form>
@@ -82,7 +82,7 @@
 									{{-- <div class="form-group clearfix">
 										<div class="row">
 											<div class="col-md-12"><button onclick="$('#signout').submit();"
-													class="btn-sub"><span>Logout</span></button></div>
+													class="btn-sub"><span>الخروج</span></button></div>
 										</div>
 									</div> --}}
 								</div>
@@ -90,7 +90,7 @@
 						</div>
 					</dd>
 
-					<dt>My Wishlist</dt>
+					<dt>قائمة امنياتي</dt>
 					<dd>
 						<div class="col-md-12 clearfix animated fadeIn">
 							<div class="row">
@@ -131,12 +131,12 @@
 					</dd>
 
 
-					<dt>Address Book</dt>
+					<dt>دليل العناوين</dt>
 					<dd>
 						<div class="col-md-12 clearfix animated fadeIn">
 							<div class="row">
 								<div class="col-md-12">
-									{{-- <div class="ana"><a href="#">Add a New Address</a></div> --}}
+									{{-- <div class="ana"><a href="#">أضف عنوانا جديدا</a></div> --}}
 									@if($addresses!=null)
 									@foreach ($addresses as $address)
 									<div class="ab">
@@ -147,8 +147,8 @@
 										<p>Email: {{$address->email}}</p>
 										{{-- <div class="re">
 											<ul>
-												<li><a href="#"> <i class="fa fa-close"></i> Remove</a></li>
-												<li><a href="#"> <i class="fa fa-edit"></i> Edit</a></li>
+												<li><a href="#"> <i class="fa fa-close"></i> إزالة</a></li>
+												<li><a href="#"> <i class="fa fa-edit"></i> تصحيح</a></li>
 											</ul>
 										</div> --}}
 									</div>
@@ -159,7 +159,7 @@
 						</div>
 					</dd>
 
-					<dt>My Orders</dt>
+					<dt>طلباتي</dt>
 					<dd>
 						<div class="col-md-12 clearfix animated fadeIn">
 							<div class="row">
@@ -169,16 +169,16 @@
 										<div class="pi">
 											<ul>
 												<li>
-													<p><span>Order Reference Number</span>
+													<p><span>ترتيب الرقم المرجعي</span>
 														{{$order->created_at->format('Ymd').$order->id}}</p>
 												</li>
 												<li>
-													<p><span>Payment Method</span>{{$order->payment_method}}</p>
+													<p><span>طريقة الدفع او السداد</span>{{$order->payment_method}}</p>
 												</li>
 
 
 												<li class="order-item">
-													<p><span>Items</span>
+													<p><span>طريقة الدفع او السداد</span>
 														<div class="table-responsive" data-aos="fade-up">
 															<table class="table table-bordered">
 
@@ -207,36 +207,36 @@
 												<li> </li>
 
 												<li>
-													<p><span>Shipping
-															Address</span>{!! $order->shipping_address->readable() !!}
+													<p><span>الشحن
+عنوان</span>{!! $order->shipping_address->readable() !!}
 													</p>
 													@if($order->shipping_address->hasLocation())
 													<a class="btn btn-link"
 														href="https://maps.google.com/?q={{$order->shipping_address->latitude}},{{$order->shipping_address->longitude}}"
-														target="blank" /><i class="fa fa-location-arrow"></i> Shipping
-													Location</a>
+														target="blank" /><i class="fa fa-location-arrow"></i> الشحن
+موقعك</a>
 													@endif
 												</li>
 												<li>
-													<p><span>Billing Address</span>{!!
+													<p><span>عنوان وصول الفواتير</span>{!!
 														$order->shipping_address->readable() !!}
 													</p>
 												</li>
 												<li>
 													@if($order->shipping_cost>0)
-													<p><span>Shipping Cost</span>QAR {{ $order->shipping_cost}}</p>
+													<p><span>تكلفة الشحن</span>QAR {{ $order->shipping_cost}}</p>
 													@endif
-													<p><span>Total Amount</span>QAR {{ $order->amount}}</p>
+													<p><span>المبلغ الإجمالي</span>QAR {{ $order->amount}}</p>
 												</li>
 												<li>
-													<p><span>Status</span>{{$order->status}}</p>
+													<p><span>الحالة</span>{{$order->status}}</p>
 												</li>
 											</ul>
 										</div>
 										{{-- <div class="re">
 												<ul>
-													<li><a href="#"> <i class="fa fa-close"></i> Remove</a></li>
-													<li><a href="#"> <i class="fa fa-edit"></i> Edit</a></li>
+													<li><a href="#"> <i class="fa fa-close"></i> إزالة</a></li>
+													<li><a href="#"> <i class="fa fa-edit"></i> تصحيح</a></li>
 												</ul>
 											</div> --}}
 

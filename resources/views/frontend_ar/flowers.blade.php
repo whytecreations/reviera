@@ -13,8 +13,8 @@
 
 	<div class="container">
 		<div class="col-md-12 ">
-			<h2 data-aos="fade-up">Flower <br> Arrangements</h2>
-			<h4 data-aos="fade-up">Our master florist design Different Unique Flower Arrangement for every occasion.</h4>
+			<h2 data-aos="fade-up">زهرة <br> ترتيبات</h2>
+			<h4 data-aos="fade-up">لدينا بائع الزهور سيد تصميم مختلف زهرة فريدة من نوعها ترتيب في كل مناسبة.</h4>
 
 		</div>
 
@@ -28,7 +28,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div id="sidebar" class="sidebar">
-								<h3 data-aos="fade-up">Flowers</h3>
+								<h3 data-aos="fade-up">زهور</h3>
 								<ul data-aos="fade-up">
 									@foreach ($flowerCategories as $flowerCategory)
 									<li><a
@@ -50,7 +50,7 @@
 												<div class="pdct-img">
 													<img
 														src="{{asset($flower->getMedia('images')->first()!=null?$flower->getMedia('images')->first()->getUrl():'images/logo.png')}}">
-													<div class="quick">Quick View</div>
+													<div class="quick">نظرة سريعة</div>
 												</div>
 												<figcaption>
 													<h5>{{$flower->title_ar ?: $flower->title}}</h5>
@@ -119,20 +119,20 @@
 								@endif
 							</h4>
 							<p>{{$flower->description_ar ?:$flower->description}}</p>
-							<h5>Select Size</h5>
+							<h5>أختر الحجم</h5>
 							<div class="slct-size">
 								<ul>
 									@if($flower->big_price >0)
 									<li class="clearfix">
 										<div class="radio"><input id="radio-1" name="size" value="big" type="radio"
-												checked><label for="radio-1" class="radio-label">Big Size</label></div>
+												checked><label for="radio-1" class="radio-label">حجم كبير</label></div>
 										<span>{{$flower->big_price}} QAR</span>
 									</li>
 									@endif
 									@if($flower->small_price >0)
 									<li class="clearfix">
 										<div class="radio"><input id="radio-2" name="size" value="small"
-												type="radio"><label for="radio-2" class="radio-label">Small Size</label>
+												type="radio"><label for="radio-2" class="radio-label">حجم صغير</label>
 										</div>
 										<span>{{$flower->small_price}} QAR</span>
 									</li>
@@ -152,9 +152,9 @@
 												class="fa fa-plus"></span></button></span>
 								</div>
 							</div>
-							<h5>Add Special Instructions</h5>
-							<textarea class="form-control" name="note" placeholder="Add a Note"></textarea>
-							<button class="btn-ac" type="submit">Add to Cart</button>
+							<h5>إضافة تعليمات خاصة</h5>
+							<textarea class="form-control" name="note" placeholder="أضف ملاحظة"></textarea>
+							<button class="btn-ac" type="submit">أضف إلى السلة</button>
 						</div>
 					</div>
 				</div>
