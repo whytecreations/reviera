@@ -3,12 +3,6 @@
 
 @section('content')
 <h3 class="page-title">@lang('quickadmin.orders.title')</h3>
-@can('order_create')
-<p>
-    <a href="{{ route('admin.orders.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-
-</p>
-@endcan
 
 
 <div class="panel panel-default">
@@ -175,7 +169,6 @@
 @section('javascript')
 <script>
     function viewDetails(id){
-                console.log(id);
                 $.ajax({
                     type:'GET',
                     url:"{{asset('admin/order')}}/"+id,
@@ -183,20 +176,22 @@
                     success: function(data) {
                         $(".modal-title").html('<i class="icon-menu7"></i> &nbsp;Order ID: #'+data.data[0].id+data.data[0].customer_id+data.data[0].amount);
                         $("#alert-data").html('<h4 class=\"text-semibold\">'+data.data[0].customer.first_name+' '+data.data[0].customer.last_name+'</h4> '+NullChecker(data.data[0].customer.email)+'<br/> '+NullChecker(data.data[0].customer.phone)+'<br/>');
-                        $("#shipping-ad").html(data.data[0].shipping_address.address1+' '+data.data[0].shipping_address.address2+' '+data.data[0].shipping_address.city+'- '+data.data[0].shipping_address.country+data.data[0].shipping_address.phone);
+                        $("#shipping-ad").html(data.data[0].shipping_address.address1+' '+data.data[0].shipping_address.address2+' '+data.data[0].shipping_address.city+'- '+data.data[0].shipping_address.country);
                         $("#location").html(
                         '<br/><a class="btn btn-link" href="https://maps.google.com/?q='+data.data[0].shipping_address.latitude+','+data.data[0].shipping_address.longitude
                         +'" target="blank" ><i class="fa fa-location-arrow"></i> Shipping Location</a>')
-                        $("#billing-ad").html(data.data[0].billing_address.address1+' '+data.data[0].billing_address.address2+' '+data.data[0].billing_address.city+'- '+data.data[0].billing_address.country+data.data[0].billing_address.phone);
+                        $("#billing-ad").html(data.data[0].billing_address.address1+' '+data.data[0].billing_address.address2+' '+data.data[0].billing_address.city+'- '+data.data[0].billing_address.country);
                         $("#tbody").empty();
                         $("#tbody2").empty();
-                        sum=0;
+                        quantity_sum=0;
                         for(i=0;i<data.data[0].order_details.length;i++){
-                            sum=sum+parseInt(parseOrderTable(data.data[0].order_details[i],i));
+                            quantity_sum=quantity_sum+parseInt(parseOrderTable(data.data[0].order_details[i],i));
                         }
+                        console.log(data)
 
                         $("#tfoot").html('<tr>\n' +
                             '                                <th>Shipping Charge : </th>\n' +
+                            '                                <th></th>\n' +
                             '                                <th></th>\n' +
                             '                                <th></th>\n' +
                             '                                <th>'+data.data[0].shipping_cost+' QAR</th>\n' +
@@ -204,12 +199,14 @@
                             '                                <th>Sub Total : </th>\n' +
                             '                                <th></th>\n' +
                             '                                <th></th>\n' +
-                            '                                <th>'+data.data[0].order_details[0].total_amount+' QAR</th>\n' +
+                            '                                <th></th>\n' +
+                            '                                <th>'+data.data[0].amount+' QAR</th>\n' +
                             '                            </tr><tr>\n' +
                             '                                <th><b>Total : </b></th>\n' +
                             '                                <th></th>\n' +
-                            '                                <th><b>'+sum+'</b></th>\n' +
-                            '                                <th><b>'+parseFloat(parseFloat(data.data[0].order_details[0].total_amount)+parseFloat(data.data[0].shipping_cost))+' QAR</b></th>\n' +
+                            '                                <th></th>\n' +
+                            '                                <th><b>'+quantity_sum+'</b></th>\n' +
+                            '                                <th><b>'+parseFloat(parseFloat(data.data[0].amount)+parseFloat(data.data[0].shipping_cost))+' QAR</b></th>\n' +
                             '                            </tr>');
                         $("#payment-method").text("Payment Method: "+data.data[0].payment_method);
                         if(data.data[0].payment_method=="Paypal"){
@@ -248,7 +245,6 @@
               '                                <td>'+data.amount+' QAR</td>\n' +
               '                            </tr>';
           $("#tbody").append(text);
-          console.log(data);
           return data.quantity;
       }
         function parsePaymentTable(data,i) {

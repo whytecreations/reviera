@@ -216,7 +216,7 @@ class HomePageController extends Controller
     {
         $shippingAddress = Address::create($data);
         session(['sid' => $shippingAddress->id]);
-        if ($data['sameAsShipping'] == "on") {
+        if (isset($data['sameAsShipping']) && $data['sameAsShipping'] == "on") {
             session(['bid' => $shippingAddress->id]);
         } else {
             $billingAddress = Address::create([

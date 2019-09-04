@@ -1,5 +1,13 @@
 <?php
 
+Route::get('clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    return "Cache is cleared";
+});
+
 Route::get('test', function () {
     // $gateway = Omnipay::create('Migs_ThreeParty');
     // $gateway->setMerchantId(env('PAYMENT_MIGS_MERCHANT_ID'));
@@ -46,15 +54,15 @@ Route::group(['prefix' => 'ar'], function () {
     Route::get('about', 'Front\ArabicHomePageController@about');
     Route::get('corporate-rate-tag', 'Front\ArabicHomePageController@corporate');
     Route::post('corporate', 'Front\ArabicHomePageController@corporateEnquiry');
-    Route::get('flowers', 'Front\ArabicHomePageController@flowers')->name('flowers');
+    Route::get('flowers', 'Front\ArabicHomePageController@flowers')->name('ar.flowers');
     Route::get('flowers/{slug}', 'Front\ArabicHomePageController@flowersByCategory');
-    Route::get('chocolates', 'Front\ArabicHomePageController@chocolates')->name('chocolates');
+    Route::get('chocolates', 'Front\ArabicHomePageController@chocolates')->name('ar.chocolates');
     Route::get('chocolates/{slug}', 'Front\ArabicHomePageController@chocolatesByCategory');
-    Route::get('gift-wrapping', 'Front\ArabicHomePageController@giftWrapping')->name('gift-wrapping');
+    Route::get('gift-wrapping', 'Front\ArabicHomePageController@giftWrapping')->name('ar.gift-wrapping');
     Route::get('account', 'Front\ArabicHomePageController@account');
     Route::get('checkout', 'Front\ArabicHomePageController@checkout');
     Route::get('cart', 'Front\ArabicHomePageController@cart');
-    Route::get('getcart', 'Front\ArabicHomePageController@getCart')->name('getcart');
+    Route::get('getcart', 'Front\ArabicHomePageController@getCart')->name('ar.getcart');
     Route::get('contact', 'Front\ArabicHomePageController@contact');
 });
 

@@ -12,7 +12,8 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up"><a href="{{route('chocolates')}}">الشوكولا</a> or <a href="{{route('flowers')}}">
+			<h2 data-aos="fade-up"><a href="{{route('ar.chocolates')}}">الشوكولا</a> or <a
+					href="{{route('ar.flowers')}}">
 					الزهور</a></h2>
 
 			<div class="cclt-sec">
@@ -21,9 +22,9 @@
 						<div class="cclt-img" data-aos="fade-up"><img src="images/choco.png"></div>
 						<!--<h5 data-aos="fade-up">Lorem Ipsum</h5>-->
 						<div class="abox" data-aos="fade-up">
-							<a href="{{route('chocolates')}}"><span><img src="images/gift_box.svg"> عرض الشوكولاتة
+							<a href="{{route('ar.chocolates')}}"><span><img src="images/gift_box.svg"> عرض الشوكولاتة
 								</span></a>
-							<a href="{{route('flowers')}}"><span><img src="images/gift_box.svg"> عرض الزهور
+							<a href="{{route('ar.flowers')}}"><span><img src="images/gift_box.svg"> عرض الزهور
 								</span></a></div>
 					</div>
 				</div>
@@ -60,7 +61,7 @@
 						</div>
 
 
-						<div class="abox" data-aos="fade-up"><a href="{{route('flowers')}}"><span><img
+						<div class="abox" data-aos="fade-up"><a href="{{route('ar.flowers')}}"><span><img
 										src="images/gift_box.svg"> View Flowers</span></a></div>
 					</div>
 				</div>
@@ -103,7 +104,7 @@
 
 						</div>
 
-						<div class="abox" data-aos="fade-up"><a href="{{route('gift-wrapping')}}"><span><img
+						<div class="abox" data-aos="fade-up"><a href="{{route('ar.gift-wrapping')}}"><span><img
 										src="images/gift_box.svg"> عرض أنماط التفاف</span></a></div>
 					</div>
 				</div>

@@ -62,14 +62,15 @@
 	</header>
 
 	@yield('content')
-	@include('frontend.layout.cart-sidebar')
+	@include('frontend_ar.layout.cart-sidebar')
 
 	<footer>
 		<div class="ftr-tp clearfix">
 			<div class="container-fluid">
 				<div class="col-md-12">
 					<ul>
-						<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>اتصل بنا / واتس اب</span> <br><a href="tel:+974 33750041">+974 33750041</a></li>
+						<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>اتصل بنا / واتس اب</span>
+							<br><a href="tel:+974 33750041">+974 33750041</a></li>
 						<li data-aos="fade-up"><img src="{{asset('images/lphn.svg')}}"> <span>اعطينا اتصال</span>
 							<br><a href="tel:+974 44366365">+974 44366365</a></li>
 						<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}">

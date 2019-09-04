@@ -1,6 +1,6 @@
 <div class="cd-panel from-right">
   <div class="cd-panel-header">
-    <div class="crt-sec"><img src="images/cart.svg">
+    <div class="crt-sec"><img src="{{asset('images/cart.svg')}}">
       <div class="cnt cartQty">{{Cart::getTotalQuantity()}}</div>
     </div>
     <h1>My Bags</h1>
@@ -86,7 +86,7 @@ function updateQuantity(cartId){
 function loadCart() {
   $.ajax({
   type: "GET",
-  url: '{{route("getcart")}}',
+  url: '{{route("ar.getcart")}}',
   success: function(response){
     $('#SidebarCartItems').html('')
     let quantity =0;
