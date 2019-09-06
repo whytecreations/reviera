@@ -20,6 +20,8 @@
                     <th>Email</th>
                     <th>Items</th>
                     <th>Payment Method</th>
+                    <th>Payment Status</th>
+                    <th>Order Status</th>
                     <th>Amount</th>
                     <th>View</th>
 
@@ -30,7 +32,7 @@
                 @if (count($orders) > 0)
                 @foreach ($orders as $order)
                 <tr data-entry-id="{{ $order->id }}">
-                    <td>{{$order->id.$order->customer_id.$order->amount}}</td>
+                    <td>{{str_pad($order->id.$order->customer_id.$order->amount,4,STR_PAD_LEFT)}}</td>
                     <td>{{$order->created_at->format('Y / M / d')}}</td>
                     <td>{{$order->customer->first_name." ".$order->customer->last_name}}</td>
                     <td>{{$order->customer->email}}</td>
@@ -42,27 +44,27 @@
                         @endforeach
                         {{rtrim($orderItems, ',') }}
                     </td>
-                    <td> @if($order->payment_method=="Paypal") <img
-                            src="https://png.pngtree.com/svg/20170322/paypal_1215259.png" class="img-responsive"
-                            style="width: 119px;"> -
-                        @if($order->status=='Completed')
-                        <b class="btn-danger">Payment:Success</b>
-                        @else
-                        <b class="btn-primary"></b>
-                        Failed
-                        <b class="btn-success">Amount:{{$order->paypal->getPaymentStatus()}}</b>
-                        @endif
-                        @else
-                        {{$order->payment_method}}
-                        @endif
+                    <td>{{$order->payment_method}}</td>
+                    <td>
+                        @php
+                        $txnStatus = $order->transactions->last()?'<span
+                            class="label label-'.$order->transactions->last()->getStatusColor().'">'.$order->transactions->last()->status.'</span>':'N/A';
+                        echo $txnStatus;
+                        @endphp
                     </td>
-                    <td>{{$order->amount}} QAR</td>
+                    <td class="label label-{{$order->getStatusColor()}}">{{$order->status}}</td>
+                    <td style="color:green">{{$order->amount}} QAR</td>
 
                     <td>
                         @can('order_view')
+                        <a href="{{ route('admin.orders.show',[$order->id]) }}"
+                            class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                        @endcan
+
+                        {{-- @can('order_view')
                         <a href="javascript:;" class="btn btn-xs btn-primary "
                             onClick="viewDetails('{{$order->id}}')">@lang('quickadmin.qa_view')</a>
-                        @endcan
+                        @endcan --}}
                     </td>
                 </tr>
                 @endforeach
@@ -187,7 +189,6 @@
                         for(i=0;i<data.data[0].order_details.length;i++){
                             quantity_sum=quantity_sum+parseInt(parseOrderTable(data.data[0].order_details[i],i));
                         }
-                        console.log(data)
 
                         $("#tfoot").html('<tr>\n' +
                             '                                <th>Shipping Charge : </th>\n' +
@@ -261,24 +262,24 @@
         }
 
 
-        function testAnim(x) {
-            $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $(this).removeClass();
-            });
-        };
+        // function testAnim(x) {
+        //     $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        //         $(this).removeClass();
+        //     });
+        // };
 
-        $(document).ready(function(){
-            $('.js--triggerAnimation').click(function(e){
-                e.preventDefault();
-                var anim = $('.js--animations').val();
-                testAnim(anim);
-            });
+        // $(document).ready(function(){
+        //     $('.js--triggerAnimation').click(function(e){
+        //         e.preventDefault();
+        //         var anim = $('.js--animations').val();
+        //         testAnim(anim);
+        //     });
 
-            $('.js--animations').change(function(){
-                var anim = $(this).val();
-                testAnim(anim);
-            });
-        });
+        //     $('.js--animations').change(function(){
+        //         var anim = $(this).val();
+        //         testAnim(anim);
+        //     });
+        // });
 
 
 

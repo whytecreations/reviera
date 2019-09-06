@@ -18,4 +18,17 @@ class Transaction extends Model
         return $this->belongsTo(Order::class);
     }
 
+    public function getStatusColor()
+    {
+        if ($this->status != "") {
+            if ($this->status == "Success") {
+                return "success";
+            }
+
+            return "danger";
+
+        }
+        return "default";
+    }
+
 }

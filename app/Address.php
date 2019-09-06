@@ -32,14 +32,14 @@ class Address extends Model
 
     public function readable()
     {
-        return "<small>
+        return "<span>
         $this->first_name  $this->last_name  <br/>
          $this->address1 <br/>
          $this->address2 <br/>
-         $this->city , $this->country <br/>
+         $this->city - $this->country <br/>
          Phone: $this->phone <br/>
          Email: $this->email <br/>
 
-         </small>";
+         </span>";
     }
 }

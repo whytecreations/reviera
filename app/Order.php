@@ -4,6 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+//  // Order Status
+// Placed
+// Processing
+// Declined
+// Cancelled By Customer
+// Out For Delivery
+// Delivered
+
 class Order extends Model
 {
     protected $fillable = ['amount',
@@ -38,34 +46,35 @@ class Order extends Model
         return $this->hasMany(OrderDetail::class);
     }
 
-    public static function getOrderStatus(Order $order)
-    {
-        $status = '';
-        switch ($order->status) {
-            case 0:
-                $status = 'Cancelled';
-                break;
-            case 1:
-                $status = 'Placed';
-                break;
-            case 2:
-                $status = 'Recieved';
-                break;
-            case 3:
-                $status = 'Processed';
-                break;
-            case 4:
-                $status = 'Completed';
-                break;
-            default:
-                $status = "N/A";
-        }
-        return $status;
-    }
-
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
 
+    public function getStatusColor()
+    {
+        //  // Order Status
+        // Placed
+        // Processing
+        // Declined
+        // Cancelled By Customer
+        // Out For Delivery
+        // Delivered
+        switch ($this->status) {
+            case 'Placed':
+                return 'success';
+            case 'Processing':
+                return 'success';
+            case 'Declined':
+                return 'danger';
+            case 'Cancelled By Customer':
+                return 'danger';
+            case 'Out For Delivery':
+                return 'primary';
+            case 'Delivered':
+                return 'success';
+            default:
+                return "default";
+        }
+    }
 }

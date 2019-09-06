@@ -162,6 +162,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     Route::resource('orders', 'Admin\OrderController');
     Route::get('order/{id}', 'Admin\OrderController@getOrder');
+    Route::patch('order/{order}/updatestatus', 'Admin\OrderController@updateOrderStatus')->name('order.updatestatus');
     // Route::post('orders_mass_destroy', ['uses' => 'Admin\FlowerController@massDestroy', 'as' => 'orders.mass_destroy']);
     // Route::post('orders_restore/{id}', ['uses' => 'Admin\FlowerController@restore', 'as' => 'orders.restore']);
     // Route::delete('orders_perma_del/{id}', ['uses' => 'Admin\FlowerController@perma_del', 'as' => 'orders.perma_del']);
