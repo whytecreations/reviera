@@ -13,6 +13,7 @@ class OrderDetail extends Model
         'product_image',
         'product_type',
         'product_size',
+        'note',
         'quantity',
         'amount',
         'discount',

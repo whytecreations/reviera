@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-	<title>Riveria Master Flourist and Chocolatier</title>
+	<title>Riveria Master Florist and Chocolatier</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
@@ -50,6 +50,7 @@
 							<li><a href="{{url('chocolates')}}">CHOCOLATES</a></li>
 							<li><a href="{{url('gift-wrapping')}}">GIFT WRAPPING</a></li>
 							<li><a href="{{url('corporate-rate-tag')}}">Corporate Rate</a></li>
+							<li><a href="{{url('contact')}}">Contact Us</a></li>
 							<li><a href="{{url('ar')}}">العربية</a></li>
 						</ul>
 					</nav>
@@ -74,13 +75,13 @@
 							<br><a href="tel:+974 44366365">+974 44366365</a></li>
 						<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}">
 							<span>E-Mail</span> <br><a
-								href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></li>
+								href="mailto:info@rivieraqatar.com">info@rivieraqatar.com</a></li>
 						<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}">
-							<span>Opening Hours</span> <br>9AM - 9.30PM </li>
+							<span>Shop</span> <br><a href="https://goo.gl/maps/MGbCUhV6KWerwCFA7" target="_blank">Location</a></li>
 						<li class="flw" data-aos="fade-up" data-aos-delay="600"><img
 								src="{{asset('images/share.svg')}}"> <span>Follow On</span> <br><a
 								href="https://www.instagram.com/rivieraqatar/" target="_blank"><i
-									class="fa fa-instagram"></i></a><a href="#" target="_blank"><i
+									class="fa fa-instagram"></i></a><a href="https://www.facebook.com/rivieraqatar/" target="_blank"><i
 									class="fa fa-facebook"></i></a></li>
 					</ul>
 				</div>
@@ -96,7 +97,7 @@
 						<li><a href="#">FAQ</a></li>
 						<li><a href="#">Privacy Policy</a></li>
 					</ul>
-					<p>Copyright© 2019 RIVERIA All Rights Reserved. <br> <span>Powered by <a
+					<p>Copyright© 2019 RIVIERA All Rights Reserved. <br> <span>Powered by <a
 								href="https://www.whytecreations.com/" target="_blank" rel="dofollow"
 								title="Website Design and Developed by Whytecreations">whytecreations</a></span></p>
 				</div>

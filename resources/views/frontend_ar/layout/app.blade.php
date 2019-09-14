@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-	<title>Riveria Master Flourist and Chocolatier</title>
+	<title>Riveria Master Florist and Chocolatier</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
@@ -51,6 +51,7 @@
 							<li><a href="{{url('ar/chocolates')}}">الشوكولاتة</a></li>
 							<li><a href="{{url('ar/gift-wrapping')}}">تغليف الهدايا</a></li>
 							<li><a href="{{url('ar/corporate-rate-tag')}}">معدل الشركات</a></li>
+							<li><a href="{{url('ar/contact')}}"> تصل بنا </a></li>
 							<li><a href="{{url('/')}}">English</a></li>
 						</ul>
 					</nav>
@@ -75,13 +76,13 @@
 							<br><a href="tel:+974 44366365">+974 44366365</a></li>
 						<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}">
 							<span>البريد الإلكتروني</span> <br><a
-								href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></li>
+								href="mailto:info@rivieraqatar.com">info@rivieraqatar.com</a></li>
 						<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}">
 							<span>ساعات العمل</span> <br>9AM - 9.30PM </li>
 						<li class="flw" data-aos="fade-up" data-aos-delay="600"><img
 								src="{{asset('images/share.svg')}}"> <span>اتبع</span> <br><a
 								href="https://www.instagram.com/rivieraqatar/" target="_blank"><i
-									class="fa fa-instagram"></i></a><a href="#" target="_blank"><i
+									class="fa fa-instagram"></i></a><a href="https://www.facebook.com/rivieraqatar/" target="_blank"><i
 									class="fa fa-facebook"></i></a></li>
 					</ul>
 				</div>

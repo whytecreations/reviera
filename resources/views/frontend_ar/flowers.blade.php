@@ -124,15 +124,17 @@
 								<ul>
 									@if($flower->big_price >0)
 									<li class="clearfix">
-										<div class="radio"><input id="radio-1" name="size" value="big" type="radio"
-												checked><label for="radio-1" class="radio-label">حجم كبير</label></div>
+										<div class="radio"><input id="{{$flower->id}}-radio-1" name="size" value="big"
+												type="radio" checked><label for="{{$flower->id}}-radio-1"
+												class="radio-label">حجم كبير</label></div>
 										<span>{{$flower->big_price}} QAR</span>
 									</li>
 									@endif
 									@if($flower->small_price >0)
 									<li class="clearfix">
-										<div class="radio"><input id="radio-2" name="size" value="small"
-												type="radio"><label for="radio-2" class="radio-label">حجم صغير</label>
+										<div class="radio"><input id="{{$flower->id}}-radio-2" name="size" value="small"
+												type="radio"><label for="{{$flower->id}}-radio-2"
+												class="radio-label">حجم صغير</label>
 										</div>
 										<span>{{$flower->small_price}} QAR</span>
 									</li>

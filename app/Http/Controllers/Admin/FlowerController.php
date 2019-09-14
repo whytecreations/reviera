@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Flower;
 use App\FlowerCategory;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Requests\Admin\StoreFlowersRequest;
 use App\Http\Requests\Admin\UpdateFlowersRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FlowerController extends Controller
 {
@@ -22,13 +22,12 @@ class FlowerController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('flower_access')) {
+        if (!Gate::allows('flower_access')) {
             return abort(401);
         }
 
-
         if (request('show_deleted') == 1) {
-            if (! Gate::allows('flower_delete')) {
+            if (!Gate::allows('flower_delete')) {
                 return abort(401);
             }
             $flowers = Flower::onlyTrashed()->get();
@@ -46,11 +45,11 @@ class FlowerController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('flower_create')) {
+        if (!Gate::allows('flower_create')) {
             return abort(401);
         }
         $flowerCategories = FlowerCategory::all();
-        return view('admin.flowers.create',compact('flowerCategories'));
+        return view('admin.flowers.create', compact('flowerCategories'));
     }
 
     /**
@@ -61,24 +60,21 @@ class FlowerController extends Controller
      */
     public function store(StoreFlowersRequest $request)
     {
-        if (! Gate::allows('flower_create')) {
+        if (!Gate::allows('flower_create')) {
             return abort(401);
         }
         $request = $this->saveFiles($request);
         $flower = Flower::create($request->all());
 
-
         foreach ($request->input('images_id', []) as $index => $id) {
-            $model          = config('medialibrary.media_model');
-            $file           = $model::find($id);
+            $model = config('medialibrary.media_model');
+            $file = $model::find($id);
             $file->model_id = $flower->id;
             $file->save();
         }
 
-
         return redirect()->route('admin.flowers.index');
     }
-
 
     /**
      * Show the form for editing Flower.
@@ -88,12 +84,12 @@ class FlowerController extends Controller
      */
     public function edit($id)
     {
-        if (! Gate::allows('flower_edit')) {
+        if (!Gate::allows('flower_edit')) {
             return abort(401);
         }
         $flower = Flower::findOrFail($id);
         $flowerCategories = FlowerCategory::all();
-        return view('admin.flowers.edit', compact('flower','flowerCategories'));
+        return view('admin.flowers.edit', compact('flower', 'flowerCategories'));
     }
 
     /**
@@ -105,28 +101,25 @@ class FlowerController extends Controller
      */
     public function update(UpdateFlowersRequest $request, $id)
     {
-        if (! Gate::allows('flower_edit')) {
+        if (!Gate::allows('flower_edit')) {
             return abort(401);
         }
         $request = $this->saveFiles($request);
         $flower = Flower::findOrFail($id);
         $flower->update($request->all());
 
-
         $media = [];
         foreach ($request->input('images_id', []) as $index => $id) {
-            $model          = config('medialibrary.media_model');
-            $file           = $model::find($id);
+            $model = config('medialibrary.media_model');
+            $file = $model::find($id);
             $file->model_id = $flower->id;
             $file->save();
             $media[] = $file->toArray();
         }
         $flower->updateMedia($media, 'images');
 
-
         return redirect()->route('admin.flowers.index');
     }
-
 
     /**
      * Display Flower.
@@ -136,14 +129,13 @@ class FlowerController extends Controller
      */
     public function show($id)
     {
-        if (! Gate::allows('flower_view')) {
+        if (!Gate::allows('flower_view')) {
             return abort(401);
         }
         $flower = Flower::findOrFail($id);
 
         return view('admin.flowers.show', compact('flower'));
     }
-
 
     /**
      * Remove Flower from storage.
@@ -153,7 +145,7 @@ class FlowerController extends Controller
      */
     public function destroy($id)
     {
-        if (! Gate::allows('flower_delete')) {
+        if (!Gate::allows('flower_delete')) {
             return abort(401);
         }
         $flower = Flower::findOrFail($id);
@@ -169,7 +161,7 @@ class FlowerController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('flower_delete')) {
+        if (!Gate::allows('flower_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -181,7 +173,6 @@ class FlowerController extends Controller
         }
     }
 
-
     /**
      * Restore Flower from storage.
      *
@@ -190,7 +181,7 @@ class FlowerController extends Controller
      */
     public function restore($id)
     {
-        if (! Gate::allows('flower_delete')) {
+        if (!Gate::allows('flower_delete')) {
             return abort(401);
         }
         $flower = Flower::onlyTrashed()->findOrFail($id);
@@ -207,7 +198,7 @@ class FlowerController extends Controller
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('flower_delete')) {
+        if (!Gate::allows('flower_delete')) {
             return abort(401);
         }
         $flower = Flower::onlyTrashed()->findOrFail($id);

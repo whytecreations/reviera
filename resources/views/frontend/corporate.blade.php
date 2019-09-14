@@ -14,10 +14,9 @@
 		<div class="col-md-12">
 			<h2 data-aos="fade-up">Corporate rate Tag</h2>
 			<h4 data-aos="fade-up">Interested in becoming a preferred Corporate Client at Riviera please fill out form
-				below! <br>
+				below! 
 
-				You must initially show a Business Card or other form of Authentication to show your employment within
-				the company <br> <span>This offer is subject to change at any time without notice. </span></h4>
+			</h4>
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12 text-left">
@@ -104,6 +103,7 @@
 								</div>
 							</div>
 						</form>
+							
 					</div>
 
 

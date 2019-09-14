@@ -176,6 +176,7 @@ class HomePageController extends Controller
                     'product_id' => $cartItem['attributes']['id'],
                     'product_type' => $cartItem['attributes']['type'],
                     'product_size' => $cartItem['attributes']['size'],
+                    'note' => $cartItem['attributes']['note'],
                     'product_name' => $cartItem['name'],
                     'product_image' => $cartItem['attributes']['image'],
                 ]);

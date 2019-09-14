@@ -255,11 +255,11 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>First Name</label>
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="first_name" required>
                       </div>
                       <div class="col-md-6">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" name="last_name">
+                        <input type="text" class="form-control" name="last_name" required>
                       </div>
                     </div>
                   </div>

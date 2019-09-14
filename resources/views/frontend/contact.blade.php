@@ -20,7 +20,7 @@
 			    	<ul>
 			    		<li data-aos="fade-up"><i class="fa fa-map-marker"></i><h5>Our Address</h5><p>Al Sadd - main street، Doha, Qatar</p></li>
 			    		<li data-aos="fade-up"><i class="fa fa-phone"></i><h5>Phone Number</h5><p><a href="tel:+974 44366365">+974 44366365</a></p></li>
-			    		<li data-aos="fade-up"><i class="fa fa-envelope-o"></i><h5>Email Address</h5><p><a href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></p></li>
+			    		<li data-aos="fade-up"><i class="fa fa-envelope-o"></i><h5>Email Address</h5><p><a href="mailto:info@rivieraqatar.com">info@rivieraqatar.com</a></p></li>
 			    	</ul>
 			    </div>
 			    

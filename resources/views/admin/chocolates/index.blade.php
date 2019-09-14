@@ -71,7 +71,7 @@
                     <td field-key='description'>{!! $chocolate->description
                         !!}<br />{{ $chocolate->description_ar }}</td>
                     <td width="300" field-key='images'> @foreach($chocolate->getMedia('images') as $media)
-                        <img width="50" src="{{ asset($media->getUrl()) }}">
+                        <img width="50" src="{{ asset($media->getUrl('thumb')) }}">
                         @endforeach</td>
                     @if( request('show_deleted') == 1 )
                     <td>
@@ -96,10 +96,10 @@
                     </td>
                     @else
                     <td>
-                        @can('chocolate_view')
+                        {{-- @can('chocolate_view')
                         <a href="{{ route('admin.chocolates.show',[$chocolate->id]) }}"
-                            class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
-                        @endcan
+                        class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                        @endcan --}}
                         @can('chocolate_edit')
                         <a href="{{ route('admin.chocolates.edit',[$chocolate->id]) }}"
                             class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>

@@ -119,15 +119,17 @@
 								<ul>
 									@if($chocolate->full_price >0)
 									<li class="clearfix">
-										<div class="radio"><input id="radio-1" name="size" value="full" type="radio"
-												checked><label for="radio-1" class="radio-label">1KG</label></div>
+										<div class="radio"><input id="{{$chocolate->id}}-radio-1" name="size"
+												value="full" type="radio" checked><label
+												for="{{$chocolate->id}}-radio-1" class="radio-label">1KG</label></div>
 										<span>{{$chocolate->full_price}} QAR</span>
 									</li>
 									@endif
 									@if($chocolate->half_price >0)
 									<li class="clearfix">
-										<div class="radio"><input id="radio-2" name="size" value="half"
-												type="radio"><label for="radio-2" class="radio-label">1/2 KG</label>
+										<div class="radio"><input id="{{$chocolate->id}}-radio-2" name="size"
+												value="half" type="radio"><label for="{{$chocolate->id}}-radio-2"
+												class="radio-label">1/2 KG</label>
 										</div>
 										<span>{{$chocolate->half_price}} QAR</span>
 									</li>
