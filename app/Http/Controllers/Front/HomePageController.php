@@ -16,6 +16,8 @@ use App\Mail\ContactEnquiry;
 use App\Mail\CorporateEnquiry;
 use App\Order;
 use App\OrderDetail;
+use App\ShippingMethod;
+use App\ShippingZone;
 use App\WishList;
 use Cart;
 use Hash;
@@ -134,7 +136,9 @@ class HomePageController extends Controller
         }
         $shippingCharge = env('SHIPPING_CHARGE', 0);
         $countries = Country::all();
-        return view('frontend.checkout', compact(['cart', 'shipping', 'billing', 'shippingCharge', 'countries']));
+        $shippingZones = ShippingZone::all();
+        $shippingMethods = ShippingMethod::all();
+        return view('frontend.checkout', compact(['cart', 'shipping', 'billing', 'shippingCharge', 'countries', 'shippingMethods', 'shippingZones']));
     }
 
     public function placeOrder(Request $request)

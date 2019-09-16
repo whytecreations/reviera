@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('discount')->nullable();
             $table->bigInteger('billing_address_id');
             $table->bigInteger('shipping_address_id');
+            $table->bigInteger('shipping_method_id');
             $table->string('payment_method');
             $table->string('shipping_cost');
             $table->string('status');

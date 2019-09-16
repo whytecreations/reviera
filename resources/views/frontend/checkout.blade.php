@@ -197,15 +197,21 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <input type="text" class="form-control" value="{{$shipping->city}}" name="city" required>
+                        <select required value="{{$shipping->city}}" name="city" class="form-control">
+                          @foreach($shippingZones as $city)
+                          <option value="{{$city->name}}">{{$city->name}}
+                          </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
-                        <select required id="country" name="country" class="form-control">
+                        <select disabled="disabled" required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
-                          <option value="{{$shipping->country}}" @if($country->name=='Qatar') selected
-                            @endif>{{$country->name}}
+                          @if($country->name=='Qatar')
+                          <option value="{{$shipping->country}}" selected>{{$country->name}}
                           </option>
+                          @endif
                           @endforeach
                         </select>
                       </div>
@@ -279,15 +285,21 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <input type="text" class="form-control" name="city" required>
+                        <select required id="city" name="city" class="form-control">
+                          @foreach($shippingZones as $city)
+                          <option value="{{$city->name}}">{{$city->name}}
+                          </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
                         <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
-                          <option @if($country->name=='Qatar') selected value="{{$country->name}}"
-                            @endif>{{$country->name}}
+                          @if($country->name=='Qatar')
+                          <option selected value="{{$country->name}}">{{$country->name}}
                           </option>
+                          @endif
                           @endforeach
                         </select>
                       </div>
@@ -351,15 +363,21 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <input type="text" class="form-control" name="billing_city">
+                        <select required name="billing_city" class="form-control">
+                          @foreach($shippingZones as $city)
+                          <option value="{{$city->name}}">{{$city->name}}
+                          </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
                         <select required id="billing_country" name="billing_country" class="form-control">
                           @foreach($countries as $country)
-                          <option value="{{$country->name}}" @if($country->name=='Qatar') selected
-                            @endif>{{$country->name}}
+                          @if($country->name=='Qatar')
+                          <option value="{{$country->name}}" selected>{{$country->name}}
                           </option>
+                          @endif
                           @endforeach
                         </select>
                       </div>
@@ -376,6 +394,29 @@
                         <input type="email" class="form-control" name="billing_email">
                       </div>
                     </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="accord accord-single">
+                <h4 class="accord__head">Shipping Method</h4>
+                <div class="accord__body clearfix">
+                  <div class="slct-size">
+                    <ul>
+                      @foreach ($shippingMethods as $shippingMethod)
+
+                      <li class="clearfix">
+                        <div class="radio">
+                          <input id="method-{{$shippingMethod->id}}" name="shipping_method_id"
+                            value="{{$shippingMethod->id}}" type="radio">
+                          <label for="method-{{$shippingMethod->id}}"
+                            class="radio-label">{{$shippingMethod->name}}<br />
+                            {{-- <small>{{$shippingMethod->description}}</small> --}}
+                          </label>
+                        </div>
+                      </li>
+                      @endforeach
+                    </ul>
                   </div>
                 </div>
               </article>

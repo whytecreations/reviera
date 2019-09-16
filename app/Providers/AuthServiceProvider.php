@@ -179,5 +179,37 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1, 2]);
         });
 
+        Gate::define('shipping_method_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_method_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_method_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_method_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_method_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
+        Gate::define('shipping_zone_access', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_zone_create', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_zone_edit', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_zone_view', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+        Gate::define('shipping_zone_delete', function ($user) {
+            return in_array($user->role_id, [1, 2]);
+        });
+
     }
 }

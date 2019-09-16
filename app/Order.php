@@ -17,6 +17,7 @@ class Order extends Model
     protected $fillable = ['amount',
         'billing_address_id',
         'shipping_address_id',
+        'shipping_method_id',
         'payment_method',
         'transaction_id',
         'shipping_cost',
@@ -39,6 +40,11 @@ class Order extends Model
     public function shipping_address()
     {
         return $this->belongsTo(Address::class, 'shipping_address_id');
+    }
+
+    public function shipping_method()
+    {
+        return $this->belongsTo(ShippingMethod::class, 'shipping_method_id');
     }
 
     public function orderDetails()

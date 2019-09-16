@@ -109,6 +109,31 @@
                 </ul>
             </li>
 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>@lang('quickadmin.shippingmethods.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ route('admin.shippingzones.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.shippingzones.title')</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.shippingmethods.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.shippingmethods.title')</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
 
             @can('order_access')
             <li>

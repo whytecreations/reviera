@@ -118,6 +118,26 @@ return [
         ],
     ],
 
+    'shippingmethods' => [
+        'title' => 'Shipping Methods',
+        'fields' => [
+            'category' => 'Category',
+            'name' => 'Name',
+            'description' => 'Description',
+            'zones' => 'Cities',
+        ],
+    ],
+
+    'shippingzones' => [
+        'title' => 'Shipping Zones',
+        'fields' => [
+            'category' => 'Category',
+            'name' => 'Name',
+            'description' => 'Description',
+            'zones' => 'Cities',
+        ],
+    ],
+
     'qa_create' => 'Create',
     'qa_save' => 'Save',
     'qa_edit' => 'Edit',

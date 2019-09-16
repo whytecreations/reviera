@@ -155,6 +155,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('chocolates_restore/{id}', ['uses' => 'Admin\ChocolateController@restore', 'as' => 'chocolates.restore']);
     Route::delete('chocolates_perma_del/{id}', ['uses' => 'Admin\ChocolateController@perma_del', 'as' => 'chocolates.perma_del']);
 
+    Route::resource('shippingmethods', 'Admin\ShippingMethodController');
+    Route::resource('shippingzones', 'Admin\ShippingZoneController');
+
     Route::resource('gifts', 'Admin\GiftController');
     Route::post('gifts_mass_destroy', ['uses' => 'Admin\GiftController@massDestroy', 'as' => 'gifts.mass_destroy']);
     Route::post('gifts_restore/{id}', ['uses' => 'Admin\GiftController@restore', 'as' => 'gifts.restore']);
