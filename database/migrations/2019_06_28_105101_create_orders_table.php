@@ -27,6 +27,8 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('shipping_zone_id');
             $table->string('payment_method');
             $table->string('shipping_cost');
+            $table->string('delivery_date');
+            $table->string('delivery_time');
             $table->string('status');
 
             $table->timestamps();

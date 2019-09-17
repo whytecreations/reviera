@@ -50,7 +50,7 @@
                         <br />
                         <span class="label label-{{$order->getStatusColor()}}">
                             {{$order->status}}</span><br />
-                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Update
+                        <button class="btn btn-xl btn-primary" data-toggle="modal" data-target="#myModal">Update
                             Status</button>
                         @if($order->created_at!=$order->updated_at)
                         <small>Last Updated: {{$order->updated_at}}</small><br />
@@ -92,9 +92,9 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <h4>
-                        Shipping Address
+                        <b>Shipping Address</b>
                     </h4>
                     {!!$order->shipping_address->readable()!!}
                     @if($order->shipping_address->hasLocation())
@@ -105,11 +105,18 @@
                     <small class="text-info">Shipping location is not provided by the customer</small>
                     @endif
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <h4>
-                        Billing Address
+                        <b>Billing Address</b>
                     </h4>
                     {!!$order->shipping_address->readable()!!}
+                </div>
+                <div class="col-md-3">
+                    <h4>
+                        <b>Delivery Date and Time</b>
+                    </h4>
+                    {{$order->delivery_date}}<br />
+                    {{$order->delivery_time}}
                 </div>
             </div>
 

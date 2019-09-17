@@ -447,6 +447,21 @@
               </article>
 
               <article class="accord accord-single">
+                <h4 class="accord__head">Delivery Time</h4>
+                <div class="accord__body clearfix">
+                  <div class="slct-size">
+                    <div class="row">
+                      <div class="col-md-6"><label>Delivery Date</label><input type="text" name="delivery_date"
+                          placeholder="MM/DD/YYYY" class="form-control"></div>
+
+                      <div class="col-md-6"><label>Delivery Time</label><input type="text" name="delivery_time"
+                          placeholder="From - To" class="form-control"></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="accord accord-single">
                 <h4 class="accord__head">دفع</h4>
                 <div class="accord__body clearfix">
                   <div class="slct-size">

@@ -171,6 +171,8 @@ class HomePageController extends Controller
             'shipping_address_id' => session('sid'),
             'status' => 'Placed',
             'payment_method' => $request->payment_method,
+            'delivery_date' => $request->delivery_date,
+            'delivery_time' => $request->delivery_time,
             'coupon' => $coupon,
             'coupon_discount' => $discount,
             'shipping_method_id' => $condition->getAttributes()['shipping_method_id'],

@@ -26,6 +26,8 @@ class Order extends Model
         'discount',
         'amount',
         'coupen_discount',
+        'delivery_date',
+        'delivery_time',
         'status',
     ];
 
