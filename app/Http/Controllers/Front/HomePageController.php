@@ -159,9 +159,13 @@ class HomePageController extends Controller
             $this->saveAddress($data);
         }
         $shippingCharge = 0;
-        if (Cart::getTotal() < 1000) {
-            $shippingCharge = $data['inAllowedCircle'] == "true" ? 20 : 60;
-        }
+        $condition = Cart::getCondition('shipping charge');
+        Cart::condition($condition);
+        $shippingCharge = $condition->getValue();
+        // if (Cart::getTotal() < 1000) {
+        //     $shippingCharge = $data['inAllowedCircle'] == "true" ? 20 : 60;
+        // }
+
         $order = new Order(['amount' => Cart::getTotal(),
             'billing_address_id' => session('bid'),
             'shipping_address_id' => session('sid'),
@@ -169,6 +173,8 @@ class HomePageController extends Controller
             'payment_method' => $request->payment_method,
             'coupon' => $coupon,
             'coupon_discount' => $discount,
+            'shipping_method_id' => $condition->getAttributes()['shipping_method_id'],
+            'shipping_zone_id' => $condition->getAttributes()['shipping_zone_id'],
             'shipping_cost' => $shippingCharge]);
         $customer->orders()->save($order);
         foreach ($cart as $cartItem) {
@@ -321,10 +327,14 @@ class HomePageController extends Controller
             $quantity = -1;
         }
 
+        $condition = Cart::getCondition('shipping charge');
+        Cart::condition($condition);
+        $shippingCharge = $condition->getValue();
+
         Cart::update($request->cartId, array(
             'quantity' => $quantity,
         ));
-        return Cart::getSubTotal();
+        return response()->json(['shippingCharge' => $shippingCharge, 'subTotal' => Cart::getSubTotal(), 'total' => Cart::getTotal()]);
     }
 
     public function contact()

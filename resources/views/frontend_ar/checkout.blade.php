@@ -61,7 +61,8 @@
                         <div class="form-group clearfix">
                           <div class="row">
                             <div class="col-md-12">
-                              <input type="email" value="" class="form-control" placeholder="البريد الإلكتروني" name="email">
+                              <input type="email" value="" class="form-control" placeholder="البريد الإلكتروني"
+                                name="email">
                             </div>
                           </div>
                         </div>
@@ -197,15 +198,21 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>مدينة </label>
-                        <input type="text" class="form-control" value="{{$shipping->city}}" name="city" required>
+                        <select required value="{{$shipping->city}}" name="city" class="form-control">
+                          @foreach($shippingZones as $city)
+                          <option value="{{$city->id}}">{{$city->name}}
+                          </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label>بلد</label>
-                        <select required id="country" name="country" class="form-control">
+                        <select disabled="disabled" required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
-                          <option value="{{$shipping->country}}" @if($country->name=='Qatar') selected
-                            @endif>{{$country->name}}
+                          @if($country->name=='Qatar')
+                          <option value="{{$shipping->country}}" selected>{{$country->name}}
                           </option>
+                          @endif
                           @endforeach
                         </select>
                       </div>
@@ -246,6 +253,7 @@
                     <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
                         class="fa fa-map-marker"></i> <small>اختر على الخريطة</small></button>
                   </div>
+                </div>
               </article>
               @else
               <article id="ShippingInfo" class="accord accord-single">
@@ -279,15 +287,21 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>مدينة </label>
-                        <input type="text" class="form-control" name="city" required>
+                        <select required id="city" name="city" class="form-control">
+                          @foreach($shippingZones as $city)
+                          <option value="{{$city->id}}">{{$city->name}}
+                          </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label>بلد</label>
                         <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
-                          <option @if($country->name=='Qatar') selected value="{{$country->name}}"
-                            @endif>{{$country->name}}
+                          @if($country->name=='Qatar')
+                          <option selected value="{{$country->name}}">{{$country->name}}
                           </option>
+                          @endif
                           @endforeach
                         </select>
                       </div>
@@ -306,8 +320,31 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
-                    class="fa fa-map-marker"></i> اختر موقعا</button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>البريد الإلكتروني</h4>
+                  </div>
+                  <div class="col-md-6">
+                    <a class="btn btn-link " style="display:none" id="SelectedLocation"
+                      href="https://maps.google.com/?q=25.280336,51.499729" target="blank" />الموقع المختار</a>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-sm rounded text-danger" type="button" style="display:none"
+                      onClick="clearSelectedLocation()" id="ClearSelectedLocation">واضح</button>
+                  </div>
+                  <div id="SelectedMap"></div>
+                  <div class="col-md-6">
+                    <button id="MyLocation" type="button" class="btn-sub mb-4" onClick="getLocation()"><i
+                        class="fa fa-dot-circle-o"></i>
+                      موقعي</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
+                        class="fa fa-map-marker"></i> <small>اختر على الخريطة</small></button>
+                  </div>
+                </div>
+                {{-- <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
+                    class="fa fa-map-marker"></i> اختر موقعا</button> --}}
               </article>
               @endif
 
@@ -351,15 +388,21 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>مدينة </label>
-                        <input type="text" class="form-control" name="billing_city">
+                        <select name="billing_city" class="form-control">
+                          @foreach($shippingZones as $city)
+                          <option value="{{$city->id}}">{{$city->name}}
+                          </option>
+                          @endforeach
+                        </select>
                       </div>
                       <div class="col-md-6">
                         <label>بلد</label>
                         <select required id="billing_country" name="billing_country" class="form-control">
                           @foreach($countries as $country)
-                          <option value="{{$country->name}}" @if($country->name=='Qatar') selected
-                            @endif>{{$country->name}}
+                          @if($country->name=='Qatar')
+                          <option value="{{$country->name}}" selected>{{$country->name}}
                           </option>
+                          @endif
                           @endforeach
                         </select>
                       </div>
@@ -376,6 +419,29 @@
                         <input type="email" class="form-control" name="billing_email">
                       </div>
                     </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="accord accord-single">
+                <h4 class="accord__head">Shipping Method</h4>
+                <div class="accord__body clearfix">
+                  <div class="slct-size">
+                    <ul>
+                      @foreach ($shippingMethods as $shippingMethod)
+
+                      <li class="clearfix">
+                        <div class="radio">
+                          <input id="method-{{$shippingMethod->id}}" name="shipping_method_id"
+                            value="{{$shippingMethod->id}}" type="radio">
+                          <label for="method-{{$shippingMethod->id}}"
+                            class="radio-label">{{$shippingMethod->name}}<br />
+                            <small>{{$shippingMethod->description}}</small>
+                          </label>
+                        </div>
+                      </li>
+                      @endforeach
+                    </ul>
                   </div>
                 </div>
               </article>
@@ -402,7 +468,7 @@
 
                   <input id="latitude" type="hidden" name="latitude" value="">
                   <input id="longitude" type="hidden" name="longitude" value="">
-                  <input id="inCircle" type="hidden" name="inAllowedCircle" value="false">
+                  <input id="inCircle" type="hidden" name="inAllowedCircle" value="true">
                   <button class="btn-sub" type="submit"><span>الدفع</span></button>
                 </div>
               </article>
@@ -451,6 +517,9 @@
               <ul data-aos="fade-up" class="aos-init aos-animate">
                 <li class="clearfix"><span class="text-left">حاصل الجمع</span><span
                     class="text-right subtotal-updatable">{{Cart::getSubTotal()}} QAR</span></li>
+                <li class="clearfix"><span class="text-left">Shipping Charge</span><span
+                    class="text-right shipping-updatable">{{Cart::getCondition('shipping charge')?Cart::getCondition('shipping charge')->getValue():0}}
+                    QAR</span></li>
                 <li class="clearfix"><span class="text-left">مجموع</span><span
                     class="text-right total-updatable">{{Cart::getTotal()}} QAR</span></li>
               </ul>
@@ -532,16 +601,16 @@
     });
     markers.push(radius)
 
-    var geocoder= new google.maps.Geocoder()
+    // var geocoder= new google.maps.Geocoder()
     var latlng = {lat: latitude, lng: longitude};
-    geocoder.geocode({'location': latlng }, function(results, status){
-      let inAllowedCircle = JSON.stringify(results).toLowerCase().includes ('al sadd')
-      if(inAllowedCircle){
-        $('#inAllowedCircle').val(true)
-      }else{
-        $('#inAllowedCircle').val(false)
-      }
-    });
+    // geocoder.geocode({'location': latlng }, function(results, status){
+    //   let inAllowedCircle = JSON.stringify(results).toLowerCase().includes ('al sadd')
+    //   if(inAllowedCircle){
+    //     $('#inAllowedCircle').val(true)
+    //   }else{
+    //     $('#inAllowedCircle').val(false)
+    //   }
+    // });
 
     // Center of map
     map.panTo(new google.maps.LatLng(latitude,longitude));
@@ -639,5 +708,44 @@ function getLocation(){
     }
   })
 
+
+  $('select[name=city]').change(function (event) {
+    let shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    let shippingZone = $('select[name=city]').val()
+    if(shippingMethod && shippingZone){
+      getShippingCost(shippingMethod,shippingZone)
+    }
+  })
+
+  $('input[name=shipping_method_id]').change(function (event) {
+    let shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    let shippingZone = $('select[name=city]').val()
+    if(shippingMethod && shippingZone){
+      getShippingCost(shippingMethod,shippingZone)
+    }
+  })
+
+  function getShippingCost(method, zone) {
+        $.get(`{{url('shippingcost')}}/${method}/${zone}`,function (response) {
+          if(response){
+            $('.subtotal-updatable').text(response.subTotal+" QAR")
+            $('.shipping-updatable').text(response.shippingCharge+" QAR")
+            $('.total-updatable').text(response.total+" QAR")
+          }
+        })
+      }
+
+  (function(){
+    let shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    let shippingZone = $('select[name=city]').val()
+    if(!shippingMethod){
+      $('input[name=shipping_method_id]').first().attr('checked', true)
+      shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    }
+    if(shippingMethod && shippingZone){
+      getShippingCost(shippingMethod,shippingZone)
+    }
+    
+  })()
 </script>
 @endsection

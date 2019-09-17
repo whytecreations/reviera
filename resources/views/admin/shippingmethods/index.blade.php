@@ -62,6 +62,28 @@
                     <td field-key='description'>{!! $shippingMethod->description
                         !!}<br />{{ $shippingMethod->description_ar }}</td>
                     </td>
+                    @if( request('show_deleted') == 1 )
+                    <td>
+                        @can('shipping_method_delete')
+                        {!! Form::open(array(
+                        'style' => 'display: inline-block;',
+                        'method' => 'POST',
+                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                        'route' => ['admin.shippingmethods.restore', $shippingMethod->id])) !!}
+                        {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
+                        {!! Form::close() !!}
+                        @endcan
+                        {{-- @can('shipping_method_delete')
+                        {!! Form::open(array(
+                        'style' => 'display: inline-block;',
+                        'method' => 'DELETE',
+                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                        'route' => ['admin.shippingmethods.perma_del', $shippingMethod->id])) !!}
+                        {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
+                        {!! Form::close() !!}
+                        @endcan --}}
+                    </td>
+                    @else
                     <td>
                         @can('shipping_method_view')
                         <a href="{{ route('admin.shippingmethods.show',[$shippingMethod->id]) }}"
@@ -72,7 +94,18 @@
                         <a href="{{ route('admin.shippingmethods.edit',[$shippingMethod->id]) }}"
                             class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                         @endcan
+
+                        @can('shipping_method_delete')
+                        {!! Form::open(array(
+                        'style' => 'display: inline-block;',
+                        'method' => 'DELETE',
+                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                        'route' => ['admin.shippingmethods.destroy', $shippingMethod->id])) !!}
+                        {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                        {!! Form::close() !!}
+                        @endcan
                     </td>
+                    @endif
                 </tr>
                 @endforeach
                 @else

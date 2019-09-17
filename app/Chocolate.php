@@ -16,7 +16,7 @@ class Chocolate extends Model implements HasMedia
 
     public function category()
     {
-        return $this->belongsTo(ChocolateCategory::class);
+        return $this->belongsTo(ChocolateCategory::class)->withTrashed();
     }
 
     public function registerMediaConversions(Media $media = null)

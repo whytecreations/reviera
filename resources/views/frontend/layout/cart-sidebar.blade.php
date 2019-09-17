@@ -75,9 +75,10 @@ function updateQuantity(cartId){
   url: '{{route("updatequantity")}}',
   data: 'cartId='+cartId+'&quantity='+quantity,
   success: function(data){
-    $('#subtotal').text(data+" QAR")
-    $('.subtotal-updatable').text(data+" QAR")
-    $('.total-updatable').text(data+" QAR")
+    $('#subtotal').text(data.subTotal+" QAR")
+    $('.subtotal-updatable').text(data.subTotal+" QAR")
+    $('.shipping-updatable').text(data.shippingCharge+" QAR")
+    $('.total-updatable').text(data.total+" QAR")
     },
 	error:function(){console.log('errr')},
 });

@@ -11,26 +11,46 @@
 
         <div class="panel-body table-responsive">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h4><b>Customer: </b><br />{{title_case($order->customer->first_name)}}
                         {{title_case($order->customer->last_name)}}</h4>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h4>
-                        <b>Payment Status: </b><br />
+                        <b>Payment: </b><br />
+                        {{$order->payment_method}}
+                        @if($order->transactions->last())
                         <span
                             class="label label-{{$order->transactions->last()!=""?$order->transactions->last()->getStatusColor():'default'}}">
-                            {{$order->transactions->last()?$order->transactions->last()->status:'N/A'}}</span>
+                            {{$order->transactions->last()->status}}</span>
+                        @endif
                     </h4>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-md-3">
+                    <h4>
+                        <b>Shipping Method: </b><br />
+                        @if($order->shippingMethod)
+                        {{$order->shippingMethod->name}}
+                        <div>
+                            {{$order->shippingZone->name}}
+                        </div>
+                        <div>
+                            {{$order->shipping_cost}} QAR
+                        </div>
+                        @endif
+                    </h4>
+                </div>
+
+
+                <div class="col-md-3">
                     <h4>
                         <b>Order Status: </b>
                         <br />
                         <span class="label label-{{$order->getStatusColor()}}">
                             {{$order->status}}</span><br />
-                        <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">Update
+                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">Update
                             Status</button>
                         @if($order->created_at!=$order->updated_at)
                         <small>Last Updated: {{$order->updated_at}}</small><br />

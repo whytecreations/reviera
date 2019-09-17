@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\StoreShippingMethodsRequest;
 use App\Http\Requests\Admin\UpdateShippingMethodsRequest;
 use App\ShippingMethod;
 use App\ShippingZone;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -138,7 +139,8 @@ class ShippingMethodController extends Controller
             return abort(401);
         }
         $ShippingMethod = ShippingMethod::findOrFail($id);
-        $ShippingMethod->deletePreservingMedia();
+        // $ShippingMethod->deletePreservingMedia();
+        $ShippingMethod->delete();
 
         return redirect()->route('admin.shippingmethods.index');
     }
@@ -157,7 +159,7 @@ class ShippingMethodController extends Controller
             $entries = ShippingMethod::whereIn('id', $request->input('ids'))->get();
 
             foreach ($entries as $entry) {
-                $entry->deletePreservingMedia();
+                $entry->delete();
             }
         }
     }
@@ -194,5 +196,23 @@ class ShippingMethodController extends Controller
         $ShippingMethod->forceDelete();
 
         return redirect()->route('admin.shippingmethods.index');
+    }
+
+    public function getShippingCost(ShippingMethod $method, ShippingZone $zone)
+    {
+
+        $cost = $method->zones()->find($zone->id)->pivot->shipping_charge;
+        $condition = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'shipping charge',
+            'type' => $method->name,
+            'target' => 'total',
+            'value' => $cost,
+            'attributes' => array(
+                'shipping_method_id' => $method->id,
+                'shipping_zone_id' => $zone->id,
+            ),
+        ));
+        Cart::condition($condition);
+        return response()->json(['shippingCharge' => $cost, 'subTotal' => Cart::getSubTotal(), 'total' => Cart::getTotal()]);
     }
 }

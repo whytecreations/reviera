@@ -148,7 +148,8 @@ class ShippingZoneController extends Controller
             $entries = ShippingZone::whereIn('id', $request->input('ids'))->get();
 
             foreach ($entries as $entry) {
-                $entry->deletePreservingMedia();
+                // $entry->deletePreservingMedia();
+                $shippingZone->delete();
             }
         }
     }

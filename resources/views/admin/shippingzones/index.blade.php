@@ -3,14 +3,14 @@
 
 @section('content')
 <h3 class="page-title">@lang('quickadmin.shippingzones.title')</h3>
-@can('chocolate_category_create')
+@can('shipping_zone_create')
 <p>
     <a href="{{ route('admin.shippingzones.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
 
 </p>
 @endcan
 
-@can('chocolate_category_delete')
+@can('shipping_zone_delete')
 <p>
     <ul class="list-inline">
         <li><a href="{{ route('admin.shippingzones.index') }}"
@@ -31,10 +31,10 @@
 
     <div class="panel-body table-responsive">
         <table
-            class="table table-bordered table-striped {{ count($shippingZones) > 0 ? 'datatable' : '' }} @can('chocolate_category_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
+            class="table table-bordered table-striped {{ count($shippingZones) > 0 ? 'datatable' : '' }} @can('shipping_zone_delete') @if ( request('show_deleted') != 1 ) dt-select @endif @endcan">
             <thead>
                 <tr>
-                    @can('chocolate_category_delete')
+                    @can('shipping_zone_delete')
                     @if ( request('show_deleted') != 1 )<th style="text-align:center;"><input type="checkbox"
                             id="select-all" /></th>@endif
                     @endcan
@@ -52,14 +52,14 @@
                 @if (count($shippingZones) > 0)
                 @foreach ($shippingZones as $shippingZone)
                 <tr data-entry-id="{{ $shippingZone->id }}">
-                    @can('chocolate_category_delete')
+                    @can('shipping_zone_delete')
                     @if ( request('show_deleted') != 1 )<td></td>@endif
                     @endcan
                     <td field-key='name'>{{ $shippingZone->name }}<br />
                         {{ $shippingZone->name_ar }}</td>
                     @if( request('show_deleted') == 1 )
                     <td>
-                        @can('chocolate_category_delete')
+                        @can('shipping_zone_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'POST',
@@ -68,7 +68,7 @@
                         {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                         {!! Form::close() !!}
                         @endcan
-                        @can('chocolate_category_delete')
+                        {{-- @can('shipping_zone_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'DELETE',
@@ -76,19 +76,19 @@
                         'route' => ['admin.shippingzones.perma_del', $shippingZone->id])) !!}
                         {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                         {!! Form::close() !!}
-                        @endcan
+                        @endcan --}}
                     </td>
                     @else
                     <td>
-                        {{-- @can('chocolate_category_view')
+                        {{-- @can('shipping_zone_view')
                         <a href="{{ route('admin.shippingzones.show',[$shippingZone->id]) }}"
                         class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
                         @endcan --}}
-                        @can('chocolate_category_edit')
+                        @can('shipping_zone_edit')
                         <a href="{{ route('admin.shippingzones.edit',[$shippingZone->id]) }}"
                             class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                         @endcan
-                        {{-- @can('chocolate_category_delete')
+                        @can('shipping_zone_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'DELETE',
@@ -96,7 +96,7 @@
                         'route' => ['admin.shippingzones.destroy', $shippingZone->id])) !!}
                         {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                         {!! Form::close() !!}
-                        @endcan --}}
+                        @endcan
                     </td>
                     @endif
                 </tr>

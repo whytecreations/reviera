@@ -14,15 +14,13 @@ use App\Gift;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactEnquiry;
 use App\Mail\CorporateEnquiry;
-use App\Order;
-use App\OrderDetail;
+use App\ShippingMethod;
+use App\ShippingZone;
 use App\WishList;
 use Cart;
 use Hash;
 use Illuminate\Http\Request;
 use Mail;
-use Omnipay\Omnipay;
-use stdClass;
 use \Session;
 
 class ArabicHomePageController extends Controller
@@ -134,82 +132,9 @@ class ArabicHomePageController extends Controller
         }
         $shippingCharge = env('SHIPPING_CHARGE', 0);
         $countries = Country::all();
-        return view('frontend_ar.checkout', compact(['cart', 'shipping', 'billing', 'shippingCharge', 'countries']));
-    }
-
-    public function placeOrder(Request $request)
-    {
-        $data = $request->all();
-        $cart = Cart::getContent();
-        $coupon = '';
-        $discount = 0;
-        if ($request->session()->has('coupon')) {
-            $coupon = $request->session()->get('coupon');
-            $discount = $request->session()->get('discount');
-        }
-        $customer = Customer::find(session('token_id'));
-        if ($customer == null) {
-            $customer = $this->saveCustomer($request->all());
-        } else {
-            $data['customer_id'] = $customer->id;
-            $this->saveAddress($data);
-        }
-        $shippingCharge = 0;
-        if (Cart::getTotal() < 1000) {
-            $shippingCharge = $data['inAllowedCircle'] == "true" ? 20 : 60;
-        }
-        $order = new Order(['amount' => Cart::getTotal(),
-            'billing_address_id' => session('bid'),
-            'shipping_address_id' => session('sid'),
-            'status' => 'Placed',
-            'payment_method' => $request->payment_method,
-            'coupon' => $coupon,
-            'coupon_discount' => $discount,
-            'shipping_cost' => $shippingCharge]);
-        $customer->orders()->save($order);
-        foreach ($cart as $cartItem) {
-            $od = new OrderDetail(
-                ['quantity' => $cartItem['quantity'],
-                    'amount' => $cartItem['price'],
-                    'total_amount' => $cartItem['price'] * $cartItem['quantity'],
-                    'order_id' => $order->id,
-                    'product_id' => $cartItem['attributes']['id'],
-                    'product_type' => $cartItem['attributes']['type'],
-                    'product_size' => $cartItem['attributes']['size'],
-                    'product_name' => $cartItem['name'],
-                    'product_image' => $cartItem['attributes']['image'],
-                ]);
-            $od->save();
-        }
-
-        if ($request->payment_method == 'Card') {
-            $gateway = Omnipay::create('Migs_ThreeParty');
-            $gateway->setMerchantId(env('PAYMENT_MIGS_MERCHANT_ID'));
-            $gateway->setMerchantAccessCode(env('PAYMENT_MIGS_ACCESS_CODE'));
-            $gateway->setSecureHash(env('PAYMENT_MIGS_SECURE_HASH'));
-            $gateway->setTestMode(env('PAYMENT_MIGS_TEST_MODE'));
-
-            $totalAmount = $order->amount + $order->shipping_cost;
-            $response = $gateway->purchase(['amount' => $totalAmount,
-                'currency' => 'QAR',
-                'locale' => 'en',
-                'returnUrl' => env('APP_URL') . '/payment/response',
-                // 'description' => '',
-                'transactionId' => $order->id,
-            ])->send()->redirect();
-        } else {
-            $data = new stdClass();
-            $data->title = 'Order Placed Successfully';
-            $data->type = 'success';
-            $data->message = 'Thank you for your order';
-            $data->description = 'Order Reference Number is ' . $order->created_at->format("Ymd") . $order->id;
-            Cart::clear();
-            return view('frontend.statusMessage', compact('data'));
-        }
-        // $pdf = PDF::loadView('emails.invoice', array('order' => $order));
-        // $pdf->save('./assets/alchemy/invoice/' . $order->id . $order->customer_id . $order->amount . '.pdf')->stream('download.pdf');
-        // $response = $this->checkout();
-        // return $order;
+        $shippingZones = ShippingZone::all();
+        $shippingMethods = ShippingMethod::all();
+        return view('frontend_ar.checkout', compact(['cart', 'shipping', 'billing', 'shippingCharge', 'countries', 'shippingMethods', 'shippingZones']));
     }
 
     public function saveAddress($data)

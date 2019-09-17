@@ -18,6 +18,7 @@ class Order extends Model
         'billing_address_id',
         'shipping_address_id',
         'shipping_method_id',
+        'shipping_zone_id',
         'payment_method',
         'transaction_id',
         'shipping_cost',
@@ -33,6 +34,16 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
+    public function shippingMethod()
+    {
+        return $this->belongsTo(ShippingMethod::class)->withTrashed();
+    }
+
+    public function shippingZone()
+    {
+        return $this->belongsTo(ShippingZone::class)->withTrashed();
+    }
+
     public function billing_address()
     {
         return $this->belongsTo(Address::class, 'billing_address_id');
@@ -40,11 +51,6 @@ class Order extends Model
     public function shipping_address()
     {
         return $this->belongsTo(Address::class, 'shipping_address_id');
-    }
-
-    public function shipping_method()
-    {
-        return $this->belongsTo(ShippingMethod::class, 'shipping_method_id');
     }
 
     public function orderDetails()

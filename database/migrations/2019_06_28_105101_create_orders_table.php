@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('billing_address_id');
             $table->bigInteger('shipping_address_id');
             $table->bigInteger('shipping_method_id');
+            $table->bigInteger('shipping_zone_id');
             $table->string('payment_method');
             $table->string('shipping_cost');
             $table->string('status');

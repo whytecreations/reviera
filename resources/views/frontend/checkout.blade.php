@@ -199,17 +199,17 @@
                         <label>City </label>
                         <select required value="{{$shipping->city}}" name="city" class="form-control">
                           @foreach($shippingZones as $city)
-                          <option value="{{$city->name}}">{{$city->name}}
+                          <option value="{{$city->id}}">{{$city->name}}
                           </option>
                           @endforeach
                         </select>
                       </div>
                       <div class="col-md-6">
                         <label>Country</label>
-                        <select disabled="disabled" required id="country" name="country" class="form-control">
+                        <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
                           @if($country->name=='Qatar')
-                          <option value="{{$shipping->country}}" selected>{{$country->name}}
+                          <option value="{{$country->name}}" selected>{{$country->name}}
                           </option>
                           @endif
                           @endforeach
@@ -252,6 +252,7 @@
                     <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
                         class="fa fa-map-marker"></i> <small>Select On Map</small></button>
                   </div>
+                </div>
               </article>
               @else
               <article id="ShippingInfo" class="accord accord-single">
@@ -287,7 +288,7 @@
                         <label>City </label>
                         <select required id="city" name="city" class="form-control">
                           @foreach($shippingZones as $city)
-                          <option value="{{$city->name}}">{{$city->name}}
+                          <option value="{{$city->id}}">{{$city->name}}
                           </option>
                           @endforeach
                         </select>
@@ -318,8 +319,31 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
-                    class="fa fa-map-marker"></i> Select Location</button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Location</h4>
+                  </div>
+                  <div class="col-md-6">
+                    <a class="btn btn-link " style="display:none" id="SelectedLocation"
+                      href="https://maps.google.com/?q=25.280336,51.499729" target="blank" />Selected Location</a>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-sm rounded text-danger" type="button" style="display:none"
+                      onClick="clearSelectedLocation()" id="ClearSelectedLocation">clear</button>
+                  </div>
+                  <div id="SelectedMap"></div>
+                  <div class="col-md-6">
+                    <button id="MyLocation" type="button" class="btn-sub mb-4" onClick="getLocation()"><i
+                        class="fa fa-dot-circle-o"></i>
+                      My Location</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
+                        class="fa fa-map-marker"></i> <small>Select On Map</small></button>
+                  </div>
+                </div>
+                {{-- <button type="button" data-toggle="modal" data-target="#mapModal" class="btn-sub mb-4"><i
+                    class="fa fa-map-marker"></i> Select Location</button> --}}
               </article>
               @endif
 
@@ -363,9 +387,9 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label>City </label>
-                        <select required name="billing_city" class="form-control">
+                        <select name="billing_city" class="form-control">
                           @foreach($shippingZones as $city)
-                          <option value="{{$city->name}}">{{$city->name}}
+                          <option value="{{$city->id}}">{{$city->name}}
                           </option>
                           @endforeach
                         </select>
@@ -411,7 +435,7 @@
                             value="{{$shippingMethod->id}}" type="radio">
                           <label for="method-{{$shippingMethod->id}}"
                             class="radio-label">{{$shippingMethod->name}}<br />
-                            {{-- <small>{{$shippingMethod->description}}</small> --}}
+                            <small>{{$shippingMethod->description}}</small>
                           </label>
                         </div>
                       </li>
@@ -492,6 +516,9 @@
               <ul data-aos="fade-up" class="aos-init aos-animate">
                 <li class="clearfix"><span class="text-left">Subtotal</span><span
                     class="text-right subtotal-updatable">{{Cart::getSubTotal()}} QAR</span></li>
+                <li class="clearfix"><span class="text-left">Shipping Charge</span><span
+                    class="text-right shipping-updatable">{{Cart::getCondition('shipping charge')?Cart::getCondition('shipping charge')->getValue():0}}
+                    QAR</span></li>
                 <li class="clearfix"><span class="text-left">Total</span><span
                     class="text-right total-updatable">{{Cart::getTotal()}} QAR</span></li>
               </ul>
@@ -573,16 +600,16 @@
     });
     markers.push(radius)
 
-    var geocoder= new google.maps.Geocoder()
+    // var geocoder= new google.maps.Geocoder()
     var latlng = {lat: latitude, lng: longitude};
-    geocoder.geocode({'location': latlng }, function(results, status){
-      let inAllowedCircle = JSON.stringify(results).toLowerCase().includes ('al sadd')
-      if(inAllowedCircle){
-        $('#inAllowedCircle').val(true)
-      }else{
-        $('#inAllowedCircle').val(false)
-      }
-    });
+    // geocoder.geocode({'location': latlng }, function(results, status){
+    //   let inAllowedCircle = JSON.stringify(results).toLowerCase().includes ('al sadd')
+    //   if(inAllowedCircle){
+    //     $('#inAllowedCircle').val(true)
+    //   }else{
+    //     $('#inAllowedCircle').val(false)
+    //   }
+    // });
 
     // Center of map
     map.panTo(new google.maps.LatLng(latitude,longitude));
@@ -679,6 +706,45 @@ function getLocation(){
       $('#BillingInfo').show()
     }
   })
+
+  $('select[name=city]').change(function (event) {
+    let shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    let shippingZone = $('select[name=city]').val()
+    if(shippingMethod && shippingZone){
+      getShippingCost(shippingMethod,shippingZone)
+    }
+  })
+
+  $('input[name=shipping_method_id]').change(function (event) {
+    let shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    let shippingZone = $('select[name=city]').val()
+    if(shippingMethod && shippingZone){
+      getShippingCost(shippingMethod,shippingZone)
+    }
+  })
+
+  function getShippingCost(method, zone) {
+        $.get(`shippingcost/${method}/${zone}`,function (response) {
+          if(response){
+            $('.subtotal-updatable').text(response.subTotal+" QAR")
+            $('.shipping-updatable').text(response.shippingCharge+" QAR")
+            $('.total-updatable').text(response.total+" QAR")
+          }
+        })
+      }
+
+  (function(){
+    let shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    let shippingZone = $('select[name=city]').val()
+    if(!shippingMethod){
+      $('input[name=shipping_method_id]').first().attr('checked', true)
+      shippingMethod =  $('input[name=shipping_method_id]:checked').val()
+    }
+    if(shippingMethod && shippingZone){
+      getShippingCost(shippingMethod,shippingZone)
+    }
+    
+  })()
 
 </script>
 @endsection

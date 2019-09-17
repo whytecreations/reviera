@@ -67,7 +67,7 @@
                         {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                         {!! Form::close() !!}
                         @endcan
-                        @can('flower_category_delete')
+                        {{-- @can('flower_category_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'DELETE',
@@ -75,7 +75,7 @@
                         'route' => ['admin.flowercategories.perma_del', $flowerCategory->id])) !!}
                         {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                         {!! Form::close() !!}
-                        @endcan
+                        @endcan --}}
                     </td>
                     @else
                     <td>
@@ -87,7 +87,7 @@
                         <a href="{{ route('admin.flowercategories.edit',[$flowerCategory->id]) }}"
                             class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                         @endcan
-                        {{-- @can('flower_category_delete')
+                        @can('flower_category_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'DELETE',
@@ -95,7 +95,7 @@
                         'route' => ['admin.flowercategories.destroy', $flowerCategory->id])) !!}
                         {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                         {!! Form::close() !!}
-                        @endcan --}}
+                        @endcan
                     </td>
                     @endif
                 </tr>

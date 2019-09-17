@@ -84,7 +84,7 @@
                         {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                         {!! Form::close() !!}
                         @endcan
-                        @can('chocolate_delete')
+                        {{-- @can('chocolate_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'DELETE',
@@ -92,7 +92,7 @@
                         'route' => ['admin.chocolates.perma_del', $chocolate->id])) !!}
                         {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                         {!! Form::close() !!}
-                        @endcan
+                        @endcan --}}
                     </td>
                     @else
                     <td>

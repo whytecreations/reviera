@@ -18,9 +18,10 @@
                     <th>Date</th>
                     <th>Customer Name</th>
                     <th>Email</th>
-                    <th>Items</th>
+                    <th>No. Of Items</th>
+                    <th>City</th>
+                    <th>Shipping Method</th>
                     <th>Payment Method</th>
-                    <th>Payment Status</th>
                     <th>Order Status</th>
                     <th>Amount</th>
                     <th>View</th>
@@ -36,19 +37,20 @@
                     <td>{{$order->created_at->format('Y / M / d')}}</td>
                     <td>{{$order->customer->first_name." ".$order->customer->last_name}}</td>
                     <td>{{$order->customer->email}}</td>
-
-                    <td> @foreach($order->orderDetails as $orderDetail)
-                        @php
-                        $orderItems = $orderDetail->product_name .",";
-                        @endphp
-                        @endforeach
-                        {{rtrim($orderItems, ',') }}
-                    </td>
-                    <td>{{$order->payment_method}}</td>
+                    <td>{{count($order->orderDetails)}}</td>
+                    <td>{{$order->shipping_address->getCity()}}</td>
                     <td>
+                        @if($order->shippingMethod)
+                        {{$order->shippingMethod->name}}
+                        [ {{$order->shipping_cost}} QAR ]
+
+                        @endif
+                    </td>
+                    <td>{{$order->payment_method}}
                         @php
                         $txnStatus = $order->transactions->last()?'<span
-                            class="label label-'.$order->transactions->last()->getStatusColor().'">'.$order->transactions->last()->status.'</span>':'N/A';
+                            class="label label-'.$order->transactions->last()->getStatusColor().'">'."Payment ".
+                            $order->transactions->last()->status.'</span>':'';
                         echo $txnStatus;
                         @endphp
                     </td>

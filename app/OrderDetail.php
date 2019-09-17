@@ -24,9 +24,9 @@ class OrderDetail extends Model
     public function product()
     {
         if ($this->product_type == 'flower') {
-            return $this->belongsTo(Flower::class, 'product_id', 'id');
+            return $this->belongsTo(Flower::class, 'product_id', 'id')->withTrashed();
         } else {
-            return $this->belongsTo(Chocolate::class, 'product_id', 'id');
+            return $this->belongsTo(Chocolate::class, 'product_id', 'id')->withTrashed();
         }
     }
 }

@@ -22,6 +22,7 @@ class CreateOrderDetailsTable extends Migration
             $table->string('product_image')->nullable();
             $table->string('product_type');
             $table->string('product_size');
+            $table->text('note');
             $table->string('quantity');
             $table->double('amount');
             $table->double('discount')->nullable();

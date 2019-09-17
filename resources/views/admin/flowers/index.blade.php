@@ -80,7 +80,7 @@
                         {!! Form::submit(trans('quickadmin.qa_restore'), array('class' => 'btn btn-xs btn-success')) !!}
                         {!! Form::close() !!}
                         @endcan
-                        @can('flower_delete')
+                        {{-- @can('flower_delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
                         'method' => 'DELETE',
@@ -88,7 +88,7 @@
                         'route' => ['admin.flowers.perma_del', $flower->id])) !!}
                         {!! Form::submit(trans('quickadmin.qa_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
                         {!! Form::close() !!}
-                        @endcan
+                        @endcan --}}
                     </td>
                     @else
                     <td>

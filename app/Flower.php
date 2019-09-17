@@ -24,7 +24,7 @@ class Flower extends Model implements HasMedia
 
     public function category()
     {
-        return $this->belongsTo(FlowerCategory::class);
+        return $this->belongsTo(FlowerCategory::class)->withTrashed();
     }
 
     public function registerMediaConversions(Media $media = null)

@@ -77,6 +77,7 @@ Route::post('addchocolatetowishlist', 'Front\HomePageController@addChocolateToWi
 Route::post('wishlisttocart', 'Front\HomePageController@wishlisttocart')->name('wishlisttocart');
 Route::post('changedetails', 'Front\Auth\LoginController@changedetails')->name('customer.changedetails');
 Route::post('changepassword', 'Front\Auth\LoginController@changePassword')->name('customer.changepassword');
+Route::get('shippingcost/{method}/{zone}', 'Admin\ShippingMethodController@getShippingCost');
 
 Route::get('login', 'Front\Auth\LoginController@showLoginForm')->name('customer.login');
 Route::get('login', 'Front\Auth\LoginController@showLoginForm')->name('login');
@@ -156,7 +157,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::delete('chocolates_perma_del/{id}', ['uses' => 'Admin\ChocolateController@perma_del', 'as' => 'chocolates.perma_del']);
 
     Route::resource('shippingmethods', 'Admin\ShippingMethodController');
+    Route::post('shippingmethods_mass_destroy', ['uses' => 'Admin\ShippingMethodController@massDestroy', 'as' => 'shippingmethods.mass_destroy']);
+    Route::post('shippingmethods_restore/{id}', ['uses' => 'Admin\ShippingMethodController@restore', 'as' => 'shippingmethods.restore']);
+    Route::delete('shippingmethods_perma_del/{id}', ['uses' => 'Admin\ShippingMethodController@perma_del', 'as' => 'shippingmethods.perma_del']);
+
     Route::resource('shippingzones', 'Admin\ShippingZoneController');
+    Route::post('shippingzones_mass_destroy', ['uses' => 'Admin\ShippingZoneController@massDestroy', 'as' => 'shippingzones.mass_destroy']);
+    Route::post('shippingzones_restore/{id}', ['uses' => 'Admin\ShippingZoneController@restore', 'as' => 'shippingzones.restore']);
+    Route::delete('shippingzones_perma_del/{id}', ['uses' => 'Admin\ShippingZoneController@perma_del', 'as' => 'shippingzones.perma_del']);
 
     Route::resource('gifts', 'Admin\GiftController');
     Route::post('gifts_mass_destroy', ['uses' => 'Admin\GiftController@massDestroy', 'as' => 'gifts.mass_destroy']);

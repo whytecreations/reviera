@@ -41,7 +41,7 @@
         </ul>
       </div>
       <h3 id="subTotalParent">SUBTOTAL <span class="subtotal-updatable" id="subtotal"></span></h3>
-      <a id="CheckoutLink" href="{{url('checkout')}}" class="cht">Checkout</a>
+      <a id="CheckoutLink" href="{{url('ar/checkout')}}" class="cht">Checkout</a>
       <h3 id="CartEmpty">Cart Empty</span></h3>
     </div>
   </div>
@@ -75,9 +75,10 @@ function updateQuantity(cartId){
   url: '{{route("updatequantity")}}',
   data: 'cartId='+cartId+'&quantity='+quantity,
   success: function(data){
-    $('#subtotal').text(data+" QAR")
-    $('.subtotal-updatable').text(data+" QAR")
-    $('.total-updatable').text(data+" QAR")
+    $('#subtotal').text(data.subTotal+" QAR")
+    $('.subtotal-updatable').text(data.subTotal+" QAR")
+    $('.shipping-updatable').text(data.shippingCharge+" QAR")
+    $('.total-updatable').text(data.total+" QAR")
     },
 	error:function(){console.log('errr')},
 });
