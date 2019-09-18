@@ -33,7 +33,7 @@
                 @if (count($orders) > 0)
                 @foreach ($orders as $order)
                 <tr data-entry-id="{{ $order->id }}">
-                    <td>{{str_pad($order->id.$order->customer_id.$order->amount,4,STR_PAD_LEFT)}}</td>
+                    <td>{{ $order->created_at->format("Ymd") . $order->id}}</td>
                     <td>{{$order->created_at->format('Y / M / d')}}</td>
                     <td>{{$order->customer->first_name." ".$order->customer->last_name}}</td>
                     <td>{{$order->customer->email}}</td>

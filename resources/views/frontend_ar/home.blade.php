@@ -12,17 +12,18 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up"><a href="{{route('ar.chocolates')}}">الشوكولا</a> or <a
-					href="{{route('ar.flowers')}}">
-					الزهور</a></h2>
-
+			
+					
+					<h2 data-aos="fade-up"><a href="{{route('ar.chocolates')}}">الشوكولاتة</a> أو  <a hre{{route('ar.flowers')}}="#">زهرة؟</a></h2>
+					
+				
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="cclt-img" data-aos="fade-up"><img src="images/choco.png"></div>
 						<!--<h5 data-aos="fade-up">Lorem Ipsum</h5>-->
 						<div class="abox" data-aos="fade-up">
-							<a href="{{route('ar.chocolates')}}"><span><img src="images/gift_box.svg"> عرض الشوكولاتة
+							<a href="{{route('ar.chocolates')}}"><span><img src="images/gift_box.svg"> عرض الشوكولاتة 
 								</span></a>
 							<a href="{{route('ar.flowers')}}"><span><img src="images/gift_box.svg"> عرض الزهور
 								</span></a></div>
@@ -48,21 +49,19 @@
 
 	<div class="container">
 		<div class="col-md-12 ">
-			<h2 data-aos="fade-up">الزهور <br> ترتيبات</h2>
+			<h2 data-aos="fade-up"> تنسيق الزهور </h2>
 			<div class="flwr-sec">
 				<div class="row">
 					<div class="col-md-6" data-aos="fade-up"><img src="images/flower.png" class="img-fluid"></div>
 					<div class="col-md-6">
 						<div class="flwr-txt">
-							<p data-aos="fade-up"> من أجل تصميم خاصّ لترتيبات الزهور يُرجى التواصل معنا أو إرسال رسالة
-								عبر الواتساب
-								00974 33750041
+							<p data-aos="fade-up"> لتنسيق الزهور الخاصة بك الرجاء الاتصال بنا او التواصل معنا على الواتساب
 							</p>
 						</div>
 
 
 						<div class="abox" data-aos="fade-up"><a href="{{route('ar.flowers')}}"><span><img
-										src="images/gift_box.svg"> View Flowers</span></a></div>
+										src="images/gift_box.svg"> عرض الزهور</span></a></div>
 					</div>
 				</div>
 			</div>
@@ -86,7 +85,7 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">الهدايا <br> تغليفات</h2>
+			<h2 data-aos="fade-up">تغليف الهدايا</h2>
 			<div class="gft-sec">
 				<div class="row">
 					<div class="col-md-5">
@@ -96,16 +95,12 @@
 					<div class="col-md-7">
 						<div class="gft-txt">
 
-							<p data-aos="fade-up">ادلي بأناقة مع خدمات تغليف الهدايا المبتكرة والجميلة في قطر. إذا كنت
-								تريد أن تبهر عائلتك وأصدقائك المحبوبين ، في اللحظة التي يحصلون فيها على هديتك ، فإن ما
-								تحتاج إليه هو القليل من الإلتفاف الإبداعي في تغليف الهدايا. معنا ، يمكنك تصميم شخصية
-								التفاف الهدية الخاصة بك بهذه السهولة والسحر والتنسى. استفد من خدمات تغليف الهدايا لجميع
-								المناسبات الخاصة بك واحتفالاتك.</p>
+							<p data-aos="fade-up"> استمتع بخدمات تغليف الهدايا بشكل أنيق ومبتكر في قطر. إذا كنت تريد أن تبهر عائلتك وأصدقائك وأحبائك ، في اللحظة التي يحصلون فيها على هديتك, كل ما تحتاجه هو القليل من الابداع في تغليف الهدايا. معنا, يمكنك تصميم التغليف الخاص بك بشكل مميز. تمتع بخدمات تغليف الهدايا لجميع المناسبات الخاصة بك واحتفالاتك. </p>
 
 						</div>
 
 						<div class="abox" data-aos="fade-up"><a href="{{route('ar.gift-wrapping')}}"><span><img
-										src="images/gift_box.svg"> عرض أنماط التفاف</span></a></div>
+										src="images/gift_box.svg"> عرض أشكال التغليف </span></a></div>
 					</div>
 				</div>
 			</div>
@@ -114,7 +109,7 @@
 </section>
 
 <section class="insta clearfix">
-	<h3>Instafeed</h3>
+	<h3>منشورات الأنستجرام</h3>
 	<div id="instafeed"></div>
 </section>
 

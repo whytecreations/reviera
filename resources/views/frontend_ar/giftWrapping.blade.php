@@ -14,10 +14,8 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">هدية مجانية
- <br> الأغلفة</h2>
-			<h4 data-aos="fade-up">يد ريفييرا تختار أوراق التغليف الفريدة وملحقاتها من جميع أنحاء العالم
-العالمية.</h4>
+			<h2 data-aos="fade-up"> تغليفات الهدايا </h2>
+			<h4 data-aos="fade-up"> ريفييرا تختار أوراق التغليف الفريدة وملحقاتها من جميع أنحاء العالم. </h4>
 			<div class="gft-sec">
 				<div class="row">
 					<div class="col-md-12">

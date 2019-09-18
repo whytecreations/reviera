@@ -13,8 +13,8 @@
 
 	<div class="container">
 		<div class="col-md-12 ">
-			<h2 data-aos="fade-up">زهرة <br> ترتيبات</h2>
-			<h4 data-aos="fade-up">لدينا بائع الزهور سيد تصميم مختلف زهرة فريدة من نوعها ترتيب في كل مناسبة.</h4>
+			<h2 data-aos="fade-up"> تنسيقات الزهور </h2>
+			<h4 data-aos="fade-up"> لدينا منسق زهور بارع في تصميم مختلف التنسيقات لجميع مناسبة. </h4>
 
 		</div>
 
@@ -119,7 +119,7 @@
 								@endif
 							</h4>
 							<p>{{$flower->description_ar ?:$flower->description}}</p>
-							<h5>أختر الحجم</h5>
+							<h5> حدد الحجم </h5>
 							<div class="slct-size">
 								<ul>
 									@if($flower->big_price >0)
@@ -154,9 +154,9 @@
 												class="fa fa-plus"></span></button></span>
 								</div>
 							</div>
-							<h5>إضافة تعليمات خاصة</h5>
-							<textarea class="form-control" name="note" placeholder="أضف ملاحظة"></textarea>
-							<button class="btn-ac" type="submit">أضف إلى السلة</button>
+							<h5> أضف تعليمات خاصة </h5>
+							<textarea class="form-control" name="note" placeholder=" أضف ملاحظة "></textarea>
+							<button class="btn-ac" type="submit"> أضف إلى سلة التسوق </button>
 						</div>
 					</div>
 				</div>

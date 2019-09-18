@@ -46,12 +46,12 @@
 					</div>
 					<nav class="wsmenu clearfix">
 						<ul class="mobile-sub wsmenu-list">
-							<li><a href="{{url('ar/about')}}">معلومات عنا</a></li>
-							<li><a href="{{url('ar/flowers')}}">زهور</a></li>
+							<li><a href="{{url('ar/about')}}"> من نحن  </a></li>
+							<li><a href="{{url('ar/flowers')}}">الزهور</a></li>
 							<li><a href="{{url('ar/chocolates')}}">الشوكولاتة</a></li>
-							<li><a href="{{url('ar/gift-wrapping')}}">تغليف الهدايا</a></li>
-							<li><a href="{{url('ar/corporate-rate-tag')}}">معدل الشركات</a></li>
-							<li><a href="{{url('ar/contact')}}"> تصل بنا </a></li>
+							<li><a href="{{url('ar/gift-wrapping')}}"> تغليف الهدايا  </a></li>
+							<li><a href="{{url('ar/corporate-rate-tag')}}"> سعر الشركات  </a></li>
+							<li><a href="{{url('ar/contact')}}"> اتصل بنا </a></li>
 							<li><a href="{{url('/')}}">English</a></li>
 						</ul>
 					</nav>
@@ -70,17 +70,16 @@
 			<div class="container-fluid">
 				<div class="col-md-12">
 					<ul>
-						<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span>اتصل بنا / واتس اب</span>
+						<li data-aos="fade-up"><img src="{{asset('images/phn.svg')}}"> <span> اتصل بنا / واتساب  </span>
 							<br><a href="tel:+974 33750041">+974 33750041</a></li>
-						<li data-aos="fade-up"><img src="{{asset('images/lphn.svg')}}"> <span>اعطينا اتصال</span>
+						<li data-aos="fade-up"><img src="{{asset('images/lphn.svg')}}"> <span> اتصل بنا </span>
 							<br><a href="tel:+974 44366365">+974 44366365</a></li>
 						<li data-aos="fade-up" data-aos-delay="200"><img src="{{asset('images/email.svg')}}">
-							<span>البريد الإلكتروني</span> <br><a
+							<span> البريد الإلكتروني  </span> <br><a
 								href="mailto:info@rivieraqatar.com">info@rivieraqatar.com</a></li>
-						<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}">
-							<span>ساعات العمل</span> <br>9AM - 9.30PM </li>
+						<li data-aos="fade-up" data-aos-delay="400"><img src="{{asset('images/shp.svg')}}"><span>المحل   </span><br><a href="https://goo.gl/maps/MGbCUhV6KWerwCFA7" target="_blank">موقع </a> </li>
 						<li class="flw" data-aos="fade-up" data-aos-delay="600"><img
-								src="{{asset('images/share.svg')}}"> <span>اتبع</span> <br><a
+								src="{{asset('images/share.svg')}}"> <span>تابعنا</span> <br><a
 								href="https://www.instagram.com/rivieraqatar/" target="_blank"><i
 									class="fa fa-instagram"></i></a><a href="https://www.facebook.com/rivieraqatar/" target="_blank"><i
 									class="fa fa-facebook"></i></a></li>
@@ -92,13 +91,13 @@
 			<div class="container">
 				<div class="col-md-12">
 					<ul>
-						<li><a href="{{url('ar/contact')}}">اتصل بنا</a></li>
+						<li><a href="{{url('ar/contact')}}"> الاتصال بنا  </a></li>
 						{{-- <li><a href="#">تاريخ الطلب</a></li> --}}
-						<li><a href="#">سياسات الشروط</a></li>
-						<li><a href="#">التعليمات</a></li>
-						<li><a href="#">سياسة خاصة</a></li>
+						<li><a href="#"> الشروط والسياسات  </a></li>
+						<li><a href="#"> أسئلة وأجوبة  </a></li>
+						<li><a href="#">سياسة الخصوصية</a></li>
 					</ul>
-					<p>Copyright© 2019 RIVERIA All Rights Reserved. <br> <span>Powered by <a
+					<p>حقوق النشر ©ريفييرا 2019 جميع الحقوق محفوظة. <br> <span>من تصميم  <a
 								href="https://www.whytecreations.com/" target="_blank" rel="dofollow"
 								title="Website Design and Developed by Whytecreations">whytecreations</a></span></p>
 				</div>

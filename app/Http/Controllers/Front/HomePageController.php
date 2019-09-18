@@ -153,7 +153,10 @@ class HomePageController extends Controller
         }
         $customer = Customer::find(session('token_id'));
         if ($customer == null) {
-            $customer = $this->saveCustomer($request->all());
+            $customer = Customer::find($request->email);
+            if ($customer == null) {
+                $customer = $this->saveCustomer($request->all());
+            }
         } else {
             $data['customer_id'] = $customer->id;
             $this->saveAddress($data);
@@ -227,6 +230,7 @@ class HomePageController extends Controller
 
     public function saveAddress($data)
     {
+        //CHange to address make
         $shippingAddress = Address::create($data);
         session(['sid' => $shippingAddress->id]);
         if (isset($data['sameAsShipping']) && $data['sameAsShipping'] == "on") {

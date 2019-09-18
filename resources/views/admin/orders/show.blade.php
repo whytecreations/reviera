@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h3 class="page-title">Order # {{str_pad($order->id.$order->customer_id.$order->amount,4,STR_PAD_LEFT)}}</h4>
+<h3 class="page-title">Order # {{ $order->created_at->format("Ymd") . $order->id}}</h4>
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -127,6 +127,7 @@
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
+                            <th>Unit Price</th>
                             <th>Quantity</th>
                             <th>Amount</th>
                         </tr>
@@ -140,8 +141,9 @@
                             <td>{{$loop->iteration}}</td>
                             <td><img src="{{$item->product_image}}" width="100" /></td>
                             <td>{{$item->product_name}}</td>
-                            <td>{{$item->quantity}}</td>
                             <td>{{$item->amount}} QAR</td>
+                            <td>{{$item->quantity}}</td>
+                            <td>{{$item->amount * $item->quantity}} QAR</td>
                         </tr>
 
                         @endforeach
@@ -149,10 +151,12 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th>Sub Total : </th>
-                            <th>{{$order->amount}} QAR</th>
+                            <th>{{$order->amount - $order->shipping_cost}} QAR</th>
                         </tr>
                         <tr>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -163,8 +167,9 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th>Shipping Charge : </th>
-                            <th>{{$order->shipping_cost + $order->amount}} QAR</th>
+                            <th></th>
+                            <th>Total : </th>
+                            <th>{{$order->amount}} QAR</th>
                         </tr>
                     </tfoot>
                 </table>

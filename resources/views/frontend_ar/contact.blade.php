@@ -9,8 +9,8 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up">اتصل بنا</h2>
-			<h4 data-aos="fade-up">لدينا بائع الزهور تصميم مختلف فريد Fower الترتيب في كل مناسبة.</h4>
+			<h2 data-aos="fade-up"> اتصل بنا </h2>
+			<h4 data-aos="fade-up"> لدينا منسق زهور بارع في تصميم مختلف التنسيقات الفريدة من نوعها لجميع المناسبات. </h4>
 		</div>
 
 		<div class="con">
@@ -19,15 +19,15 @@
 				<div class="con-sec clearfix">
 					<ul>
 						<li data-aos="fade-up"><i class="fa fa-map-marker"></i>
-							<h5>عنواننا</h5>
-							<p>السد - الشارع الرئيسي ، الدوحة ، قطر</p>
+							<h5> عنواننا  </h5>
+							<p> السد - الشارع الرئيسي ، الدوحة ، قطر </p>
 						</li>
 						<li data-aos="fade-up"><i class="fa fa-phone"></i>
-							<h5>رقم الهاتف</h5>
+							<h5>رقرقم الهاتف </h5>
 							<p><a href="tel:+974 44366365">+974 44366365</a></p>
 						</li>
 						<li data-aos="fade-up"><i class="fa fa-envelope-o"></i>
-							<h5>عنوان بريد الكتروني</h5>
+							<h5>عنواالبريد الكتروني</h5>
 							<p><a href="mailto:rivieraqatar@qatar.net.qa">rivieraqatar@qatar.net.qa</a></p>
 						</li>
 					</ul>
@@ -39,22 +39,22 @@
 						<form id="ContactForm">
 							<div class="form-group clearfix">
 								<div class="row">
-									<div class="col-md-12"><input name="name" type="text" placeholder="اسم"
+									<div class="col-md-12"><input name="name" type="text" placeholder="الاسم "
 											class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group clearfix">
 								<div class="row">
-									<div class="col-md-6"><input name="email" type="email" placeholder="البريد الإلكتروني"
+									<div class="col-md-6"><input name="email" type="email" placeholder="البريالبريد الإلكتروني "
 											class="form-control"></div>
-									<div class="col-md-6"><input name="phone" type="number" placeholder="هاتف"
+									<div class="col-md-6"><input name="phone" type="number" placeholder="الهاتف "
 											class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group clearfix">
 								<div class="row">
 									<div class="col-md-12"><textarea name="message" class="form-control"
-											placeholder="رسالة"></textarea></div>
+											placeholder="الرسالة"></textarea></div>
 								</div>
 							</div>
 

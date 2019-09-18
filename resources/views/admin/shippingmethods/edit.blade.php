@@ -29,7 +29,7 @@ true,]) !!}
                 @endif
             </div>
             <div class="col-sm-6 form-group">
-                {!! Form::label('name_ar', trans('quickadmin.shippingmethods.fields.name').'*', ['class' =>
+                {!! Form::label('name_ar', trans('quickadmin.shippingmethods.fields.name').' Arabic', ['class' =>
                 'control-label'])
                 !!}
                 {!! Form::text('name_ar', old('name_ar'), ['class' => 'form-control', 'placeholder' => '','dir'=>'rtl'
@@ -45,10 +45,10 @@ true,]) !!}
 
         <div class="row">
             <div class="col-sm-6 form-group">
-                {!! Form::label('description', trans('quickadmin.shippingmethods.fields.description').'*', ['class' =>
+                {!! Form::label('description', trans('quickadmin.shippingmethods.fields.description'), ['class' =>
                 'control-label']) !!}
                 {!! Form::textarea('description', old('description'), ['class' => 'form-control editor', 'placeholder'
-                => '','rows'=> 2, 'required' => '']) !!}
+                => '','rows'=> 2]) !!}
                 <p class="help-block"></p>
                 @if($errors->has('description'))
                 <p class="help-block">
@@ -57,7 +57,7 @@ true,]) !!}
                 @endif
             </div>
             <div class="col-sm-6 form-group">
-                {!! Form::label('description_ar', trans('quickadmin.shippingmethods.fields.description').'*', ['class'
+                {!! Form::label('description_ar', trans('quickadmin.shippingmethods.fields.description').' Arabic', ['class'
                 =>
                 'control-label']) !!}
                 {!! Form::textarea('description_ar', old('description_ar'), ['class' => 'form-control editor',

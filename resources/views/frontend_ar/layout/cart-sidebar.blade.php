@@ -3,7 +3,7 @@
     <div class="crt-sec"><img src="{{asset('images/cart.svg')}}">
       <div class="cnt cartQty">{{Cart::getTotalQuantity()}}</div>
     </div>
-    <h1>My Bags</h1>
+    <h1>حقائبي </h1>
     <a href="#0" class="cd-panel-close">Close</a>
   </div>
   <div class="cd-panel-container">
@@ -42,7 +42,7 @@
       </div>
       <h3 id="subTotalParent">SUBTOTAL <span class="subtotal-updatable" id="subtotal"></span></h3>
       <a id="CheckoutLink" href="{{url('ar/checkout')}}" class="cht">Checkout</a>
-      <h3 id="CartEmpty">Cart Empty</span></h3>
+      <h3 id="CartEmpty">سلة فارغة</span></h3>
     </div>
   </div>
 </div>
@@ -75,10 +75,9 @@ function updateQuantity(cartId){
   url: '{{route("updatequantity")}}',
   data: 'cartId='+cartId+'&quantity='+quantity,
   success: function(data){
-    $('#subtotal').text(data.subTotal+" QAR")
-    $('.subtotal-updatable').text(data.subTotal+" QAR")
-    $('.shipping-updatable').text(data.shippingCharge+" QAR")
-    $('.total-updatable').text(data.total+" QAR")
+    $('#subtotal').text(data+" QAR")
+    $('.subtotal-updatable').text(data+" QAR")
+    $('.total-updatable').text(data+" QAR")
     },
 	error:function(){console.log('errr')},
 });

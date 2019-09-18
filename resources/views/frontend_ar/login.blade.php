@@ -6,8 +6,8 @@
 <section class="cclt whyte_bg">
   <div class="container">
     <div class="col-md-12">
-      <h2 data-aos="fade-up">تسجيل الدخول</h2>
-      <h4 data-aos="fade-up">يقدم فندق Riviera مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرائع</h4>
+      <h2 data-aos="fade-up"> تسجيل الدخول </h2>
+      <h4 data-aos="fade-up"> تقدم ريفييرا مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرفيع </h4>
     </div>
 
     <div class="acct">
@@ -32,14 +32,14 @@
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="email" value="" class="form-control" placeholder="البريد الإلكتروني" name="email">
+                    <input type="email" value="" class="form-control" placeholder=" البريد الإلكتروني " name="email">
                   </div>
                 </div>
               </div>
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <input type="password" class="form-control" placeholder="كلمه السر" name="password">
+                    <input type="password" class="form-control" placeholder=" كلمه السر " name="password">
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@
               <div class="form-group clearfix">
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn-sub"><span>تسجيل الدخول</span></button>
+                    <button class="btn-sub"><span> تسجيل الدخول </span></button>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
           </div>
           <div class="col-md-6">
             <div class="lgn-rgt" data-aos="fade-up">
-              <h4>أليس لديك حساب؟</h4>
+              <h4> أليس لديك حساب؟ </h4>
               <button class="btn-sub"
                 onclick="window.location.href='{{url('register')}}'"><span>تسجيل</span></button>
             </div>

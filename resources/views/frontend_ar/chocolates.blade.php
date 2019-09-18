@@ -13,8 +13,8 @@
 
 	<div class="container">
 		<div class="col-md-12">
-			<h2 data-aos="fade-up"> الشوكولاته الموسمية <br>سلال وهدايا </h2>
-			<h4 data-aos="fade-up">يقدم فندق Riviera مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرائع</h4>
+			<h2 data-aos="fade-up"> الشوكولاته الموسمية <br> سلال وهدايا </h2>
+			<h4 data-aos="fade-up"> تقدم ريفييرا مجموعة متنوعة من الشوكولاتة الغنية التي تناسب ذوقك الرفيع. </h4>
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12">

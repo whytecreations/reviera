@@ -16,7 +16,7 @@ body{text-align: right;direction: rtl;}
 .close{left: -15px; right: 0;}
 .text-left {text-align: right!important;}
 .custom-control-label::before{    right: -1.5rem;left: 0;}
-
+.wsmenu-list>li>a{font-weight: 600;    padding: 0px 20px;}
 
 
 @media (min-width:993px) and (max-width:1024px) {

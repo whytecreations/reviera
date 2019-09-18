@@ -13,49 +13,44 @@
 	<div class="container">
 		<div class="col-md-12">
 			<h2 data-aos="fade-up">علامة سعر الشركة</h2>
-			<h4 data-aos="fade-up">ترغب في أن تصبح عميلاً مفضلاً للشركة في Riviera ، يرجى ملء النموذج
-أدناه! <br>
-
-				يجب أن تظهر في البداية بطاقة أعمال أو أي شكل آخر من أشكال المصادقة لإظهار وظيفتك بداخله
-الشركة <br> <spanهذا العرض قابل للتغيير في أي وقت دون سابق إنذار.. </span></h4>
+			<h4 data-aos="fade-up"> ترغب في أن تصبح عميلاً مفضلاً للشركة في ريفييرا ، يرجى ملء النموذج أدناه! </h4>
 			<div class="cclt-sec">
 				<div class="row">
 					<div class="col-md-12 text-left">
 						<form id="CorporateForm">
 							<div class="form-group">
 								<div class="row">
-									<div class="col-md-12"><label>نموذج طلب</label><select
+									<div class="col-md-12"><label> نموذج طلب  </label><select
 											name="corporate_type" class="form-control">
-											<option>الشركات</option>
-											<option>الحكومي </option>
-											<option>الآخرين</option>
+											<option>شركة</option>
+											<option>حكومة  </option>
+											<option>غيرهم</option>
 										</select></div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
-									<div class="col-md-12"><label>اسم الشركة</label><input name="company_name"
+									<div class="col-md-12"><label> سم الشركة </label><input name="company_name"
 											required type="text" class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
-									<div class="col-md-12"><label>عنوان الشركة</label>
+									<div class="col-md-12"><label>عنعنوان الشركة </label>
 										<div class="custom-control custom-radio">
 											<input id="headOffice" name="address_type" type="radio"
 												class="custom-control-input" value="Head Office">
-											<label class="custom-control-label" for="headOffice">مدير المكتب رئيس المكتب</label>
+											<label class="custom-control-label" for="headOffice"> المكتب الرئيسي  </label>
 										</div>
 										<div class="custom-control custom-radio">
 											<input type="radio" class="custom-control-input" id="regionalOffice"
 												name="address_type" value="Regional Office">
-											<label class="custom-control-label" for="regionalOffice">إقليمي
-مكتب. مقر. مركز</label>
+											<label class="custom-control-label" for="regionalOffice"> المكتب الإقليمي  </label>
 										</div>
 										<div class="custom-control custom-radio">
 											<input type="radio" class="custom-control-input" id="Others"
 												name="address_type" value="Others">
-											<label class="custom-control-label" for="Others">الآخرين</label>
+											<label class="custom-control-label" for="Others">وغيرها</label>
 										</div>
 										<textarea name="address" class="form-control"></textarea>
 									</div>
@@ -63,26 +58,25 @@
 							</div>
 							<div class="form-group">
 								<div class="row">
-									<div class="col-md-6"><label>عدد الموظفين داخل الشركة</label><input
+									<div class="col-md-6"><label> عدد الموظفين داخل الشركة </label><input
 											name="number_of_employees" type="number" class="form-control"></div>
-									<div class="col-md-6"><label>طبيعة العمل</label><input
+									<div class="col-md-6"><label> طبيعة العمل </label><input
 											name="nature_of_business" type="text" class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
-									<div class="col-md-6"><label>اسم الشخص المسؤول عن الشركة
-الجزء</label><input name="person_in_charge" type="text"
+									<div class="col-md-6"><label> اسم الشخص المسؤول عن قسم الشركات </label><input name="person_in_charge" type="text"
 											class="form-control"></div>
-									<div class="col-md-6"><label>موضع</label><input name="position" type="text"
+									<div class="col-md-6"><label>الوظيفة</label><input name="position" type="text"
 											class="form-control"></div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
-									<div class="col-md-6"><label>البريد الإلكتروني</label><input name="email" type="email" required
+									<div class="col-md-6"><label> البريد الإلكتروني ، </label><input name="email" type="email" required
 											class="form-control"></div>
-									<div class="col-md-6"><label>التليفون المحمول</label><input name="mobile" type="number"
+									<div class="col-md-6"><label>التل</label><input name="mobile" type="number"
 											class="form-control"></div>
 								</div>
 							</div>
@@ -90,7 +84,7 @@
 								<div class="row">
 									<div class="col-md-6"><label>الهاتف</label><input name="tel" type="number"
 											class="form-control"></div>
-									<div class="col-md-6"><label>فاكس</label><input name="fax" type="number"
+									<div class="col-md-6"><label>الفاكس </label><input name="fax" type="number"
 											class="form-control"></div>
 								</div>
 							</div>
@@ -100,7 +94,7 @@
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-12"><button type="submit" id="SendBtn"
-											class="btn-sub"><span>إرسال</span></button></div>
+											class="btn-sub"><span>الإرسال</span></button></div>
 								</div>
 							</div>
 						</form>
