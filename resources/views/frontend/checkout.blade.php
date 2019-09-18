@@ -3,7 +3,8 @@
 
 @section('content')
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css"
+  rel="stylesheet">
 
 <section class="cclt whyte_bg chck">
   <div class="container">
@@ -295,7 +296,7 @@
                           @endforeach
                         </select>
                       </div>
-                      <div class="col-md-12"  style="display:none">
+                      <div class="col-md-12" style="display:none">
                         <label>Country</label>
                         <select required id="country" name="country" class="form-control">
                           @foreach($countries as $country)
@@ -396,7 +397,7 @@
                           @endforeach
                         </select>
                       </div>
-                      <div class="col-md-12"  style="display:none">
+                      <div class="col-md-12" style="display:none">
                         <label>Country</label>
                         <select required id="billing_country" name="billing_country" class="form-control">
                           @foreach($countries as $country)
@@ -452,11 +453,11 @@
                 <div class="accord__body clearfix">
                   <div class="slct-size">
                     <div class="row">
-                      <div class="col-md-6"><label>Delivery Date</label><input type="text" autocomplete="off" id="delivery_date" name="delivery_date"
-                           class="form-control"></div>
+                      <div class="col-md-6"><label>Delivery Date</label><input type="text" autocomplete="off"
+                          id="delivery_date" name="delivery_date" class="form-control"></div>
 
-                      <div class="col-md-6"><label>Delivery Time</label><input type="text" autocomplete="off" id="delivery_time" name="delivery_time"
-                          class="form-control"></div>
+                      <div class="col-md-6"><label>Delivery Time</label><input type="text" autocomplete="off"
+                          id="delivery_time" name="delivery_time" class="form-control"></div>
                     </div>
                   </div>
                 </div>
@@ -585,7 +586,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <script src="//unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-  
+
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDxxgJUmtzK_fXH-MmRuCqEAtUu_lEVoA&callback=initMap"
   type="text/javascript"></script>

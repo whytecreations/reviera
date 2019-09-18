@@ -9,6 +9,8 @@ Route::get('clear-cache', function () {
 });
 
 Route::get('test', function () {
+    $order = App\Order::orderBy('created_at', 'desc')->skip(1)->first();
+    return view('frontend.email.order-failed', compact('order'));
     // $gateway = Omnipay::create('Migs_ThreeParty');
     // $gateway->setMerchantId(env('PAYMENT_MIGS_MERCHANT_ID'));
     // $gateway->setMerchantAccessCode(env('PAYMENT_MIGS_ACCESS_CODE'));

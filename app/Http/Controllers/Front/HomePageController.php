@@ -14,6 +14,7 @@ use App\Gift;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactEnquiry;
 use App\Mail\CorporateEnquiry;
+use App\Mail\OrderPlaced;
 use App\Order;
 use App\OrderDetail;
 use App\ShippingMethod;
@@ -22,6 +23,7 @@ use App\WishList;
 use Cart;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Mail;
 use Omnipay\Omnipay;
 use stdClass;
@@ -153,13 +155,15 @@ class HomePageController extends Controller
         }
         $customer = Customer::find(session('token_id'));
         if ($customer == null) {
-            $customer = Customer::find($request->email);
+            $customer = Customer::where('email', $request->email)->first();
             if ($customer == null) {
                 $customer = $this->saveCustomer($request->all());
+            } else {
+                $this->firstOrSaveAddress($data);
             }
         } else {
             $data['customer_id'] = $customer->id;
-            $this->saveAddress($data);
+            $this->firstOrSaveAddress($data);
         }
         $shippingCharge = 0;
         $condition = Cart::getCondition('shipping charge');
@@ -220,6 +224,7 @@ class HomePageController extends Controller
             $data->message = 'Thank you for your order';
             $data->description = 'Order Reference Number is ' . $order->created_at->format("Ymd") . $order->id;
             Cart::clear();
+            $this->sendOrderConfirmationMail($order);
             return view('frontend.statusMessage', compact('data'));
         }
         // $pdf = PDF::loadView('emails.invoice', array('order' => $order));
@@ -228,15 +233,30 @@ class HomePageController extends Controller
         // return $order;
     }
 
-    public function saveAddress($data)
+    public function sendOrderConfirmationMail(Order $order)
+    {
+        Mail::to($order->customer->email)
+            ->to(OrderPlaced::getAdminEmail())
+            ->send(new OrderPlaced($order));
+
+        return view('frontend.email.order-placed', compact('order'));
+        if (count(Mail::failures()) > 0) {
+            return response()->json(["status" => "failed"]);
+
+        } else {
+            return response()->json(["status" => "success"]);
+        }
+    }
+
+    public function firstOrSaveAddress($data)
     {
         //CHange to address make
-        $shippingAddress = Address::create($data);
+        $shippingAddress = Address::firstOrCreate(Arr::only($data, (new Address())->getFillable()));
         session(['sid' => $shippingAddress->id]);
         if (isset($data['sameAsShipping']) && $data['sameAsShipping'] == "on") {
             session(['bid' => $shippingAddress->id]);
         } else {
-            $billingAddress = Address::create([
+            $billingAddress = Address::firstOrCreate([
                 'firstname' => $data["billing_first_name"],
                 'lastname' => $data["billing_last_name"],
                 'address1' => $data["billing_address1"],
@@ -253,10 +273,10 @@ class HomePageController extends Controller
     public function saveCustomer($data)
     {
         $data['password'] = Hash::make(str_random(40));
-        $customer = Customer::create($data);
+        $customer = Customer::firstOrCreate($data);
         session(['token_id' => $customer->id]);
         $data['custormer_id'] = $customer->id;
-        $this->saveAddress($data);
+        $this->firstOrSaveAddress(Arr::only($data, (new Address())->getFillable()));
         return $customer;
     }
 

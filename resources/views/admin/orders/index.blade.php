@@ -37,7 +37,7 @@
                     <td>{{$order->created_at->format('Y / M / d')}}</td>
                     <td>{{$order->customer->first_name." ".$order->customer->last_name}}</td>
                     <td>{{$order->customer->email}}</td>
-                    <td>{{count($order->orderDetails)}}</td>
+                    <td>{{$order->getNumberOfItems()}}</td>
                     <td>{{$order->shipping_address->getCity()}}</td>
                     <td>
                         @if($order->shippingMethod)

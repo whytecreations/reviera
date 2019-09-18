@@ -65,6 +65,11 @@ class Order extends Model
         return $this->hasMany(Transaction::class);
     }
 
+    public function getNumberOfItems()
+    {
+        return $this->orderDetails->sum(function ($item) {return $item->quantity;});
+    }
+
     public function getStatusColor()
     {
         //  // Order Status

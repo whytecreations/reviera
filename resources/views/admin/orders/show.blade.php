@@ -33,13 +33,16 @@
                         <b>Shipping Method: </b><br />
                         @if($order->shippingMethod)
                         {{$order->shippingMethod->name}}
+                        @endif
                         <div>
+                            @if($order->shippingZone)
                             {{$order->shippingZone->name}}
+                            @endif
                         </div>
                         <div>
                             {{$order->shipping_cost}} QAR
                         </div>
-                        @endif
+
                     </h4>
                 </div>
 
